@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>F1 Turniej Streamerów - Walka o Pieniądze i Sławę</title>
-     <link rel="icon" type="image/png" href="f1-icon.png">
+    <link rel="icon" type="image/png" href="f1-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -173,23 +173,99 @@
         .feature-description{ color:var(--text-secondary); line-height:1.6; font-size:clamp(.9rem,2.5vw,1rem); }
 
         /* ===== NEW: Tracks (Tory) Section ===== */
-        .tracks-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:clamp(20px,5vw,32px); }
+        .tracks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: clamp(24px, 5vw, 36px);
+}
         .track-card{
             overflow:hidden; border-radius:16px; border:1px solid var(--border-color);
             background:var(--background-card); backdrop-filter:blur(16px); transition:transform .3s ease, border-color .3s ease;
+            display: flex; flex-direction: column; min-height: 300px;
         }
         .track-card:hover{ transform:translateY(-6px); border-color:var(--primary-red); }
-        .track-image{ position:relative; aspect-ratio:16/9; overflow:hidden; }
-        .track-image img{ width:100%; height:100%; object-fit:cover; display:block; }
-        .track-badge{
-            position:absolute; top:12px; left:12px;
-            background:rgba(0,0,0,.6); border:1px solid var(--border-color);
-            color:var(--accent-yellow); font-family:'Orbitron',monospace; font-size:.75rem; padding:6px 10px; border-radius:999px;
-            letter-spacing:.08em; text-transform:uppercase;
+        
+        /* Redesigned track card layout to match wireframe */
+        .track-country-label {
+            background: var(--background-dark);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 12px 12px 0 12px;
+            border-radius: 8px;
+            width: fit-content;
         }
-        .track-body{ padding:18px 20px 20px; }
-        .track-title{ font-family:'Space Grotesk',sans-serif; font-size:1.25rem; font-weight:700; margin-bottom:6px; }
-        .track-meta{ color:var(--text-secondary); font-size:.95rem; }
+        
+       .track-main-section {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 12px;
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 180px;
+}
+.track-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+}
+
+        
+        .track-main-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .track-info-section {
+            background: var(--background-dark);
+            border: 1px solid var(--border-color);
+            margin: 0 12px 12px 12px;
+            border-radius: 8px;
+            padding: 12px 16px;
+        }
+        
+        .track-name-label {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            text-transform: lowercase;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+        
+        .track-name {
+            color: var(--text-primary);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .track-description-label {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            text-transform: lowercase;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+        
+        .track-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
 
         /* ===== Sponsors ===== */
         .sponsors{ padding:clamp(40px,8vw,80px) 0; background:rgba(255,255,255,.02); border-top:1px solid var(--border-color); border-bottom:1px solid var(--border-color); }
@@ -202,86 +278,86 @@
             padding:clamp(20px,5vw,30px); text-align:center; transition:all .3s ease; backdrop-filter:blur(20px);
         }
         .participant-card:hover{
-    transform: translateY(-8px);
-}
+            transform: translateY(-8px);
+        }
 
-/* Twitch: fioletowa obwódka + cień */
-.participant-card.twitch:hover{
-    border-color:#9146FF;
-    box-shadow:
-        0 0 0 2px rgba(145, 70, 255, .25),
-        0 20px 40px rgba(145, 70, 255, .12);
-}
+        /* Twitch: fioletowa obwódka + cień */
+        .participant-card.twitch:hover{
+            border-color:#9146FF;
+            box-shadow:
+                0 0 0 2px rgba(145, 70, 255, .25),
+                0 20px 40px rgba(145, 70, 255, .12);
+        }
 
-/* Kick: zielona obwódka + cień */
-.participant-card.kick:hover{
-    border-color:#00FF88;
-    box-shadow:
-        0 0 0 2px rgba(0, 255, 136, .25),
-        0 20px 40px rgba(0, 255, 136, .12);
-}
+        /* Kick: zielona obwódka + cień */
+        .participant-card.kick:hover{
+            border-color:#00FF88;
+            box-shadow:
+                0 0 0 2px rgba(0, 255, 136, .25),
+                0 20px 40px rgba(0, 255, 136, .12);
+        }
 
-/* (opcjonalnie) Fokus z klawiatury – spójne kolory */
-.participant-card.twitch:focus-within{
-    outline: none;
-    border-color:#9146FF;
-    box-shadow:0 0 0 3px rgba(145,70,255,.35);
-}
-.participant-card.kick:focus-within{
-    outline: none;
-    border-color:#00FF88;
-    box-shadow:0 0 0 3px rgba(0,255,136,.35);
-}
+        /* (opcjonalnie) Fokus z klawiatury – spójne kolory */
+        .participant-card.twitch:focus-within{
+            outline: none;
+            border-color:#9146FF;
+            box-shadow:0 0 0 3px rgba(145,70,255,.35);
+        }
+        .participant-card.kick:focus-within{
+            outline: none;
+            border-color:#00FF88;
+            box-shadow:0 0 0 3px rgba(0,255,136,.35);
+        }
         .participant-avatar {
-    width: clamp(60px, 15vw, 100px);
-    height: clamp(60px, 15vw, 100px);
-    border-radius: 50%;
-    margin: 0 auto 15px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+            width: clamp(60px, 15vw, 100px);
+            height: clamp(60px, 15vw, 100px);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
         .participant-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 50%;
-}
-.participant-card.twitch .participant-avatar:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 20px #9146FF;
-}
-.participant-card.kick .participant-avatar:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 20px #00FF88;
-}
-.participant-card.twitch .participant-platform {
-    color: #9146FF;
-    font-weight: 600;
-}
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 50%;
+        }
+        .participant-card.twitch .participant-avatar:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 20px #9146FF;
+        }
+        .participant-card.kick .participant-avatar:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 20px #00FF88;
+        }
+        .participant-card.twitch .participant-platform {
+            color: #9146FF;
+            font-weight: 600;
+        }
 
-.participant-card.kick .participant-platform {
-    color: #00FF88;
-    font-weight: 600;
-}
+        .participant-card.kick .participant-platform {
+            color: #00FF88;
+            font-weight: 600;
+        }
 
         .participant-name {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(1rem, 3vw, 1.2rem);
-    font-weight: 600;
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: color 0.3s ease;
-    display: block;
-    margin-bottom: 5px;
-}
-.participant-card.twitch .participant-name:hover {
-    color: #9146FF;
-}
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .participant-card.twitch .participant-name:hover {
+            color: #9146FF;
+        }
 
-.participant-card.kick .participant-name:hover {
-    color: #00FF88;
-}
+        .participant-card.kick .participant-name:hover {
+            color: #00FF88;
+        }
         .participant-platform{ color:var(--gaming-green); font-size:clamp(.8rem,2vw,.9rem); text-transform:uppercase; letter-spacing:.5px; }
         .more-participants{ text-align:center; margin-top:clamp(30px,6vw,40px); font-size:clamp(1rem,3vw,1.2rem); color:var(--text-secondary); font-style:italic; }
 
@@ -302,6 +378,108 @@
             font-weight:700; color:var(--text-primary); text-transform:uppercase; letter-spacing:clamp(1px,.5vw,2px);
         }
         .powered-by img{ height:clamp(16px,3vw,22px); width:auto; display:block; }
+
+        .floating-car {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    font-size: 2.5rem;
+    background: var(--primary-red);
+    color: #fff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(225, 6, 0, 0.6);
+    animation: carPulse 1.5s infinite;
+    z-index: 2000;
+    transition: transform 0.3s ease;
+}
+.floating-car:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 50, 50, 0.8);
+}
+
+@keyframes carPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* ===== Stream Popup ===== */
+.stream-popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 3000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.stream-popup-content {
+    background: var(--background-dark);
+    border: 1px solid var(--primary-red);
+    padding: 25px;
+    border-radius: 16px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(225, 6, 0, 0.5);
+    animation: popupFade 0.3s ease forwards;
+}
+
+.stream-popup-content h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
+    color: var(--primary-red);
+    margin-bottom: 10px;
+}
+
+.stream-popup-content p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.watch-button {
+    display: inline-block;
+    padding: 12px 20px;
+    background: var(--primary-red);
+    color: white;
+    font-weight: bold;
+    font-family: 'Space Grotesk', sans-serif;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.watch-button:hover {
+    background: var(--secondary-red);
+    transform: scale(1.05);
+}
+
+.close-popup {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.close-popup:hover {
+    color: white;
+}
+
+@keyframes popupFade {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
 
         /* ===== Animations ===== */
         @keyframes fadeInUp{ from{ opacity:0; transform:translateY(30px);} to{ opacity:1; transform:translateY(0);} }
@@ -350,8 +528,22 @@
         @media (-webkit-min-device-pixel-ratio:2),(min-resolution:192dpi){
             .hero-background{ background-image:url('https://images.pexels.com/photos/29276547/pexels-photo-29276547.jpeg?auto=compress&cs=tinysrgb&w=3840'); }
         }
+
     </style>
 </head>
+<div class="floating-car" id="floatingCar" title="Wpadnij na transmisję!">
+    🚗
+</div>
+
+<!-- ===== POPUP ===== -->
+<div class="stream-popup" id="streamPopup">
+    <div class="stream-popup-content">
+        <span class="close-popup" id="closePopup">&times;</span>
+        <h3>🚨 Wpadnij na transmisję Mrdzinolda! 🚨</h3>
+        <p>Oglądaj na żywo jego zmagania w F1 Turnieju Streamerów.</p>
+        <a href="https://www.twitch.tv/mrdzinold" target="_blank" class="watch-button">Oglądaj na Twitchu</a>
+    </div>
+</div>
 <body>
     <!-- ===== NAV ===== -->
     <nav class="navbar" id="navbar" aria-label="Główna nawigacja">
@@ -374,7 +566,7 @@
         <div class="hero-content">
             <div class="hero-badge">Największy turniej roku</div>
             <h1 class="hero-title">
-                <span class="highlight">20 STREAMÓW</span><br />
+                <span class="highlight">20 STREAMERÓW</span><br />
                 W WALCE O PIENIĄDZE I SŁAWĘ
             </h1>
             <p class="hero-subtitle">
@@ -446,148 +638,166 @@
 
             <div class="tracks-grid">
                 <!-- Australia -->
-                <article class="track-card fade-in">
-                    <div class="track-image">
-                        <img src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Australia_Circuit.webp" alt="Tor w Australii (Albert Park)" />
-                        <span class="track-badge">Australia</span>
-                    </div>
-                    <div class="track-body">
-                        <h3 class="track-title">Albert Park Circuit</h3>
-                        <p class="track-meta">Melbourne • Szybkie szykany, uliczny charakter</p>
-                    </div>
-                </article>
+               <article class="track-card fade-in">
+    <div class="track-country-label">Australia</div>
+    <div class="track-main-section">
+        <img src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Australia_Circuit.webp" 
+             alt="Albert Park Circuit" 
+             class="track-image" />
+        
+    </div>
+    <div class="track-info-section">
+        
+        <div class="track-name">Albert Park Circuit</div>
+        
+        <div class="track-description">Melbourne • Dynamiczny uliczny tor pełen szybkich szykan, zdradliwych zakrętów i wąskich alejek. Idealny start sezonu — tu refleks jest kluczem do sukcesu.</div>
+    </div>
+</article>
 
-                <!-- Monza -->
-                <article class="track-card fade-in">
-                    <div class="track-image">
-                        <img src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Italy_Circuit.webp" alt="Autodromo Nazionale di Monza" />
-                        <span class="track-badge">Monza</span>
-                    </div>
-                    <div class="track-body">
-                        <h3 class="track-title">Autodromo Nazionale di Monza</h3>
-                        <p class="track-meta">Włochy • Świątynia prędkości, długie proste</p>
-                    </div>
-                </article>
+               <!-- Monza -->
+<article class="track-card fade-in">
+  <div class="track-country-label">Włochy</div>
+  <div class="track-main-section">
+    <img
+      src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Italy_Circuit.webp"
+      alt="Autodromo Nazionale di Monza"
+      class="track-image"
+    />
+  </div>
+  <div class="track-info-section">
+    <div class="track-name">Autodromo Nazionale di Monza</div>
+    <div class="track-description">Włochy • Legendarna „Świątynia Prędkości”, gdzie królują długie proste, minimalny docisk i ekstremalne prędkości. Każdy błąd kosztuje tu cenne sekundy.</div>
+  </div>
+</article>
 
-                <!-- Austria -->
-                <article class="track-card fade-in">
-                    <div class="track-image">
-                        <img src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Austria_Circuit.webp" alt="Red Bull Ring w Austrii" />
-                        <span class="track-badge">Austria</span>
-                    </div>
-                    <div class="track-body">
-                        <h3 class="track-title">Red Bull Ring</h3>
-                        <p class="track-meta">Spielberg • Krótka pętla, mocne hamowania</p>
-                    </div>
-                </article>
+<!-- Austria -->
+<article class="track-card fade-in">
+  <div class="track-country-label">Austria</div>
+  <div class="track-main-section">
+    <img
+      src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Austria_Circuit.webp"
+      alt="Red Bull Ring"
+      class="track-image"
+    />
+  </div>
+  <div class="track-info-section">
+    <div class="track-name">Red Bull Ring</div>
+    <div class="track-description">Spielberg • Krótka, ale niezwykle techniczna pętla. Trzy ostre podjazdy, brutalne hamowania i niespodziewane manewry wyprzedzania — adrenalina gwarantowana.</div>
+  </div>
+</article>
 
-                <!-- Belgia -->
-                <article class="track-card fade-in">
-                    <div class="track-image">
-                        <img src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Belgium_Circuit.webp" alt="Spa-Francorchamps w Belgii" />
-                        <span class="track-badge">Belgia</span>
-                    </div>
-                    <div class="track-body">
-                        <h3 class="track-title">Spa-Francorchamps</h3>
-                        <p class="track-meta">Ardeny • Eau Rouge, zmienna pogoda</p>
-                    </div>
-                </article>
+<!-- Belgia -->
+<article class="track-card fade-in">
+  <div class="track-country-label">Belgia</div>
+  <div class="track-main-section">
+    <img
+      src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Belgium_Circuit.webp"
+      alt="Circuit de Spa-Francorchamps"
+      class="track-image"
+    />
+  </div>
+  <div class="track-info-section">
+    <div class="track-name">Spa-Francorchamps</div>
+    <div class="track-description">Ardeny • Kultowy tor pełen legendarnych zakrętów. Eau Rouge i Raidillon to prawdziwy test odwagi, a zmienna pogoda potrafi wywrócić wyścig do góry nogami.</div>
+  </div>
+</article>
 
-                <!-- Abu Dhabi -->
-                <article class="track-card fade-in">
-                    <div class="track-image">
-                        <img src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Abu_Dhabi_Circuit.webp" alt="Yas Marina w Abu Zabi" />
-                        <span class="track-badge">Abu Dhabi</span>
-                    </div>
-                    <div class="track-body">
-                        <h3 class="track-title">Yas Marina Circuit</h3>
-                        <p class="track-meta">Abu Zabi • Nocny spektakl, techniczne sekcje</p>
-                    </div>
-                </article>
+<!-- Abu Dhabi -->
+<article class="track-card fade-in">
+  <div class="track-country-label">Abu Dhabi</div>
+  <div class="track-main-section">
+    <img
+      src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Abu_Dhabi_Circuit.webp"
+      alt="Yas Marina Circuit"
+      class="track-image"
+    />
+  </div>
+  <div class="track-info-section">
+    <div class="track-name">Yas Marina Circuit</div>
+    <div class="track-description">Abu Zabi • Nocny spektakl świateł i prędkości. Techniczne sekcje, długie proste i malownicza marina tworzą wyjątkową atmosferę finałowych zmagań.</div>
+  </div>
+</article>
             </div>
         </div>
     </section>
 
     <!-- ===== SPONSORS ===== -->
     <section class="sponsors" id="sponsorzy">
-    <div class="container">
-        <div class="section-header fade-in">
-            <h2 class="section-title">Sponsorzy</h2>
-        </div>
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Sponsorzy</h2>
+            </div>
 
-        <div class="sponsors-grid fade-in" style="text-align: center;">
-            <!-- Logo sponsora -->
-            <div class="sponsor-card" style="display: inline-block; margin: 20px;">
-                <img src="Daco_5061982.png" alt="Logo sponsora" style="max-width: 220px; height: auto; filter: drop-shadow(0 0 8px rgba(255,255,255,0.2));">
+            <div class="sponsors-grid fade-in" style="text-align: center;">
+                <!-- Logo sponsora -->
+                <div class="sponsor-card" style="display: inline-block; margin: 20px;">
+                    <img src="Daco_5061982.png" alt="Logo sponsora" style="max-width: 220px; height: auto; filter: drop-shadow(0 0 8px rgba(255,255,255,0.2));">
+                </div>
+            </div>
+
+            <!-- Napis "More soon" -->
+            <div class="soon-text fade-in" style="margin-top: 20px; font-size: 1.3rem; font-weight: 600;">
+                More soon...
             </div>
         </div>
-
-        <!-- Napis "More soon" -->
-        <div class="soon-text fade-in" style="margin-top: 20px; font-size: 1.3rem; font-weight: 600;">
-            More soon...
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- ===== PARTICIPANTS ===== -->
-   <section class="participants" id="uczestnicy">
-    <div class="container">
-        <div class="section-header fade-in">
-            <h2 class="section-title">Uczestnicy</h2>
-            <p class="section-subtitle">Poznaj streamerów walczących o tytuł mistrza i wielkie nagrody pieniężne.</p>
+    <section class="participants" id="uczestnicy">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Uczestnicy</h2>
+                <p class="section-subtitle">Poznaj streamerów walczących o tytuł mistrza i wielkie nagrody pieniężne.</p>
+            </div>
+
+            <div class="participants-grid">
+                <!-- Mrdzinold -->
+                <div class="participant-card fade-in twitch">
+                    <div class="participant-avatar">
+                        <a href="https://www.twitch.tv/mrdzinold" target="_blank" rel="noopener">
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/3c3cfcb9-151f-4e31-a4b7-64afd52217c0-profile_image-300x300.png" alt="Mrdzinold">
+                        </a>
+                    </div>
+                    <a href="https://www.twitch.tv/mrdzinold" target="_blank" rel="noopener" class="participant-name">Mrdzinold</a>
+                    <div class="participant-platform">Twitch</div>
+                </div>
+
+                <!-- Tuszol -->
+                <div class="participant-card fade-in kick">
+                    <div class="participant-avatar">
+                        <a href="http://kick.com/tuszol" target="_blank" rel="noopener">
+                            <img src="https://img.siepomaga.pl/cdn-cgi/image/format=auto,width=1180/uploads/attached_image/photo/583382/816a8c9b-186c-4056-83b8-448365e9bf8d.jpg" alt="Tuszol">
+                        </a>
+                    </div>
+                    <a href="http://kick.com/tuszol" target="_blank" rel="noopener" class="participant-name">Tuszol</a>
+                    <div class="participant-platform">Kick</div>
+                </div>
+
+                <!-- Japczan -->
+                <div class="participant-card fade-in kick">
+                    <div class="participant-avatar">
+                        <a href="http://kick.com/japczan" target="_blank" rel="noopener">
+                            <img src="https://yt3.googleusercontent.com/sfO9n7NN9cKlLsfWmLmgHOjJxkkBKzDBQlPdokQ0NRYVOV8hp6gzg0lJ-cAWqBGKy08e_FADxw=s900-c-k-c0x00ffffff-no-rj" alt="Japczan">
+                        </a>
+                    </div>
+                    <a href="http://kick.com/japczan" target="_blank" rel="noopener" class="participant-name">Japczan</a>
+                    <div class="participant-platform">Kick</div>
+                </div>
+
+                <!-- BanduraCartel -->
+                <div class="participant-card fade-in kick">
+                    <div class="participant-avatar">
+                        <a href="http://kick.com/banduracartel" target="_blank" rel="noopener">
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/1472e57c-6d87-4ec9-8ce0-dc23f00bc891-profile_image-300x300.png" alt="BanduraCartel">
+                        </a>
+                    </div>
+                    <a href="https://www.twitch.tv/banduracartel" target="_blank" rel="noopener" class="participant-name">BanduraCartel</a>
+                    <div class="participant-platform">Kick</div>
+                </div>
+            </div>
         </div>
-
-        <div class="participants-grid">
-            <!-- Mrdzinold -->
-            <div class="participant-card fade-in twitch">
-                <div class="participant-avatar">
-                    <a href="https://www.twitch.tv/mrdzinold" target="_blank" rel="noopener">
-                        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/3c3cfcb9-151f-4e31-a4b7-64afd52217c0-profile_image-300x300.png" alt="Mrdzinold">
-                    </a>
-                </div>
-                <a href="https://www.twitch.tv/mrdzinold" target="_blank" rel="noopener" class="participant-name">Mrdzinold</a>
-                <div class="participant-platform">Twitch</div>
-            </div>
-
-            <!-- Tuszol -->
-            <div class="participant-card fade-in kick">
-                <div class="participant-avatar">
-                    <a href="http://kick.com/tuszol" target="_blank" rel="noopener">
-                        <img src="https://img.siepomaga.pl/cdn-cgi/image/format=auto,width=1180/uploads/attached_image/photo/583382/816a8c9b-186c-4056-83b8-448365e9bf8d.jpg" alt="Tuszol">
-                    </a>
-                </div>
-                <a href="http://kick.com/tuszol" target="_blank" rel="noopener" class="participant-name">Tuszol</a>
-                <div class="participant-platform">Kick</div>
-            </div>
-
-            <!-- Japczan -->
-            <div class="participant-card fade-in kick">
-                <div class="participant-avatar">
-                    <a href="http://kick.com/japczan" target="_blank" rel="noopener">
-                        <img src="https://yt3.googleusercontent.com/sfO9n7NN9cKlLsfWmLmgHOjJxkkBKzDBQlPdokQ0NRYVOV8hp6gzg0lJ-cAWqBGKy08e_FADxw=s900-c-k-c0x00ffffff-no-rj" alt="Japczan">
-                    </a>
-                </div>
-                <a href="http://kick.com/japczan" target="_blank" rel="noopener" class="participant-name">Japczan</a>
-                <div class="participant-platform">Kick</div>
-            </div>
-
-            <!-- BanduraCartel -->
-            <div class="participant-card fade-in twitch">
-                <div class="participant-avatar">
-                    <a href="https://www.twitch.tv/banduracartel" target="_blank" rel="noopener">
-                        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/1472e57c-6d87-4ec9-8ce0-dc23f00bc891-profile_image-300x300.png" alt="BanduraCartel">
-                    </a>
-                </div>
-                <a href="https://www.twitch.tv/banduracartel" target="_blank" rel="noopener" class="participant-name">BanduraCartel</a>
-                <div class="participant-platform">Twitch</div>
-            </div>
-        </div>
-    </div>
-    <div class="more-participants fade-in">...i kolejni już wkrótce</div>
-</section>
-
-
-           
+        <div class="more-participants fade-in">...i kolejni już wkrótce</div>
+    </section>
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
@@ -683,6 +893,25 @@
                 mobileMenuBtn.setAttribute('aria-expanded', 'false');
             }
         });
+
+        /* ===== Floating Car Popup ===== */
+const floatingCar = document.getElementById("floatingCar");
+const streamPopup = document.getElementById("streamPopup");
+const closePopup = document.getElementById("closePopup");
+
+floatingCar.addEventListener("click", () => {
+    streamPopup.style.display = "flex";
+});
+
+closePopup.addEventListener("click", () => {
+    streamPopup.style.display = "none";
+});
+
+streamPopup.addEventListener("click", (e) => {
+    if (e.target === streamPopup) {
+        streamPopup.style.display = "none";
+    }
+});
     </script>
 </body>
 </html>
