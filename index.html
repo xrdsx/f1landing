@@ -44,7 +44,7 @@
         }
         .hero-background{
             position:absolute; inset:0;
-            background-image:url('https://images.pexels.com/photos/29276547/pexels-photo-29276547.jpeg');
+            background-image:url('https://i.ytimg.com/vi/SahF8zmF34g/maxresdefault.jpg');
             background-size:cover; background-position:center; background-attachment:fixed;
             z-index:-2;
         }
@@ -476,6 +476,43 @@
     color: white;
 }
 
+/* ===== Highlights Section ===== */
+.highlights { 
+    padding: clamp(60px,12vw,120px) 0; 
+    background: var(--background-dark); 
+}
+.highlights-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); 
+    gap: clamp(24px,5vw,48px); 
+}
+.highlight-card iframe {
+    width: 100%;
+    height: 340px;   /* 🔥 było 220px */
+    border-radius: 16px; /* 🔥 było 12px */
+}
+
+.twitch-button {
+    display: inline-block;
+    margin: 20px auto 40px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #9146FF, #772ce8); /* kolory Twitch */
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(145,70,255,.5);
+    transition: all 0.3s ease;
+}
+.twitch-button:hover {
+    background: linear-gradient(135deg, #a970ff, #9146FF);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(145,70,255,.7);
+}
+
 @keyframes popupFade {
     from { transform: scale(0.9); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
@@ -550,83 +587,114 @@
         <div class="nav-container">
             <a href="#" class="logo">F1 TURNIEJ STREAMERÓW</a>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Przełącz menu">☰</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#tory">Tory</a></li>
-                <li><a href="#uczestnicy">Uczestnicy</a></li>
-                <li><a href="#sponsorzy">Sponsorzy</a></li>
-            </ul>
+           <ul class="nav-links" id="navLinks">
+    <li><a href="#zajawka">Przedsmak rywalizacji</a></li>
+    <li><a href="#tory">Tory</a></li>
+    <li><a href="#uczestnicy">Uczestnicy</a></li>
+    <li><a href="#sponsorzy">Sponsorzy</a></li>
+</ul>
         </div>
     </nav>
 
     <!-- ===== HERO ===== -->
-    <section class="hero" role="banner">
-        <div class="hero-background" aria-hidden="true"></div>
-        <div class="hero-overlay" aria-hidden="true"></div>
+   <section class="hero" role="banner">
+    <div class="hero-background" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
 
-        <div class="hero-content">
-            <div class="hero-badge">Największy turniej roku</div>
-            <h1 class="hero-title">
-                <span class="highlight">20 STREAMERÓW</span><br />
-                W WALCE O PIENIĄDZE I SŁAWĘ
-            </h1>
-            <p class="hero-subtitle">
-                Doświadcz najintensywniejszej rywalizacji w świecie motorsportu.
-                Śledź na żywo walkę o wielkie nagrody pieniężne i tytuł mistrza.
-            </p>
+    <div class="hero-content">
+        <div class="hero-badge">Pierwsze wydarzenie</div>
+        <h1 class="hero-title">
+            <span class="highlight">14 WRZEŚNIA GODZINA 15:00</span><br />
+            ZAPOZNAWCZE GRAND PRIX
+        </h1>
+        <p class="hero-subtitle">
+            Wspólne ściganie ze streamerami otwierające sezon emocji!<br/>
+            Kolejne informacje wkrótce...
+        </p>
 
-            <!-- >>> POWERED BY MRDZINOLD X + logo (białe) -->
-            <div class="hero-powered-by" aria-label="Partner technologiczny">
-                POWERED BY MRDZINOLD X
-                <!-- Podmień src na realne logo -->
-                <img src="Daco_5061982.png" alt="Logo partnera" />
-            </div>
+        <!-- >>> POWERED BY MRDZINOLD X + logo (białe) -->
+        <div class="hero-powered-by" aria-label="Partner technologiczny">
+            POWERED BY MRDZINOLD X
+            <img src="Daco_5061982.png" alt="Logo partnera" />
+        </div>
+<a href="https://www.twitch.tv/mrdzinold" target="_blank" class="twitch-button">
+    🔴 Oglądaj na Twitchu
+</a>
+        
 
-            <!-- Countdown -->
-            <div class="countdown-container" aria-live="polite">
-                <div class="countdown-title">Pozostało do startu</div>
-                <div class="countdown" id="countdown">
-                    <div class="countdown-item"><span class="countdown-number" id="days">000</span><span class="countdown-label">Dni</span></div>
-                    <div class="countdown-item"><span class="countdown-number" id="hours">00</span><span class="countdown-label">Godzin</span></div>
-                    <div class="countdown-item"><span class="countdown-number" id="minutes">00</span><span class="countdown-label">Minut</span></div>
-                    <div class="countdown-item"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">Sekund</span></div>
+        <!-- Countdown -->
+        <div class="countdown-container" aria-live="polite">
+            <div class="countdown-title">Pozostało do startu</div>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">000</span>
+                    <span class="countdown-label">Dni</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Godzin</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Minut</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Sekund</span>
                 </div>
             </div>
-
-            <!-- Stats -->
-            <div class="stats" aria-label="Statystyki wydarzenia">
-                <div class="stat-item"><span class="stat-number">20</span><span class="stat-label">Streamów</span></div>
-                <div class="stat-item"><span class="stat-number">∞</span><span class="stat-label">Emocji</span></div>
-                <div class="stat-item"><span class="stat-number">💎</span><span class="stat-label">Nagrody</span></div>
-            </div>
         </div>
-    </section>
 
-    <!-- ===== FEATURES ===== -->
-    <section class="features">
+        <!-- Stats -->
+        <div class="stats" aria-label="Statystyki wydarzenia">
+            <div class="stat-item"><span class="stat-number">20</span><span class="stat-label">Streamerów</span></div>
+            <div class="stat-item"><span class="stat-number">∞</span><span class="stat-label">Emocji</span></div>
+            <div class="stat-item"><span class="stat-number">💎</span><span class="stat-label">Nagrody</span></div>
+        </div>
+    </div>
+</section>
+
+    <!-- ===== HIGHLIGHTS / ZAJAWKA ===== -->
+    <section class="highlights" id="zajawka">
         <div class="container">
             <div class="section-header fade-in">
-                <h2 class="section-title">Niezapomniane Emocje</h2>
-                <p class="section-subtitle">Przygotuj się na najintensywniejszą rywalizację w historii streamingu motorsportowego.</p>
+                <h2 class="section-title">Przedsmak rywalizacji</h2>
+                <p class="section-subtitle">Najlepsze momenty ze streamów Mrdzinolda – poczuj klimat przed startem!</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">📺</div>
-                    <h3 class="feature-title">Multi-Stream View</h3>
-                    <p class="feature-description">Oglądaj wszystkich 20 streamerów jednocześnie w wysokiej jakości HD. Przełączaj między widokami jednym kliknięciem.</p>
+
+            <div class="highlights-grid">
+                <div class="highlight-card fade-in">
+                    <iframe src="https://clips.twitch.tv/embed?clip=AbstruseMotionlessSoymilkAMPTropPunch-OJj6BWHmVCQrWd3J&parent=127.0.0.1" 
+                            frameborder="0" 
+                            allowfullscreen="true" 
+                            scrolling="no">
+                    </iframe>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">💰</div>
-                    <h3 class="feature-title">Ranking Pieniężny</h3>
-                    <p class="feature-description">Śledź nagrody pieniężne w czasie rzeczywistym. Zobacz kto zarabia najwięcej i walczy o główną nagrodę.</p>
+                <div class="highlight-card fade-in">
+                    <iframe src="https://clips.twitch.tv/embed?clip=ToughBoredTurnipTF2John-PZz-ptI2-1wVISld&parent=127.0.0.1" 
+                            frameborder="0" 
+                            allowfullscreen="true" 
+                            scrolling="no">
+                    </iframe>
                 </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">⚡</div>
-                    <h3 class="feature-title">Dane Live</h3>
-                    <p class="feature-description">Pozycje, czasy okrążeń i statystyki aktualizowane co sekundę. Najszybsze dane w internecie.</p>
+                <div class="highlight-card fade-in">
+                    <iframe src="https://clips.twitch.tv/embed?clip=AbnegateSavoryPonySuperVinlin-MsaW22j4gXDY5uYF&parent=127.0.0.1" 
+                            frameborder="0" 
+                            allowfullscreen="true" 
+                            scrolling="no">
+                    </iframe>
+                </div>
+                <div class="highlight-card fade-in">
+                    <iframe src="https://clips.twitch.tv/embed?clip=AttractiveRespectfulDonkeyCeilingCat-AJK9q7ScmyHBG_JB&parent=127.0.0.1" 
+                            frameborder="0" 
+                            allowfullscreen="true" 
+                            scrolling="no">
+                    </iframe>
                 </div>
             </div>
         </div>
     </section>
+    
 
     <!-- ===== NEW: TRACKS / TORY ===== -->
     <section class="tracks" id="tory">
@@ -721,27 +789,25 @@
     </div>
   </div>
 </article>
-            </div>
-        </div>
-    </section>
+<!-- Tajemniczy Tor -->
+<article class="track-card fade-in">
+  <div class="track-country-label">???</div>
+  <div class="track-main-section" style="background: linear-gradient(135deg, #111, #222); display: flex; align-items: center; justify-content: center;">
+    <span style="font-family:'Orbitron',monospace;font-size:2rem;color:#FFD700;letter-spacing:2px;">
+      Wkrótce...
+    </span>
+  </div>
+  <div class="track-info-section">
+    <div class="track-name">Nieujawniony Tor</div>
+    <div class="track-description">
+      Tajemnica • Lokalizacja i charakterystyka zostaną ogłoszone później. 
+      Czy będzie to szybki tor uliczny, czy może górska pętla pełna zakrętów? 
+      Fani dowiedzą się już wkrótce.
+    </div>
+  </div>
+</article>
 
-    <!-- ===== SPONSORS ===== -->
-    <section class="sponsors" id="sponsorzy">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Sponsorzy</h2>
-            </div>
 
-            <div class="sponsors-grid fade-in" style="text-align: center;">
-                <!-- Logo sponsora -->
-                <div class="sponsor-card" style="display: inline-block; margin: 20px;">
-                    <img src="Daco_5061982.png" alt="Logo sponsora" style="max-width: 220px; height: auto; filter: drop-shadow(0 0 8px rgba(255,255,255,0.2));">
-                </div>
-            </div>
-
-            <!-- Napis "More soon" -->
-            <div class="soon-text fade-in" style="margin-top: 20px; font-size: 1.3rem; font-weight: 600;">
-                More soon...
             </div>
         </div>
     </section>
@@ -803,6 +869,29 @@
         <div class="more-participants fade-in">...i kolejni już wkrótce</div>
     </section>
 
+    <!-- ===== SPONSORS ===== -->
+    <section class="sponsors" id="sponsorzy">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Sponsorzy</h2>
+            </div>
+
+            <div class="sponsors-grid fade-in" style="text-align: center;">
+                <!-- Logo sponsora -->
+                <div class="sponsor-card" style="display: inline-block; margin: 20px;">
+                    <img src="Daco_5061982.png" alt="Logo sponsora" style="max-width: 220px; height: auto; filter: drop-shadow(0 0 8px rgba(255,255,255,0.2));">
+                </div>
+            </div>
+
+            <!-- Napis "More soon" -->
+            <div class="soon-text fade-in" style="margin-top: 20px; font-size: 1.3rem; font-weight: 600;">
+                More soon...
+            </div>
+        </div>
+    </section>
+
+    
+
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="container">
@@ -823,33 +912,35 @@
     </footer>
 
     <script>
-        /* ===== Countdown ===== */
-        function updateCountdown() {
-            const targetDate = new Date('2025-09-01T00:00:00').getTime();
-            const now = Date.now();
-            const diff = targetDate - now;
+       /* ===== Countdown ===== */
+function updateCountdown() {
+    // 🚨 Ustawienie daty docelowej: 14 września 2025, godz. 15:00
+    const targetDate = new Date('2025-09-14T15:00:00').getTime();
+    const now = Date.now();
+    const diff = targetDate - now;
 
-            const el = (id) => document.getElementById(id);
+    const el = (id) => document.getElementById(id);
 
-            if (diff > 0) {
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-                el('days').textContent = String(days).padStart(3, '0');
-                el('hours').textContent = String(hours).padStart(2, '0');
-                el('minutes').textContent = String(minutes).padStart(2, '0');
-                el('seconds').textContent = String(seconds).padStart(2, '0');
-            } else {
-                el('days').textContent = '000';
-                el('hours').textContent = '00';
-                el('minutes').textContent = '00';
-                el('seconds').textContent = '00';
-            }
-        }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+        el('days').textContent = String(days).padStart(3, '0');
+        el('hours').textContent = String(hours).padStart(2, '0');
+        el('minutes').textContent = String(minutes).padStart(2, '0');
+        el('seconds').textContent = String(seconds).padStart(2, '0');
+    } else {
+        el('days').textContent = '000';
+        el('hours').textContent = '00';
+        el('minutes').textContent = '00';
+        el('seconds').textContent = '00';
+    }
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
 
         /* ===== Mobile menu ===== */
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
