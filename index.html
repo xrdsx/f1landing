@@ -1,1061 +1,231 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>F1 Turniej Streamerów - Walka o Pieniądze i Sławę</title>
-    <link rel="icon" type="image/png" href="f1-icon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>F1 Turniej Streamerów - Coming Soon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@700&family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-red:#E10600;
+      --secondary-red:#FF1E00;
+      --accent-yellow:#FFD700;
+      --text-primary:#fff;
+      --text-secondary:#b8b8b8;
+      --background-dark:#0a0a0a;
+      --border-color:rgba(255,255,255,.15);
+    }
 
-        :root{
-            --primary-red:#E10600;
-            --secondary-red:#FF1E00;
-            --accent-yellow:#FFD700;
-            --gaming-green:#00FF88;
-            --gaming-purple:#8B5CF6;
-            --text-primary:#FFFFFF;
-            --text-secondary:#B8B8B8;
-            --background-dark:#0A0A0A;
-            --background-card:rgba(255,255,255,.05);
-            --border-color:rgba(255,255,255,.1);
-        }
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+      font-family:'Inter',sans-serif;
+      background:var(--background-dark);
+      color:var(--text-primary);
+      min-height:100vh;
+      overflow:hidden;
+    }
 
-        body{
-            font-family:'Inter',sans-serif;
-            background:var(--background-dark);
-            color:var(--text-primary);
-            overflow-x:hidden;
-            line-height:1.6;
-        }
+    /* ===== Background video ===== */
+    .video-bg {
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      overflow:hidden;
+    }
+    .video-bg video {
+      position:absolute;
+      top:50%;
+      left:50%;
+      min-width:100%;
+      min-height:100%;
+      object-fit:cover;
+      transform:translate(-50%,-50%);
+      opacity:0;
+      transition:opacity 1s ease-in-out;
+    }
+    .video-bg video.active {
+      opacity:0.6; /* lekko przyciemnione */
+    }
 
-        /* ===== Hero ===== */
-        .hero{
-            position:relative;
-            min-height:100vh;
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-            justify-content:center;
-            text-align:center;
-            overflow:hidden;
-            padding:80px 20px 40px;
-        }
-        .hero-background{
-            position:absolute; inset:0;
-            background-image:url('https://i.ytimg.com/vi/SahF8zmF34g/maxresdefault.jpg');
-            background-size:cover; background-position:center; background-attachment:fixed;
-            z-index:-2;
-        }
-        .hero-overlay{
-            position:absolute; inset:0;
-            background:linear-gradient(135deg,rgba(10,10,10,.85) 0%,rgba(225,6,0,.15) 30%,rgba(10,10,10,.9) 70%,rgba(10,10,10,.95) 100%);
-            z-index:-1;
-        }
+    /* ===== Overlay for extra darkening ===== */
+    .overlay {
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.4);
+      z-index:-1;
+    }
 
-        /* ===== Navbar ===== */
-        .navbar{
-            position:fixed; inset:0 0 auto 0;
-            padding:15px 0;
-            background:rgba(10,10,10,.9);
-            backdrop-filter:blur(20px);
-            border-bottom:1px solid var(--border-color);
-            z-index:1000; transition:all .3s ease;
-        }
-        .navbar.scrolled{ padding:10px 0; background:rgba(10,10,10,.95); }
-        .nav-container{
-            max-width:1400px; margin:0 auto; padding:0 20px;
-            display:flex; justify-content:space-between; align-items:center;
-        }
-        .logo{
-            font-family:'Orbitron',monospace;
-            font-size:clamp(1rem,3vw,1.5rem); font-weight:700;
-            color:var(--primary-red); text-decoration:none; letter-spacing:-.02em;
-        }
-        .nav-links{ display:flex; gap:clamp(20px,4vw,40px); list-style:none; }
-        .nav-links a{
-            color:var(--text-secondary); text-decoration:none; font-weight:400;
-            font-size:clamp(.8rem,2vw,.95rem); transition:color .3s ease; position:relative;
-        }
-        .nav-links a:hover{ color:var(--text-primary); }
-        .nav-links a::after{
-            content:''; position:absolute; bottom:-5px; left:0; width:0; height:2px;
-            background:var(--primary-red); transition:width .3s ease;
-        }
-        .nav-links a:hover::after{ width:100%; }
-        .mobile-menu-btn{ display:none; background:none; border:none; color:var(--text-primary); font-size:1.5rem; cursor:pointer; }
+    /* ===== Content ===== */
+    .soon-wrapper {
+      position:relative;
+      z-index:1;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+      text-align:center;
+      padding:20px;
+    }
 
-        /* ===== Hero Content ===== */
-        .hero-content{
-            max-width:1000px; width:100%; padding:0 20px; z-index:1;
-            flex:1; display:flex; flex-direction:column; justify-content:center;
-        }
-        .hero-badge{
-            display:inline-block; padding:clamp(6px,2vw,8px) clamp(15px,4vw,20px);
-            background:rgba(225,6,0,.1); border:1px solid var(--primary-red); border-radius:50px;
-            color:var(--primary-red); font-size:clamp(.7rem,2vw,.85rem); font-weight:500;
-            text-transform:uppercase; letter-spacing:.5px; margin-bottom:clamp(20px,5vw,30px);
-            animation:fadeInUp .8s ease .2s both;
-        }
-        .hero-title{
-            font-family:'Space Grotesk',sans-serif;
-            font-size:clamp(2.5rem,8vw,7rem); font-weight:700; line-height:.9;
-            margin-bottom:clamp(20px,5vw,30px); letter-spacing:-.03em;
-            animation:fadeInUp .8s ease .4s both;
-        }
-        .hero-title .highlight{
-            background:linear-gradient(135deg,var(--primary-red),var(--accent-yellow));
-            -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-        }
-        .hero-subtitle{
-            font-size:clamp(1rem,3vw,1.8rem); font-weight:300; color:var(--text-secondary);
-            margin-bottom:clamp(15px,4vw,20px); max-width:600px; margin-left:auto; margin-right:auto;
-            animation:fadeInUp .8s ease .6s both;
-        }
+    .logo {
+      font-family:'Orbitron',monospace;
+      font-size:clamp(1.5rem,6vw,3rem);
+      font-weight:700;
+      color:var(--primary-red);
+      margin-bottom:20px;
+      text-shadow:0 0 10px rgba(0,0,0,0.7);
+    }
 
-        /* >>> POWERED BY — zmienione na białe + logo */
-        .hero-powered-by{
-            display:inline-flex; align-items:center; gap:12px; justify-content:center;
-            font-family:'Orbitron',monospace;
-            font-size:clamp(.8rem,2.5vw,1rem); font-weight:700;
-            color:var(--text-primary); /* BYŁO zielone — teraz białe */
-            text-transform:uppercase; letter-spacing:clamp(1px,.5vw,2px);
-            margin-bottom:clamp(30px,6vw,40px);
-            animation:fadeInUp .8s ease .7s both;
-        }
-        .hero-powered-by img{
-            height:clamp(16px,3vw,24px); width:auto; display:block; filter:drop-shadow(0 0 8px rgba(255,255,255,.15));
-        }
+    .soon-title {
+      font-family:'Space Grotesk',sans-serif;
+      font-size:clamp(2rem,8vw,4rem);
+      font-weight:700;
+      letter-spacing:-.02em;
+      margin-bottom:10px;
+      text-shadow:0 0 15px rgba(0,0,0,0.6);
+    }
 
-        /* ===== Countdown ===== */
-        .countdown-container{ margin:clamp(30px,6vw,40px) 0; animation:fadeInUp .8s ease .8s both; }
-        .countdown-title{ font-size:clamp(1rem,2.5vw,1.2rem); color:var(--accent-yellow); margin-bottom:clamp(15px,4vw,20px); text-transform:uppercase; letter-spacing:1px; }
-        .countdown{ display:flex; justify-content:center; gap:clamp(15px,4vw,30px); flex-wrap:wrap; margin-bottom:clamp(40px,8vw,60px); }
-        .countdown-item{
-            background:rgba(255,255,255,.05); border:1px solid var(--border-color);
-            border-radius:12px; padding:clamp(15px,4vw,20px); min-width:clamp(80px,20vw,100px); text-align:center; backdrop-filter:blur(10px);
-        }
-        .countdown-number{ font-family:'Orbitron',monospace; font-size:clamp(1.8rem,5vw,2.5rem); font-weight:700; color:var(--primary-red); display:block; line-height:1; }
-        .countdown-label{ font-size:clamp(.7rem,2vw,.9rem); color:var(--text-secondary); text-transform:uppercase; letter-spacing:.5px; margin-top:8px; }
+    .soon-subtitle {
+      font-size:clamp(1rem,3vw,1.2rem);
+      color:var(--text-secondary);
+      margin-bottom:40px;
+      text-shadow:0 0 10px rgba(0,0,0,0.6);
+    }
 
-        /* ===== Stats ===== */
-        .stats{ display:flex; justify-content:center; gap:clamp(30px,8vw,60px); animation:fadeInUp .8s ease 1s both; flex-wrap:wrap; margin-top:clamp(20px,4vw,30px); z-index:1; }
-        .stat-item{
-            text-align:center; background:rgba(255,255,255,.03); border:1px solid var(--border-color);
-            border-radius:12px; padding:clamp(15px,4vw,20px); min-width:clamp(80px,20vw,100px); backdrop-filter:blur(10px); transition:all .3s ease;
-        }
-        .stat-item:hover{ background:rgba(255,255,255,.08); border-color:var(--primary-red); transform:translateY(-5px); }
-        .stat-number{ font-family:'Space Grotesk',sans-serif; font-size:clamp(1.8rem,5vw,2.5rem); font-weight:700; color:var(--primary-red); display:block; line-height:1; }
-        .stat-label{ font-size:clamp(.7rem,2vw,.9rem); color:var(--text-secondary); text-transform:uppercase; letter-spacing:.5px; margin-top:8px; }
+    .countdown {
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+      margin-bottom:40px;
+    }
+    .countdown-item {
+      background:rgba(0,0,0,.5);
+      border:1px solid var(--border-color);
+      border-radius:12px;
+      padding:20px;
+      min-width:90px;
+      backdrop-filter:blur(4px);
+    }
+    .countdown-number {
+      font-family:'Orbitron',monospace;
+      font-size:2rem;
+      font-weight:700;
+      color:var(--primary-red);
+      display:block;
+    }
+    .countdown-label {
+      font-size:.9rem;
+      color:var(--text-secondary);
+      text-transform:uppercase;
+      margin-top:6px;
+    }
 
-        /* ===== Sections / Containers ===== */
-        .features, .tracks, .participants{ padding:clamp(60px,12vw,120px) 0; background:var(--background-dark); }
-        .container{ max-width:1400px; margin:0 auto; padding:0 20px; }
-        .section-header{ text-align:center; margin-bottom:clamp(40px,8vw,80px); }
-        .section-title{ font-family:'Space Grotesk',sans-serif; font-size:clamp(2rem,6vw,4rem); font-weight:700; margin-bottom:clamp(15px,4vw,20px); letter-spacing:-.02em; }
-        .section-subtitle{ font-size:clamp(1rem,3vw,1.2rem); color:var(--text-secondary); max-width:600px; margin:0 auto; }
-
-        /* ===== Features Grid ===== */
-        .features-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:clamp(20px,5vw,40px); }
-        .feature-card{
-            background:var(--background-card); border:1px solid var(--border-color); border-radius:16px;
-            padding:clamp(25px,6vw,40px); transition:all .3s ease; backdrop-filter:blur(20px);
-        }
-        .feature-card:hover{ transform:translateY(-8px); border-color:var(--primary-red); box-shadow:0 20px 40px rgba(0,0,0,.3); }
-        .feature-icon{
-            width:clamp(50px,12vw,60px); height:clamp(50px,12vw,60px);
-            background:linear-gradient(135deg,var(--primary-red),var(--secondary-red));
-            border-radius:12px; display:flex; align-items:center; justify-content:center;
-            font-size:clamp(1.2rem,3vw,1.5rem); margin-bottom:clamp(20px,5vw,24px);
-        }
-        .feature-title{ font-family:'Space Grotesk',sans-serif; font-size:clamp(1.2rem,3vw,1.5rem); font-weight:600; margin-bottom:clamp(12px,3vw,16px); color:var(--text-primary); }
-        .feature-description{ color:var(--text-secondary); line-height:1.6; font-size:clamp(.9rem,2.5vw,1rem); }
-
-        /* ===== NEW: Tracks (Tory) Section ===== */
-        .tracks-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: clamp(24px, 5vw, 36px);
-}
-        .track-card{
-            overflow:hidden; border-radius:16px; border:1px solid var(--border-color);
-            background:var(--background-card); backdrop-filter:blur(16px); transition:transform .3s ease, border-color .3s ease;
-            display: flex; flex-direction: column; min-height: 300px;
-        }
-        .track-card:hover{ transform:translateY(-6px); border-color:var(--primary-red); }
-        
-        /* Redesigned track card layout to match wireframe */
-        .track-country-label {
-            background: var(--background-dark);
-            border: 1px solid var(--border-color);
-            color: #ffd700;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 500;
-            padding: 8px 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin: 12px 12px 0 12px;
-            border-radius: 8px;
-            width: fit-content;
-        }
-        
-       .track-main-section {
-    position: relative;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 12px;
-    border-radius: 12px;
-    overflow: hidden;
-    min-height: 180px;
-}
-.track-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-
-}
-
-/* ===== Video Slider ===== */
-.video-slider {
-  position: relative;
-  overflow: hidden;
-  border-radius: 16px;
-  max-width: 900px;
-  margin: 0 auto;
-  box-shadow: 0 0 25px rgba(0,0,0,.5);
-}
-
-.video-slider .slides {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-
-.video-slider video {
-  min-width: 100%;
-  height: 500px;
-  object-fit: cover;
-  border-radius: 16px;
-}
-
-/* Nawigacja */
-.video-slider .prev,
-.video-slider .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.6);
-  border: none;
-  color: white;
-  font-size: 2rem;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 50%;
-  z-index: 10;
-  transition: background 0.3s ease;
-}
-.video-slider .prev:hover,
-.video-slider .next:hover {
-  background: rgba(225,6,0,0.8);
-}
-
-.video-slider .prev { left: 10px; }
-.video-slider .next { right: 10px; }
-
-        
-        .track-main-text {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .track-info-section {
-            background: var(--background-dark);
-            border: 1px solid var(--border-color);
-            margin: 0 12px 12px 12px;
-            border-radius: 8px;
-            padding: 12px 16px;
-        }
-        
-        .track-name-label {
-            color: var(--text-secondary);
-            font-size: 0.8rem;
-            text-transform: lowercase;
-            margin-bottom: 4px;
-            font-weight: 500;
-        }
-        
-        .track-name {
-            color: var(--text-primary);
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        
-        .track-description-label {
-            color: var(--text-secondary);
-            font-size: 0.8rem;
-            text-transform: lowercase;
-            margin-bottom: 4px;
-            font-weight: 500;
-        }
-        
-        .track-description {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-
-        /* ===== Sponsors ===== */
-        .sponsors{ padding:clamp(40px,8vw,80px) 0; background:rgba(255,255,255,.02); border-top:1px solid var(--border-color); border-bottom:1px solid var(--border-color); }
-        .soon-text{ text-align:center; font-family:'Space Grotesk',sans-serif; font-size:clamp(2rem,6vw,3rem); font-weight:700; color:var(--text-secondary); opacity:.5; text-transform:uppercase; letter-spacing:2px; }
-
-        /* ===== Participants ===== */
-        .participants-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:clamp(20px,5vw,30px); margin-top:clamp(30px,6vw,60px); }
-        .participant-card{
-            background:var(--background-card); border:1px solid var(--border-color); border-radius:16px;
-            padding:clamp(20px,5vw,30px); text-align:center; transition:all .3s ease; backdrop-filter:blur(20px);
-        }
-        .participant-card:hover{
-            transform: translateY(-8px);
-        }
-
-        /* Twitch: fioletowa obwódka + cień */
-        .participant-card.twitch:hover{
-            border-color:#9146FF;
-            box-shadow:
-                0 0 0 2px rgba(145, 70, 255, .25),
-                0 20px 40px rgba(145, 70, 255, .12);
-        }
-
-        /* Kick: zielona obwódka + cień */
-        .participant-card.kick:hover{
-            border-color:#00FF88;
-            box-shadow:
-                0 0 0 2px rgba(0, 255, 136, .25),
-                0 20px 40px rgba(0, 255, 136, .12);
-        }
-
-        /* (opcjonalnie) Fokus z klawiatury – spójne kolory */
-        .participant-card.twitch:focus-within{
-            outline: none;
-            border-color:#9146FF;
-            box-shadow:0 0 0 3px rgba(145,70,255,.35);
-        }
-        .participant-card.kick:focus-within{
-            outline: none;
-            border-color:#00FF88;
-            box-shadow:0 0 0 3px rgba(0,255,136,.35);
-        }
-        .participant-avatar {
-            width: clamp(60px, 15vw, 100px);
-            height: clamp(60px, 15vw, 100px);
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .participant-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            border-radius: 50%;
-        }
-        .participant-card.twitch .participant-avatar:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 20px #9146FF;
-        }
-        .participant-card.kick .participant-avatar:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 20px #00FF88;
-        }
-        .participant-card.twitch .participant-platform {
-            color: #9146FF;
-            font-weight: 600;
-        }
-
-        .participant-card.kick .participant-platform {
-            color: #00FF88;
-            font-weight: 600;
-        }
-
-        .participant-name {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            font-weight: 600;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            display: block;
-            margin-bottom: 5px;
-        }
-        .participant-card.twitch .participant-name:hover {
-            color: #9146FF;
-        }
-
-        .participant-card.kick .participant-name:hover {
-            color: #00FF88;
-        }
-        .participant-platform{ color:var(--gaming-green); font-size:clamp(.8rem,2vw,.9rem); text-transform:uppercase; letter-spacing:.5px; }
-        .more-participants{ text-align:center; margin-top:clamp(30px,6vw,40px); font-size:clamp(1rem,3vw,1.2rem); color:var(--text-secondary); font-style:italic; }
-
-        /* ===== Footer ===== */
-        .footer{ background:var(--background-dark); border-top:1px solid var(--border-color); padding:clamp(40px,8vw,60px) 0 clamp(30px,6vw,40px); }
-        .footer-content{ text-align:center; margin-bottom:clamp(30px,6vw,40px); }
-        .footer-logo{ font-family:'Space Grotesk',sans-serif; font-size:clamp(1.5rem,4vw,2rem); font-weight:700; color:var(--primary-red); margin-bottom:clamp(15px,4vw,20px); }
-        .footer-description{ color:var(--text-secondary); max-width:500px; margin:0 auto clamp(30px,6vw,40px); font-size:clamp(.9rem,2.5vw,1rem); }
-        .footer-bottom{
-            border-top:1px solid var(--border-color); padding-top:clamp(20px,5vw,30px);
-            display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; font-size:clamp(.8rem,2vw,.9rem);
-        }
-
-        /* >>> FOOTER POWERED BY — białe + logo */
-        .powered-by{
-            display:inline-flex; align-items:center; gap:10px;
-            font-family:'Orbitron',monospace; font-size:clamp(.9rem,2.5vw,1.1rem);
-            font-weight:700; color:var(--text-primary); text-transform:uppercase; letter-spacing:clamp(1px,.5vw,2px);
-        }
-        .powered-by img{ height:clamp(16px,3vw,22px); width:auto; display:block; }
-
-        .floating-car {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    font-size: 2.5rem;
-    background: var(--primary-red);
-    color: #fff;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 0 20px rgba(225, 6, 0, 0.6);
-    animation: carPulse 1.5s infinite;
-    z-index: 2000;
-    transition: transform 0.3s ease;
-}
-.floating-car:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 25px rgba(255, 50, 50, 0.8);
-}
-
-@keyframes carPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
-/* ===== Stream Popup ===== */
-.stream-popup {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 3000;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(5px);
-}
-
-.stream-popup-content {
-    background: var(--background-dark);
-    border: 1px solid var(--primary-red);
-    padding: 25px;
-    border-radius: 16px;
-    max-width: 400px;
-    width: 90%;
-    text-align: center;
-    box-shadow: 0 0 30px rgba(225, 6, 0, 0.5);
-    animation: popupFade 0.3s ease forwards;
-}
-
-.stream-popup-content h3 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.4rem;
-    color: var(--primary-red);
-    margin-bottom: 10px;
-}
-
-.stream-popup-content p {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    margin-bottom: 20px;
-}
-
-.watch-button {
-    display: inline-block;
-    padding: 12px 20px;
-    background: var(--primary-red);
-    color: white;
-    font-weight: bold;
-    font-family: 'Space Grotesk', sans-serif;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.watch-button:hover {
-    background: var(--secondary-red);
-    transform: scale(1.05);
-}
-
-.close-popup {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 1.8rem;
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-.close-popup:hover {
-    color: white;
-}
-
-/* ===== Highlights Section ===== */
-.highlights { 
-    padding: clamp(60px,12vw,120px) 0; 
-    background: var(--background-dark); 
-}
-.highlights-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); 
-    gap: clamp(24px,5vw,48px); 
-}
-.highlight-card iframe {
-    width: 100%;
-    height: 340px;   /* 🔥 było 220px */
-    border-radius: 16px; /* 🔥 było 12px */
-}
-
-.twitch-button {
-    display: inline-block;
-    margin: 20px auto 40px;
-    padding: 14px 28px;
-    background: linear-gradient(135deg, #9146FF, #772ce8); /* kolory Twitch */
-    color: #fff;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(145,70,255,.5);
-    transition: all 0.3s ease;
-}
-.twitch-button:hover {
-    background: linear-gradient(135deg, #a970ff, #9146FF);
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(145,70,255,.7);
-}
-
-@keyframes popupFade {
-    from { transform: scale(0.9); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-        /* ===== Animations ===== */
-        @keyframes fadeInUp{ from{ opacity:0; transform:translateY(30px);} to{ opacity:1; transform:translateY(0);} }
-        .fade-in{ opacity:0; transform:translateY(30px); transition:all .8s ease; }
-        .fade-in.visible{ opacity:1; transform:translateY(0); }
-
-        /* ===== Responsive ===== */
-        @media (max-width:768px){
-            .hero-background{ background-attachment:scroll; }
-            .nav-links{
-                display:none; position:absolute; top:100%; left:0; right:0;
-                background:rgba(10,10,10,.95); flex-direction:column; padding:20px; border-top:1px solid var(--border-color);
-            }
-            .nav-links.active{ display:flex; }
-            .mobile-menu-btn{ display:block; }
-            .hero{ padding:100px 20px 60px; }
-            .countdown{ gap:10px; margin-bottom:30px; }
-            .countdown-item{ min-width:70px; padding:12px; }
-            .stats{ gap:15px; margin-top:20px; }
-            .stat-item{ min-width:70px; padding:12px; }
-            .features-grid, .participants-grid, .tracks-grid{ grid-template-columns:1fr; }
-            .footer-bottom{ flex-direction:column; text-align:center; gap:15px; }
-        }
-        @media (max-width:480px){
-            .hero{ padding:90px 15px 50px; }
-            .container{ padding:0 15px; }
-            .nav-container{ padding:0 15px; }
-            .countdown{ gap:8px; margin-bottom:25px; }
-            .countdown-item{ min-width:60px; padding:10px; }
-            .stats{ gap:10px; margin-top:15px; }
-            .stat-item{ min-width:60px; padding:10px; }
-            .participants-grid{ grid-template-columns:repeat(2,1fr); }
-        }
-        @media (min-width:1920px){
-            .hero-title{ font-size:8rem; }
-            .section-title{ font-size:5rem; }
-            .container{ max-width:1600px; }
-        }
-        @media (min-width:769px) and (max-width:1024px){
-            .features-grid{ grid-template-columns:repeat(2,1fr); }
-            .participants-grid{ grid-template-columns:repeat(3,1fr); }
-            .tracks-grid{ grid-template-columns:repeat(2,1fr); }
-        }
-
-        /* HiDPI */
-        @media (-webkit-min-device-pixel-ratio:2),(min-resolution:192dpi){
-            .hero-background{ background-image:url('https://images.pexels.com/photos/29276547/pexels-photo-29276547.jpeg?auto=compress&cs=tinysrgb&w=3840'); }
-        }
-
-    </style>
+    .powered {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-family:'Orbitron',monospace;
+      font-size:0.9rem;
+      font-weight:700;
+      color:var(--text-primary);
+      text-transform:uppercase;
+      letter-spacing:1px;
+      opacity:.9;
+      text-shadow:0 0 10px rgba(0,0,0,0.6);
+    }
+    .powered img {
+      height:20px;
+      width:auto;
+      filter:drop-shadow(0 0 6px rgba(255,255,255,.3));
+    }
+  </style>
 </head>
-<div class="floating-car" id="floatingCar" title="Wpadnij na transmisję!">
-    🚗
-</div>
-
-<!-- ===== POPUP ===== -->
-<div class="stream-popup" id="streamPopup">
-    <div class="stream-popup-content">
-        <span class="close-popup" id="closePopup">&times;</span>
-        <h3>🚨 Wpadnij na transmisję Mrdzinolda! 🚨</h3>
-        <p>Oglądaj na żywo jego zmagania w F1 Turnieju Streamerów.</p>
-        <a href="https://www.twitch.tv/mrdzinold" target="_blank" class="watch-button">Oglądaj na Twitchu</a>
-    </div>
-</div>
 <body>
-    <!-- ===== NAV ===== -->
-    <nav class="navbar" id="navbar" aria-label="Główna nawigacja">
-        <div class="nav-container">
-            <a href="#" class="logo">F1 TURNIEJ STREAMERÓW</a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Przełącz menu">☰</button>
-           <ul class="nav-links" id="navLinks">
-    <li><a href="#zajawka">Przedsmak rywalizacji</a></li>
-    <li><a href="#tory">Tory</a></li>
-    <li><a href="#uczestnicy">Uczestnicy</a></li>
-    <li><a href="#sponsorzy">Sponsorzy</a></li>
-</ul>
-        </div>
-    </nav>
+  <!-- Background videos -->
+  <div class="video-bg">
+    <video src="video/1.mp4" muted playsinline></video>
+    <video src="video/2.mp4" muted playsinline></video>
+    <video src="video/3.mp4" muted playsinline></video>
+    <video src="video/4.mp4" muted playsinline></video>
+  </div>
+  <div class="overlay"></div>
 
-    <!-- ===== HERO ===== -->
-   <section class="hero" role="banner">
-    <div class="hero-background" aria-hidden="true"></div>
-    <div class="hero-overlay" aria-hidden="true"></div>
+  <!-- Content -->
+  <div class="soon-wrapper">
+    <div class="logo">F1 TURNIEJ STREAMERÓW</div>
+    <h1 class="soon-title">Coming Soon...</h1>
+    <p class="soon-subtitle">Start wielkiego wydarzenia już za:</p>
 
-    <div class="hero-content">
-        <div class="hero-badge">Pierwsze wydarzenie</div>
-        <h1 class="hero-title">
-            <span class="highlight">14 WRZEŚNIA GODZINA 15:00</span><br />
-            ZAPOZNAWCZE GRAND PRIX
-        </h1>
-        <p class="hero-subtitle">
-            Wspólne ściganie ze streamerami otwierające sezon emocji!<br/>
-            Kolejne informacje wkrótce...
-        </p>
-
-        <!-- >>> POWERED BY MRDZINOLD X + logo (białe) -->
-        <div class="hero-powered-by" aria-label="Partner technologiczny">
-            POWERED BY MRDZINOLD X
-            <img src="Daco_5061982.png" alt="Logo partnera" />
-        </div>
-<a href="https://www.twitch.tv/mrdzinold" target="_blank" class="twitch-button">
-    🔴 Oglądaj na Twitchu
-</a>
-        
-
-        <!-- Countdown -->
-        <div class="countdown-container" aria-live="polite">
-            <div class="countdown-title">Pozostało do startu</div>
-            <div class="countdown" id="countdown">
-                <div class="countdown-item">
-                    <span class="countdown-number" id="days">000</span>
-                    <span class="countdown-label">Dni</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="hours">00</span>
-                    <span class="countdown-label">Godzin</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="minutes">00</span>
-                    <span class="countdown-label">Minut</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="seconds">00</span>
-                    <span class="countdown-label">Sekund</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Stats -->
-        <div class="stats" aria-label="Statystyki wydarzenia">
-            <div class="stat-item"><span class="stat-number">20</span><span class="stat-label">Streamerów</span></div>
-            <div class="stat-item"><span class="stat-number">∞</span><span class="stat-label">Emocji</span></div>
-            <div class="stat-item"><span class="stat-number">💎</span><span class="stat-label">Nagrody</span></div>
-        </div>
-    </div>
-</section>
-
-   <!-- ===== HIGHLIGHTS / ZAJAWKA ===== -->
-<section class="highlights" id="zajawka">
-  <div class="container">
-    <div class="section-header fade-in">
-      <h2 class="section-title">Przedsmak rywalizacji</h2>
-      <p class="section-subtitle">Najlepsze momenty ze streamów Mrdzinolda – poczuj klimat przed startem!</p>
-    </div>
-
-    <!-- Slider -->
-    <div class="video-slider fade-in">
-      <div class="slides">
-        <video src="1.mp4" controls></video>
-        <video src="2.mp4" controls></video>
-        <video src="3.mp4" controls></video>
-        <video src="4.mp4" controls></video>
+    <div class="countdown" id="countdown">
+      <div class="countdown-item">
+        <span class="countdown-number" id="days">000</span>
+        <span class="countdown-label">Dni</span>
       </div>
-
-      <!-- Nawigacja -->
-      <button class="prev">&#10094;</button>
-      <button class="next">&#10095;</button>
+      <div class="countdown-item">
+        <span class="countdown-number" id="hours">00</span>
+        <span class="countdown-label">Godzin</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="minutes">00</span>
+        <span class="countdown-label">Minut</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="seconds">00</span>
+        <span class="countdown-label">Sekund</span>
+      </div>
     </div>
+
+    <p class="powered">
+      Powered by MRDZINOLD X
+      <img src="Daco_5061982.png" alt="Logo partnera" />
+    </p>
   </div>
-</section>
-    
 
-    <!-- ===== NEW: TRACKS / TORY ===== -->
-    <section class="tracks" id="tory">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Tory Wyścigowe</h2>
-                <p class="section-subtitle">Legendarne obiekty, które przetestują refleks, strategię i stalowe nerwy.</p>
-            </div>
+  <script>
+    // ===== Countdown =====
+    function updateCountdown() {
+      const targetDate = new Date('2025-09-14T15:00:00').getTime();
+      const now = Date.now();
+      const diff = targetDate - now;
+      const el = (id) => document.getElementById(id);
 
-            <div class="tracks-grid">
-                <!-- Australia -->
-               <article class="track-card fade-in">
-    <div class="track-country-label">Australia</div>
-    <div class="track-main-section">
-        <img src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Australia_Circuit.webp" 
-             alt="Albert Park Circuit" 
-             class="track-image" />
-        
-    </div>
-    <div class="track-info-section">
-        
-        <div class="track-name">Albert Park Circuit</div>
-        
-        <div class="track-description">Melbourne • Dynamiczny uliczny tor pełen szybkich szykan, zdradliwych zakrętów i wąskich alejek. Idealny start sezonu — tu refleks jest kluczem do sukcesu.</div>
-    </div>
-</article>
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff % (1000*60*60*24))/(1000*60*60));
+        const minutes = Math.floor((diff % (1000*60*60))/(1000*60));
+        const seconds = Math.floor((diff % (1000*60))/1000);
 
-               <!-- Monza -->
-<article class="track-card fade-in">
-  <div class="track-country-label">Włochy</div>
-  <div class="track-main-section">
-    <img
-      src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Italy_Circuit.webp"
-      alt="Autodromo Nazionale di Monza"
-      class="track-image"
-    />
-  </div>
-  <div class="track-info-section">
-    <div class="track-name">Autodromo Nazionale di Monza</div>
-    <div class="track-description">Włochy • Legendarna „Świątynia Prędkości”, gdzie królują długie proste, minimalny docisk i ekstremalne prędkości. Każdy błąd kosztuje tu cenne sekundy.</div>
-  </div>
-</article>
-
-<!-- Austria -->
-<article class="track-card fade-in">
-  <div class="track-country-label">Austria</div>
-  <div class="track-main-section">
-    <img
-      src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Austria_Circuit.webp"
-      alt="Red Bull Ring"
-      class="track-image"
-    />
-  </div>
-  <div class="track-info-section">
-    <div class="track-name">Red Bull Ring</div>
-    <div class="track-description">Spielberg • Krótka, ale niezwykle techniczna pętla. Trzy ostre podjazdy, brutalne hamowania i niespodziewane manewry wyprzedzania — adrenalina gwarantowana.</div>
-  </div>
-</article>
-
-<!-- Belgia -->
-<article class="track-card fade-in">
-  <div class="track-country-label">Belgia</div>
-  <div class="track-main-section">
-    <img
-      src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Belgium_Circuit.webp"
-      alt="Circuit de Spa-Francorchamps"
-      class="track-image"
-    />
-  </div>
-  <div class="track-info-section">
-    <div class="track-name">Spa-Francorchamps</div>
-    <div class="track-description">Ardeny • Kultowy tor pełen legendarnych zakrętów. Eau Rouge i Raidillon to prawdziwy test odwagi, a zmienna pogoda potrafi wywrócić wyścig do góry nogami.</div>
-  </div>
-</article>
-
-<!-- Abu Dhabi -->
-<article class="track-card fade-in">
-  <div class="track-country-label">Abu Dhabi</div>
-  <div class="track-main-section">
-    <img
-      src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Abu_Dhabi_Circuit.webp"
-      alt="Yas Marina Circuit"
-      class="track-image"
-      style="height:210px; width:auto; object-fit:contain; display:block; margin:0 auto;"
-      loading="lazy"
-    />
-  </div>
-  <div class="track-info-section">
-    <div class="track-name">Yas Marina Circuit</div>
-    <div class="track-description">
-      Abu Zabi • Nocny spektakl świateł i prędkości. Techniczne sekcje, długie proste i malownicza marina tworzą wyjątkową atmosferę finałowych zmagań.
-    </div>
-  </div>
-</article>
-<!-- Tajemniczy Tor -->
-<article class="track-card fade-in">
-  <div class="track-country-label">???</div>
-  <div class="track-main-section" style="background: linear-gradient(135deg, #111, #222); display: flex; align-items: center; justify-content: center;">
-    <span style="font-family:'Orbitron',monospace;font-size:2rem;color:#FFD700;letter-spacing:2px;">
-      Wkrótce...
-    </span>
-  </div>
-  <div class="track-info-section">
-    <div class="track-name">Nieujawniony Tor</div>
-    <div class="track-description">
-      Tajemnica • Lokalizacja i charakterystyka zostaną ogłoszone później. 
-      Czy będzie to szybki tor uliczny, czy może górska pętla pełna zakrętów? 
-      Fani dowiedzą się już wkrótce.
-    </div>
-  </div>
-</article>
-
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== PARTICIPANTS ===== -->
-    <section class="participants" id="uczestnicy">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Uczestnicy</h2>
-                <p class="section-subtitle">Poznaj streamerów walczących o tytuł mistrza i wielkie nagrody pieniężne.</p>
-            </div>
-
-            <div class="participants-grid">
-                <!-- Mrdzinold -->
-                <div class="participant-card fade-in twitch">
-                    <div class="participant-avatar">
-                        <a href="https://www.twitch.tv/mrdzinold" target="_blank" rel="noopener">
-                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/3c3cfcb9-151f-4e31-a4b7-64afd52217c0-profile_image-300x300.png" alt="Mrdzinold">
-                        </a>
-                    </div>
-                    <a href="https://www.twitch.tv/mrdzinold" target="_blank" rel="noopener" class="participant-name">Mrdzinold</a>
-                    <div class="participant-platform">Twitch</div>
-                </div>
-
-                <!-- Tuszol -->
-                <div class="participant-card fade-in kick">
-                    <div class="participant-avatar">
-                        <a href="http://kick.com/tuszol" target="_blank" rel="noopener">
-                            <img src="https://img.siepomaga.pl/cdn-cgi/image/format=auto,width=1180/uploads/attached_image/photo/583382/816a8c9b-186c-4056-83b8-448365e9bf8d.jpg" alt="Tuszol">
-                        </a>
-                    </div>
-                    <a href="http://kick.com/tuszol" target="_blank" rel="noopener" class="participant-name">Tuszol</a>
-                    <div class="participant-platform">Kick</div>
-                </div>
-
-                <!-- Japczan -->
-                <div class="participant-card fade-in kick">
-                    <div class="participant-avatar">
-                        <a href="http://kick.com/japczan" target="_blank" rel="noopener">
-                            <img src="https://yt3.googleusercontent.com/sfO9n7NN9cKlLsfWmLmgHOjJxkkBKzDBQlPdokQ0NRYVOV8hp6gzg0lJ-cAWqBGKy08e_FADxw=s900-c-k-c0x00ffffff-no-rj" alt="Japczan">
-                        </a>
-                    </div>
-                    <a href="http://kick.com/japczan" target="_blank" rel="noopener" class="participant-name">Japczan</a>
-                    <div class="participant-platform">Kick</div>
-                </div>
-
-                <!-- BanduraCartel -->
-                <div class="participant-card fade-in kick">
-                    <div class="participant-avatar">
-                        <a href="http://kick.com/banduracartel" target="_blank" rel="noopener">
-                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/1472e57c-6d87-4ec9-8ce0-dc23f00bc891-profile_image-300x300.png" alt="BanduraCartel">
-                        </a>
-                    </div>
-                    <a href="https://www.twitch.tv/banduracartel" target="_blank" rel="noopener" class="participant-name">BanduraCartel</a>
-                    <div class="participant-platform">Kick</div>
-                </div>
-            </div>
-        </div>
-        <div class="more-participants fade-in">...i kolejni już wkrótce</div>
-    </section>
-
-    <!-- ===== SPONSORS ===== -->
-    <section class="sponsors" id="sponsorzy">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Sponsorzy</h2>
-            </div>
-
-            <div class="sponsors-grid fade-in" style="text-align: center;">
-                <!-- Logo sponsora -->
-                <div class="sponsor-card" style="display: inline-block; margin: 20px;">
-                    <img src="Daco_5061982.png" alt="Logo sponsora" style="max-width: 220px; height: auto; filter: drop-shadow(0 0 8px rgba(255,255,255,0.2));">
-                </div>
-            </div>
-
-            <!-- Napis "More soon" -->
-            <div class="soon-text fade-in" style="margin-top: 20px; font-size: 1.3rem; font-weight: 600;">
-                More soon...
-            </div>
-        </div>
-    </section>
-
-    
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">F1 TURNIEJ STREAMERÓW</div>
-                <p class="footer-description">Największy turniej streamerów Formula 1 w Polsce. Walka o pieniądze, sławę i tytuł mistrza.</p>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 F1 Turniej Streamerów. Wszystkie prawa zastrzeżone.</p>
-                <!-- >>> FOOTER: białe POWERED BY MRDZINOLD X + logo -->
-                <p class="powered-by">
-                    POWERED BY MRDZINOLD X
-                    <img src="Daco_5061982.png" alt="Logo partnera" />
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-       /* ===== Countdown ===== */
-function updateCountdown() {
-    // 🚨 Ustawienie daty docelowej: 14 września 2025, godz. 15:00
-    const targetDate = new Date('2025-09-14T15:00:00').getTime();
-    const now = Date.now();
-    const diff = targetDate - now;
-
-    const el = (id) => document.getElementById(id);
-
-    if (diff > 0) {
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-        el('days').textContent = String(days).padStart(3, '0');
-        el('hours').textContent = String(hours).padStart(2, '0');
-        el('minutes').textContent = String(minutes).padStart(2, '0');
-        el('seconds').textContent = String(seconds).padStart(2, '0');
-    } else {
-        el('days').textContent = '000';
-        el('hours').textContent = '00';
-        el('minutes').textContent = '00';
-        el('seconds').textContent = '00';
+        el('days').textContent = String(days).padStart(3,'0');
+        el('hours').textContent = String(hours).padStart(2,'0');
+        el('minutes').textContent = String(minutes).padStart(2,'0');
+        el('seconds').textContent = String(seconds).padStart(2,'0');
+      }
     }
-}
+    setInterval(updateCountdown,1000);
+    updateCountdown();
 
-setInterval(updateCountdown, 1000);
-updateCountdown();
+    // ===== Background videos loop =====
+    const videos = document.querySelectorAll('.video-bg video');
+    let current = 0;
 
-        /* ===== Mobile menu ===== */
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        mobileMenuBtn.addEventListener('click', () => {
-            const open = navLinks.classList.toggle('active');
-            mobileMenuBtn.textContent = open ? '✕' : '☰';
-            mobileMenuBtn.setAttribute('aria-expanded', String(open));
-        });
-        navLinks.addEventListener('click', (e) => {
-            if (e.target.tagName === 'A') {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.textContent = '☰';
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            }
-        });
-
-        /* ===== Navbar scroll effect ===== */
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) navbar.classList.add('scrolled');
-            else navbar.classList.remove('scrolled');
-        });
-
-        /* ===== Fade-in on scroll ===== */
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        /* ===== Smooth anchors ===== */
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.querySelector(anchor.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
-
-        /* ===== Resize guard ===== */
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.textContent = '☰';
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            }
-        });
-
-         const slider = document.querySelector('.video-slider .slides');
-  const videos = document.querySelectorAll('.video-slider video');
-  const prevBtn = document.querySelector('.video-slider .prev');
-  const nextBtn = document.querySelector('.video-slider .next');
-  let index = 0;
-
-  function showSlide(i) {
-    index = (i + videos.length) % videos.length;
-    slider.style.transform = `translateX(${-index * 100}%)`;
-    // zatrzymujemy inne filmy
-    videos.forEach((v, idx) => { if (idx !== index) v.pause(); });
-  }
-
-  prevBtn.addEventListener('click', () => showSlide(index - 1));
-  nextBtn.addEventListener('click', () => showSlide(index + 1));
-
-  // Start od pierwszego
-  showSlide(index);
-
-        /* ===== Floating Car Popup ===== */
-const floatingCar = document.getElementById("floatingCar");
-const streamPopup = document.getElementById("streamPopup");
-const closePopup = document.getElementById("closePopup");
-
-floatingCar.addEventListener("click", () => {
-    streamPopup.style.display = "flex";
-});
-
-closePopup.addEventListener("click", () => {
-    streamPopup.style.display = "none";
-});
-
-streamPopup.addEventListener("click", (e) => {
-    if (e.target === streamPopup) {
-        streamPopup.style.display = "none";
+    function playVideo(index) {
+      videos.forEach((v,i) => {
+        v.classList.remove('active');
+        v.pause();
+      });
+      const vid = videos[index];
+      vid.classList.add('active');
+      vid.currentTime = 0;
+      vid.play();
+      vid.onended = () => {
+        current = (index+1) % videos.length;
+        playVideo(current);
+      };
     }
-});
-    </script>
+
+    playVideo(current);
+  </script>
 </body>
 </html>
-
