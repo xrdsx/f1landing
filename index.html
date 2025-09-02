@@ -220,6 +220,52 @@
 
 }
 
+/* ===== Video Slider ===== */
+.video-slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 0 25px rgba(0,0,0,.5);
+}
+
+.video-slider .slides {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.video-slider video {
+  min-width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* Nawigacja */
+.video-slider .prev,
+.video-slider .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.6);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+.video-slider .prev:hover,
+.video-slider .next:hover {
+  background: rgba(225,6,0,0.8);
+}
+
+.video-slider .prev { left: 10px; }
+.video-slider .next { right: 10px; }
+
         
         .track-main-text {
             font-family: 'Space Grotesk', sans-serif;
@@ -654,46 +700,29 @@
     </div>
 </section>
 
-    <!-- ===== HIGHLIGHTS / ZAJAWKA ===== -->
-    <section class="highlights" id="zajawka">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Przedsmak rywalizacji</h2>
-                <p class="section-subtitle">Najlepsze momenty ze streamów Mrdzinolda – poczuj klimat przed startem!</p>
-            </div>
+   <!-- ===== HIGHLIGHTS / ZAJAWKA ===== -->
+<section class="highlights" id="zajawka">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2 class="section-title">Przedsmak rywalizacji</h2>
+      <p class="section-subtitle">Najlepsze momenty ze streamów Mrdzinolda – poczuj klimat przed startem!</p>
+    </div>
 
-            <div class="highlights-grid">
-                <div class="highlight-card fade-in">
-                    <iframe src="https://clips.twitch.tv/embed?clip=AbstruseMotionlessSoymilkAMPTropPunch-OJj6BWHmVCQrWd3J&parent=f1turniejstremerow.pl" 
-                            frameborder="0" 
-                            allowfullscreen="true" 
-                            scrolling="no">
-                    </iframe>
-                </div>
-                <div class="highlight-card fade-in">
-                    <iframe src="https://clips.twitch.tv/embed?clip=ToughBoredTurnipTF2John-PZz-ptI2-1wVISld&parent=f1turniejstremerow.pl" 
-                            frameborder="0" 
-                            allowfullscreen="true" 
-                            scrolling="no">
-                    </iframe>
-                </div>
-                <div class="highlight-card fade-in">
-                    <iframe src="https://clips.twitch.tv/embed?clip=AbnegateSavoryPonySuperVinlin-MsaW22j4gXDY5uYF&parent=f1turniejstremerow.pl" 
-                            frameborder="0" 
-                            allowfullscreen="true" 
-                            scrolling="no">
-                    </iframe>
-                </div>
-                <div class="highlight-card fade-in">
-                    <iframe src="https://clips.twitch.tv/embed?clip=AttractiveRespectfulDonkeyCeilingCat-AJK9q7ScmyHBG_JB&parent=f1turniejstremerow.pl" 
-                            frameborder="0" 
-                            allowfullscreen="true" 
-                            scrolling="no">
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Slider -->
+    <div class="video-slider fade-in">
+      <div class="slides">
+        <video src="video/1.mp4" controls></video>
+        <video src="video/2.mp4" controls></video>
+        <video src="video/3.mp4" controls></video>
+        <video src="video/4.mp4" controls></video>
+      </div>
+
+      <!-- Nawigacja -->
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+  </div>
+</section>
     
 
     <!-- ===== NEW: TRACKS / TORY ===== -->
@@ -989,6 +1018,25 @@ updateCountdown();
             }
         });
 
+         const slider = document.querySelector('.video-slider .slides');
+  const videos = document.querySelectorAll('.video-slider video');
+  const prevBtn = document.querySelector('.video-slider .prev');
+  const nextBtn = document.querySelector('.video-slider .next');
+  let index = 0;
+
+  function showSlide(i) {
+    index = (i + videos.length) % videos.length;
+    slider.style.transform = `translateX(${-index * 100}%)`;
+    // zatrzymujemy inne filmy
+    videos.forEach((v, idx) => { if (idx !== index) v.pause(); });
+  }
+
+  prevBtn.addEventListener('click', () => showSlide(index - 1));
+  nextBtn.addEventListener('click', () => showSlide(index + 1));
+
+  // Start od pierwszego
+  showSlide(index);
+
         /* ===== Floating Car Popup ===== */
 const floatingCar = document.getElementById("floatingCar");
 const streamPopup = document.getElementById("streamPopup");
@@ -1010,4 +1058,3 @@ streamPopup.addEventListener("click", (e) => {
     </script>
 </body>
 </html>
-
