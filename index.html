@@ -173,9 +173,9 @@
         .feature-description{ color:var(--text-secondary); line-height:1.6; font-size:clamp(.9rem,2.5vw,1rem); }
 
         /* ===== NEW: Tracks (Tory) Section ===== */
-        .tracks-grid {
+       .tracks-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(4, 1fr); /* Zawsze 4 kolumny */
     gap: clamp(24px, 5vw, 36px);
 }
         .track-card{
@@ -263,6 +263,31 @@
   background: rgba(225,6,0,0.8);
 }
 
+/* Instagram: gradientowa obwódka + cień */
+.participant-card.instagram:hover {
+    border-color: #E1306C; /* Instagram pink */
+    box-shadow:
+        0 0 0 2px rgba(225, 48, 108, 0.25),
+        0 20px 40px rgba(225, 48, 108, 0.12);
+}
+
+.participant-card.instagram .participant-avatar:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px #E1306C;
+}
+
+.participant-card.instagram .participant-platform {
+    background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+.participant-card.instagram .participant-name:hover {
+    color: #E1306C;
+}
+
+
 .video-slider .prev { left: 10px; }
 .video-slider .next { right: 10px; }
 
@@ -318,8 +343,12 @@
         .soon-text{ text-align:center; font-family:'Space Grotesk',sans-serif; font-size:clamp(2rem,6vw,3rem); font-weight:700; color:var(--text-secondary); opacity:.5; text-transform:uppercase; letter-spacing:2px; }
 
         /* ===== Participants ===== */
-        .participants-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:clamp(20px,5vw,30px); margin-top:clamp(30px,6vw,60px); }
-        .participant-card{
+.participants-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 kolumn */
+    gap: clamp(20px, 5vw, 30px);
+    margin-top: clamp(30px, 6vw, 60px);
+}        .participant-card{
             background:var(--background-card); border:1px solid var(--border-color); border-radius:16px;
             padding:clamp(20px,5vw,30px); text-align:center; transition:all .3s ease; backdrop-filter:blur(20px);
         }
@@ -723,6 +752,91 @@
     </div>
   </div>
 </section>
+
+<!-- ===== NEW: TRACKS / TORY ===== -->
+    <section class="tracks" id="tory">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Tory Wyścigowe</h2>
+                <p class="section-subtitle">Legendarne obiekty, które przetestują refleks, strategię i stalowe nerwy.</p>
+            </div>
+
+            <div class="tracks-grid">
+
+
+               <!-- Monza -->
+<article class="track-card fade-in">
+  <div class="track-country-label">Włochy</div>
+  <div class="track-main-section">
+    <img
+      src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Italy_Circuit.webp"
+      alt="Autodromo Nazionale di Monza"
+      class="track-image"
+    />
+  </div>
+  <div class="track-info-section">
+    <div class="track-name">Autodromo Nazionale di Monza</div>
+    <div class="track-description">Włochy • Legendarna „Świątynia Prędkości”, gdzie królują długie proste, minimalny docisk i ekstremalne prędkości. Każdy błąd kosztuje tu cenne sekundy.</div>
+  </div>
+</article>
+
+<!-- Austria -->
+<article class="track-card fade-in">
+  <div class="track-country-label">Austria</div>
+  <div class="track-main-section">
+    <img
+      src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Austria_Circuit.webp"
+      alt="Red Bull Ring"
+      class="track-image"
+    />
+  </div>
+  <div class="track-info-section">
+    <div class="track-name">Red Bull Ring</div>
+    <div class="track-description">Spielberg • Krótka, ale niezwykle techniczna pętla. Trzy ostre podjazdy, brutalne hamowania i niespodziewane manewry wyprzedzania — adrenalina gwarantowana.</div>
+  </div>
+</article>
+
+<!-- Belgia -->
+<article class="track-card fade-in">
+  <div class="track-country-label">Belgia</div>
+  <div class="track-main-section">
+    <img
+      src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Belgium_Circuit.webp"
+      alt="Circuit de Spa-Francorchamps"
+      class="track-image"
+    />
+  </div>
+  <div class="track-info-section">
+    <div class="track-name">Spa-Francorchamps</div>
+    <div class="track-description">Ardeny • Kultowy tor pełen legendarnych zakrętów. Eau Rouge i Raidillon to prawdziwy test odwagi, a zmienna pogoda potrafi wywrócić wyścig do góry nogami.</div>
+  </div>
+</article>
+
+<!-- Abu Dhabi -->
+<article class="track-card fade-in">
+  <div class="track-country-label">Abu Dhabi</div>
+  <div class="track-main-section">
+    <img
+      src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Abu_Dhabi_Circuit.webp"
+      alt="Yas Marina Circuit"
+      class="track-image"
+      style="height:210px; width:auto; object-fit:contain; display:block; margin:0 auto;"
+      loading="lazy"
+    />
+  </div>
+  <div class="track-info-section">
+    <div class="track-name">Yas Marina Circuit</div>
+    <div class="track-description">
+      Abu Zabi • Nocny spektakl świateł i prędkości. Techniczne sekcje, długie proste i malownicza marina tworzą wyjątkową atmosferę finałowych zmagań.
+    </div>
+  </div>
+</article>
+
+
+
+            </div>
+        </div>
+    </section>
     
 
     
@@ -827,11 +941,11 @@
     <!-- Piotr IZAK Skowyrski -->
     <div class="participant-card fade-in twitch">
         <div class="participant-avatar">
-            <a href="https://m.twitch.tv/izakooo" target="_blank" rel="noopener">
+            <a href="https://www.twitch.tv/izakooo" target="_blank" rel="noopener">
                 <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/fb0c5dab-f137-4860-a9df-0102056ec63d-profile_image-70x70.png" alt="Piotr IZAK Skowyrski">
             </a>
         </div>
-        <a href="https://m.twitch.tv/izakooo" target="_blank" rel="noopener" class="participant-name">IZAK</a>
+        <a href="https://www.twitch.tv/izakooo" target="_blank" rel="noopener" class="participant-name">IZAK</a>
         <div class="participant-platform">Twitch</div>
     </div>
 
@@ -911,9 +1025,52 @@
         <a href="https://kick.com/mariospzoo" target="_blank" rel="noopener" class="participant-name">MARIOSPZOO</a>
         <div class="participant-platform">Kick</div>
     </div>
+    <!-- Maciej ZONY Zoniuk -->
+<div class="participant-card fade-in kick">
+    <div class="participant-avatar">
+        <a href="https://kick.com/zony" target="_blank" rel="noopener">
+            <img src="https://files.kick.com/images/user/7611781/profile_image/conversion/0d009281-9e24-4778-b6aa-7da06e1c3271-fullsize.webp" alt="Maciej ZONY Zoniuk">
+        </a>
+    </div>
+    <a href="https://kick.com/zony" target="_blank" rel="noopener" class="participant-name">ZONY</a>
+    <div class="participant-platform">Kick</div>
+</div>
+
+<!-- Majszi -->
+<div class="participant-card fade-in kick">
+    <div class="participant-avatar">
+        <a href="https://kick.com/dmajszi" target="_blank" rel="noopener">
+            <img src="https://files.kick.com/images/user/28243100/profile_image/conversion/b971919e-81de-43ea-af7f-808baebf9120-fullsize.webp" alt="Majszi">
+        </a>
+    </div>
+    <a href="https://kick.com/dmajszi" target="_blank" rel="noopener" class="participant-name">Majszi</a>
+    <div class="participant-platform">Kick</div>
+</div>
+
+<!-- Demonz -->
+<div class="participant-card fade-in kick">
+    <div class="participant-avatar">
+        <a href="https://kick.com/demonzz1" target="_blank" rel="noopener">
+            <img src="https://files.kick.com/images/user/41303148/profile_image/conversion/f621b559-4e75-4955-9e55-87b8efa7c77c-fullsize.webp" alt="Demonz">
+        </a>
+    </div>
+    <a href="https://kick.com/demonzz1" target="_blank" rel="noopener" class="participant-name">Demonz</a>
+    <div class="participant-platform">Kick</div>
+</div>
+
+<!-- Roburwk -->
+<div class="participant-card fade-in instagram">
+    <div class="participant-avatar">
+        <a href="https://www.instagram.com/robercik_dynamit/" target="_blank" rel="noopener">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRva7MQ0t2EPF9wQ-NBqyXxtRG4JChhPrWgYg&s" alt="Roburwk">
+        </a>
+    </div>
+    <a href="https://www.instagram.com/robercik_dynamit/" target="_blank" rel="noopener" class="participant-name">Roburwk</a>
+    <div class="participant-platform">Instagram</div>
+</div>
             </div>
         </div>
-        <div class="more-participants fade-in">...i kolejni już wkrótce</div>
+       
     </section>
 
     <!-- ===== SPONSORS ===== -->
