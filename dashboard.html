@@ -1562,7 +1562,7 @@ grid-template-columns: 1fr !important;
         }
 
         function buildEmbed(platform, channel) {
-    const parent = location.hostname || 'localhost';
+    const parent = 'f1turniejstremerow.pl';
 
     switch ((platform || '').toLowerCase()) {
       case 'twitch':
@@ -1580,6 +1580,7 @@ grid-template-columns: 1fr !important;
   }
 
   function buildChatEmbed(platform, channel) {
+      const parent = 'f1turniejstremerow.pl';
   switch ((platform || '').toLowerCase()) {
     case 'twitch':
       return `https://www.twitch.tv/embed/${encodeURIComponent(channel)}/chat?parent=${encodeURIComponent(location.hostname)}`;
