@@ -667,6 +667,7 @@
     <li><a href="#tory">Tory</a></li>
     <li><a href="#uczestnicy">Uczestnicy</a></li>
     <li><a href="#sponsorzy">Sponsorzy</a></li>
+    <li><a href="#" id="dashLink">Dashboard</a></li>
 </ul>
         </div>
     </nav>
@@ -1206,6 +1207,46 @@ updateCountdown();
     videos.forEach((v, idx) => { if (idx !== index) v.pause(); });
   }
 
+  const DASH_URL = 'dashboard.html';
+
+  
+  const USER_HASH_HEX = '4caa48d5720aa87d3cc6ac34b6a3aeaaecd2a6acd0d4fd7fe0c6e890c4a69d3a';
+  const PASS_HASH_HEX = 'cc2a0119a8c5913aebe4cb4032e44f890376bb7a489cf0e233c90b737d13afc3';
+
+  // utils: sha256 -> hex
+  async function sha256Hex(str){
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+
+  // jeśli już zalogowany w tej sesji — klik przenosi od razu
+  document.getElementById('dashLink').addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    if (sessionStorage.getItem('dash_auth_ok') === '1') {
+      window.location.href = DASH_URL;
+      return;
+    }
+
+    const u = prompt('Login:');
+    if (u === null) return; // anulowano
+    const p = prompt('Hasło:');
+    if (p === null) return;
+
+    try{
+      const [uh, ph] = await Promise.all([sha256Hex(u), sha256Hex(p)]);
+      if (uh === USER_HASH_HEX && ph === PASS_HASH_HEX){
+        sessionStorage.setItem('dash_auth_ok','1');
+        window.location.href = DASH_URL;
+      } else {
+        alert('Błędny login lub hasło.');
+      }
+    } catch(err){
+      console.error(err);
+      alert('Wystąpił błąd podczas weryfikacji.');
+    }
+  });
+
   prevBtn.addEventListener('click', () => showSlide(index - 1));
   nextBtn.addEventListener('click', () => showSlide(index + 1));
 
@@ -1233,4 +1274,3 @@ streamPopup.addEventListener("click", (e) => {
     </script>
 </body>
 </html>
-
