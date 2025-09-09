@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Turniej Streamerów - Live Stream</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #E10600;
+            --secondary-red: #FF1E00;
+            --accent-yellow: #FFD700;
+            --gaming-green: #00FF88;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B8B8B8;
+            --background-dark: #0A0A0A;
+            --background-card: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: 
+                linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.85)),
+                url('https://i.ytimg.com/vi/SahF8zmF34g/maxresdefault.jpg') center/cover no-repeat fixed;
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logitech-logo {
+            height: 40px;
+            width: auto;
+            filter: brightness(0.9);
+        }
+
+        /* Added styles for powered by section */
+        .powered-by-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .powered-by-text {
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mrdzinold-logo {
+            height: 35px;
+            width: auto;
+            border-radius: 4px;
+        }
+
+        /* Main Layout */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 300px 1fr 300px;
+            gap: 20px;
+            min-height: calc(100vh - 100px);
+        }
+
+        /* Left Panel - Race Info */
+        .race-info-panel {
+            background: var(--background-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(20px);
+            height: fit-content;
+        }
+
+        .panel-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-yellow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-yellow);
+            padding-bottom: 10px;
+        }
+
+        .race-info {
+            space-y: 15px;
+        }
+
+        .info-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .info-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .position-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .position-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 6px;
+            border-left: 3px solid var(--gaming-green);
+        }
+
+        .position-number {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            color: var(--accent-yellow);
+            font-size: 1.2rem;
+            min-width: 30px;
+        }
+
+        .driver-name {
+            flex: 1;
+            margin-left: 15px;
+            font-weight: 500;
+        }
+
+        .driver-status {
+            font-size: 0.8rem;
+            color: var(--gaming-green);
+            text-transform: uppercase;
+        }
+
+        /* Center Panel - Live Stream */
+        .stream-panel {
+            background: var(--background-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stream-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .stream-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .stream-container {
+            flex: 1;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .twitch-embed {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* Right Panel - Sponsors & Links */
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sponsors-panel, .links-panel {
+            background: var(--background-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(20px);
+        }
+
+        .sponsors-panel {
+            flex: 1;
+        }
+
+        .sponsor-slider {
+            height: 200px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .links-panel {
+            flex: 1;
+        }
+
+        .stream-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .stream-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .stream-link:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary-red);
+            transform: translateX(5px);
+        }
+
+        .platform-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .twitch-icon {
+            background: #9146FF;
+            color: white;
+        }
+
+        .kick-icon {
+            background: #53FC18;
+            color: black;
+        }
+
+        .youtube-icon {
+            background: #FF0000;
+            color: white;
+        }
+
+        .streamer-info {
+            flex: 1;
+        }
+
+        .streamer-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1200px) {
+            .main-container {
+                grid-template-columns: 250px 1fr 250px;
+                gap: 15px;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .race-info-panel, .right-panel {
+                order: 2;
+            }
+
+            .stream-panel {
+                order: 1;
+            }
+
+            .right-panel {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .right-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .main-container {
+                padding: 10px;
+            }
+
+            .header-content {
+                padding: 0 15px;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Scrollbar Styling */
+        .position-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .position-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+
+        .position-list::-webkit-scrollbar-thumb {
+            background: var(--primary-red);
+            border-radius: 3px;
+        }
+
+        .position-list::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-red);
+        }
+
+        /* Race Calendar Styles */
+        .race-calendar {
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 20px;
+            background: var(--background-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            backdrop-filter: blur(20px);
+        }
+
+        .calendar-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .calendar-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-yellow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .calendar-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .race-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .race-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary-red);
+            transform: translateY(-5px);
+        }
+
+        .race-card.completed {
+            border-color: var(--gaming-green);
+        }
+
+        .race-card.current {
+            border-color: var(--accent-yellow);
+            animation: pulse-border 2s infinite;
+        }
+
+        .race-date {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .race-name {
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .race-status {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .race-status.completed {
+            background: var(--gaming-green);
+            color: var(--background-dark);
+        }
+
+        .race-status.current {
+            background: var(--accent-yellow);
+            color: var(--background-dark);
+        }
+
+        .race-status.upcoming {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        .race-countdown{
+  margin-top:10px;
+  font-family:'Orbitron', monospace;
+  font-weight:700;
+  font-size:1rem;
+  color:var(--accent-yellow);
+  letter-spacing:.5px;
+}
+
+        /* Modal Styles */
+        .race-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(20, 20, 20, 0.95));
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, var(--background-card), rgba(30, 30, 30, 0.95));
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            margin: 3% auto;
+            padding: 0;
+            width: 90%;
+            max-width: 700px;
+            backdrop-filter: blur(20px);
+            animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 30px;
+            border-bottom: 2px solid var(--border-color);
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.1), transparent);
+        }
+
+        .modal-header h3 {
+            font-family: 'Orbitron', monospace;
+            color: var(--accent-yellow);
+            margin: 0;
+            font-size: 1.4rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .close-modal {
+            color: var(--text-secondary);
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 5px;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-red);
+            background: rgba(255, 0, 0, 0.1);
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            padding: 25px 30px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .driver-standings {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .driver-row {
+            display: flex;
+            align-items: center;
+            padding: 18px 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .driver-row::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .driver-row:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.08));
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .driver-row:hover::before {
+            left: 100%;
+        }
+
+        .driver-row.podium {
+            border-left: 5px solid var(--accent-yellow);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
+        }
+
+        .driver-row.podium.position-1 {
+            border-left-color: #FFD700;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.08));
+        }
+
+        .driver-row.podium.position-2 {
+            border-left-color: #C0C0C0;
+            background: linear-gradient(135deg, rgba(192, 192, 192, 0.15), rgba(192, 192, 192, 0.05));
+        }
+
+        .driver-row.podium.position-3 {
+            border-left-color: #CD7F32;
+            background: linear-gradient(135deg, rgba(205, 127, 50, 0.15), rgba(205, 127, 50, 0.05));
+        }
+
+        .driver-position {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--accent-yellow);
+            min-width: 50px;
+            text-align: center;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+        }
+
+        .driver-row.podium.position-1 .driver-position {
+            color: #FFD700;
+            text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+        }
+
+        .driver-row.podium.position-2 .driver-position {
+            color: #C0C0C0;
+            text-shadow: 0 0 8px rgba(192, 192, 192, 0.4);
+        }
+
+        .driver-row.podium.position-3 .driver-position {
+            color: #CD7F32;
+            text-shadow: 0 0 8px rgba(205, 127, 50, 0.4);
+        }
+
+        .driver-info {
+            flex: 1;
+            margin-left: 25px;
+        }
+
+        .driver-name {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .driver-team {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        .driver-points {
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            color: var(--gaming-green);
+            font-size: 1.1rem;
+            text-shadow: 0 0 6px rgba(0, 255, 127, 0.3);
+            padding: 8px 15px;
+            background: rgba(0, 255, 127, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 255, 127, 0.3);
+        }
+
+        @keyframes pulse-border {
+            0%, 100% { 
+                border-color: var(--accent-yellow);
+            }
+            50% { 
+                border-color: var(--primary-red);
+            }
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .calendar-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">F1 Turniej Streamerów</div>
+            <!-- Modified right side to include powered by text and logos -->
+            <div class="powered-by-section">
+                <span class="powered-by-text">POWERED BY MRDZINOLD X</span>
+                <img src="/placeholder.svg?height=35&width=35" alt="Mrdzinold Logo" class="mrdzinold-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Logitech_logo.svg" alt="Logitech" class="logitech-logo">
+            </div>
+        </div>
+    </header>
+
+   
+        
+        <!-- Race Info Modal -->
+        <div id="raceModal" class="race-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modalTitle">Klasyfikacja Kierowców</h3>
+                    <span class="close-modal" onclick="closeRaceModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div id="driverStandings" class="driver-standings"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Left Panel - Race Information -->
+        <div class="race-info-panel">
+            <h2 class="panel-title">Informacje o Wyścigu</h2>
+            
+            <div class="race-info">
+                <div class="info-item">
+                    <div class="info-label">Status Wyścigu</div>
+                    <div class="info-value">Oczekiwanie na start</div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-label">Aktualna Pozycja</div>
+                    <div class="info-value">Brak danych live</div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-label">Lista Startowa</div>
+                    <div class="position-list">
+                        <div class="position-item">
+                            <span class="position-number">1</span>
+                            <span class="driver-name">Mrdzinold</span>
+                            <span class="driver-status">Ready</span>
+                        </div>
+                        <div class="position-item">
+                            <span class="position-number">2</span>
+                            <span class="driver-name">Tuszol</span>
+                            <span class="driver-status">Ready</span>
+                        </div>
+                        <div class="position-item">
+                            <span class="position-number">3</span>
+                            <span class="driver-name">Japczan</span>
+                            <span class="driver-status">Ready</span>
+                        </div>
+                        <div class="position-item">
+                            <span class="position-number">4</span>
+                            <span class="driver-name">BanduraCartel</span>
+                            <span class="driver-status">Ready</span>
+                        </div>
+                        <div class="position-item">
+                            <span class="position-number">5</span>
+                            <span class="driver-name">Streamer 5</span>
+                            <span class="driver-status">Ready</span>
+                        </div>
+                        <div class="position-item">
+                            <span class="position-number">6</span>
+                            <span class="driver-name">Streamer 6</span>
+                            <span class="driver-status">Ready</span>
+                        </div>
+                        <div class="position-item">
+                            <span class="position-number">7</span>
+                            <span class="driver-name">Streamer 7</span>
+                            <span class="driver-status">Ready</span>
+                        </div>
+                        <div class="position-item">
+                            <span class="position-number">8</span>
+                            <span class="driver-name">Streamer 8</span>
+                            <span class="driver-status">Ready</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Panel - Live Stream -->
+        <div class="stream-panel">
+            <div class="stream-header">
+                <h1 class="stream-title">Transmisja Live z Linku</h1>
+            </div>
+            
+            <div class="stream-container">
+                <iframe 
+                    src="https://player.twitch.tv/?channel=mrdzinold&parent=localhost&parent=v0.app&parent=v0.dev" 
+                    class="twitch-embed"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <!-- Right Panel - Sponsors & Stream Links -->
+        <div class="right-panel">
+            <!-- Sponsors Section -->
+            <div class="sponsors-panel">
+                <h2 class="panel-title">Sponsorzy</h2>
+                <div class="sponsor-slider">
+                    <span>Tutaj slide logo sponsorów</span>
+                </div>
+            </div>
+
+            <!-- Stream Links Section -->
+            <div class="links-panel">
+                <h2 class="panel-title">Transmisje</h2>
+                <div class="stream-links">
+                    <a href="https://www.twitch.tv/mrdzinold" target="_blank" class="stream-link" data-platform="twitch">
+                        <div class="platform-icon twitch-icon">T</div>
+                        <div class="streamer-info">
+                            <div class="streamer-name">Mrdzinold</div>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="stream-link" data-platform="kick">
+                        <div class="platform-icon kick-icon">K</div>
+                        <div class="streamer-info">
+                            <div class="streamer-name">Tuszol</div>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="stream-link" data-platform="twitch">
+                        <div class="platform-icon twitch-icon">T</div>
+                        <div class="streamer-info">
+                            <div class="streamer-name">Japczan</div>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="stream-link" data-platform="twitch">
+                        <div class="platform-icon twitch-icon">T</div>
+                        <div class="streamer-info">
+                            <div class="streamer-name">BanduraCartel</div>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="stream-link" data-platform="youtube">
+                        <div class="platform-icon youtube-icon">Y</div>
+                        <div class="streamer-info">
+                            <div class="streamer-name">Streamer 5</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Race Calendar Section -->
+    <div class="race-calendar">
+        <div class="calendar-header">
+            <h2 class="calendar-title">Kalendarz</h2>
+            <p class="calendar-subtitle">Kliknij wydarzenie aby zobaczyć klasyfikację kierowców</p>
+        </div>
+        
+        <div class="calendar-grid">
+  <!-- Wyścig testowy z odliczaniem -->
+  <div class="race-card current" data-race="1" onclick="showRaceInfo(1)">
+    <div class="race-date">15.09 • 14:00</div>
+    <div class="race-name">Wydarzenie testowe</div>
+    <div class="race-status current">Odliczanie</div>
+    <div id="testRaceCountdown" class="race-countdown">--d --h --m --s</div>
+  </div>
+
+  <!-- Reszta jako ??? ??? ??? -->
+  <div class="race-card upcoming" data-race="2" onclick="showRaceInfo(2)">
+    <div class="race-date">???.??</div>
+    <div class="race-name">???</div>
+    <div class="race-status upcoming">???</div>
+  </div>
+
+  <div class="race-card upcoming" data-race="3" onclick="showRaceInfo(3)">
+    <div class="race-date">???.??</div>
+    <div class="race-name">???</div>
+    <div class="race-status upcoming">???</div>
+  </div>
+
+  <div class="race-card upcoming" data-race="4" onclick="showRaceInfo(4)">
+    <div class="race-date">???.??</div>
+    <div class="race-name">???</div>
+    <div class="race-status upcoming">???</div>
+  </div>
+
+  <div class="race-card upcoming" data-race="5" onclick="showRaceInfo(5)">
+    <div class="race-date">???.??</div>
+    <div class="race-name">???</div>
+    <div class="race-status upcoming">???</div>
+  </div>
+</div>
+
+    <script>
+        // Simulate live data updates
+        function updateRaceInfo() {
+            const statusElement = document.querySelector('.info-value');
+            const statuses = ['Oczekiwanie na start', 'Rozgrzewka', 'Formacja startowa', 'Wyścig w toku'];
+            const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+            
+            if (statusElement) {
+                statusElement.textContent = randomStatus;
+            }
+        }
+
+          const TEST_RACE_TARGET = new Date(new Date().getFullYear(), 8 /* wrzesień=8 */, 15, 14, 0, 0, 0);
+
+  function startTestRaceCountdown(){
+    const el = document.getElementById('testRaceCountdown');
+    if(!el) return;
+
+    function tick(){
+      const now = new Date();
+      let diff = TEST_RACE_TARGET - now;
+
+      if(diff <= 0){
+        el.textContent = 'Start!';
+        return;
+      }
+      const sec = Math.floor(diff/1000);
+      const d = Math.floor(sec/86400);
+      const h = Math.floor((sec%86400)/3600);
+      const m = Math.floor((sec%3600)/60);
+      const s = sec%60;
+
+      el.textContent = `${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
+      requestAnimationFrame(() => setTimeout(tick, 250));
+    }
+    tick();
+  }
+
+  // 4) JS – PODMIEŃ funkcję showRaceInfo na:
+  function showRaceInfo(raceNumber) {
+    const modal = document.getElementById('raceModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const driverStandings = document.getElementById('driverStandings');
+
+    // Wszystkie wyścigi na teraz: nie odbyły się – pokaż komunikat
+    const raceNames = {
+      1: 'Wyścig testowy - 15.09 • 14:00',
+      2: 'Wyścig 2 - ???',
+      3: 'Wyścig 3 - ???',
+      4: 'Wyścig 4 - ???',
+      5: 'Wyścig 5 - ???',
+    };
+
+    modalTitle.textContent = raceNames[raceNumber] || 'Klasyfikacja Kierowców';
+    driverStandings.innerHTML = `
+      <div class="driver-row">
+        <div class="driver-info" style="margin-left:0">
+          <div class="driver-name">Wyścig się nie odbył</div>
+          <div class="driver-team">Brak informacji o pozycjach</div>
+        </div>
+      </div>
+    `;
+    modal.style.display = 'block';
+  }
+
+  // 5) JS – w istniejącym DOMContentLoaded dodaj wywołanie odliczania:
+  document.addEventListener('DOMContentLoaded', () => {
+    startTestRaceCountdown();
+  });
+
+        // Simulate sponsor slide rotation
+        function rotateSponsorSlide() {
+            const sponsorSlider = document.querySelector('.sponsor-slider');
+            const slides = [
+                'Tutaj slide logo sponsorów',
+                'Sponsor 1 - Logo',
+                'Sponsor 2 - Logo',
+                'Sponsor 3 - Logo'
+            ];
+            
+            let currentSlide = 0;
+            setInterval(() => {
+                sponsorSlider.textContent = slides[currentSlide];
+                currentSlide = (currentSlide + 1) % slides.length;
+            }, 3000);
+        }
+
+        // Make stream links draggable/sortable
+        function makeStreamLinksSortable() {
+            const streamLinks = document.querySelector('.stream-links');
+            let draggedElement = null;
+
+            streamLinks.addEventListener('dragstart', (e) => {
+                draggedElement = e.target.closest('.stream-link');
+                e.target.style.opacity = '0.5';
+            });
+
+            streamLinks.addEventListener('dragend', (e) => {
+                e.target.style.opacity = '';
+                draggedElement = null;
+            });
+
+            streamLinks.addEventListener('dragover', (e) => {
+                e.preventDefault();
+            });
+
+            streamLinks.addEventListener('drop', (e) => {
+                e.preventDefault();
+                const targetElement = e.target.closest('.stream-link');
+                
+                if (targetElement && draggedElement && targetElement !== draggedElement) {
+                    const rect = targetElement.getBoundingClientRect();
+                    const midpoint = rect.top + rect.height / 2;
+                    
+                    if (e.clientY < midpoint) {
+                        streamLinks.insertBefore(draggedElement, targetElement);
+                    } else {
+                        streamLinks.insertBefore(draggedElement, targetElement.nextSibling);
+                    }
+                }
+            });
+
+            // Make links draggable
+            document.querySelectorAll('.stream-link').forEach(link => {
+                link.draggable = true;
+            });
+        }
+
+        // Race Calendar Animation Logic
+        function initRaceCalendar() {
+            const raceDates = document.querySelectorAll('.race-date');
+            const raceCar = document.querySelector('.race-car');
+            const timeline = document.querySelector('.race-timeline');
+            
+            function updateCalendar() {
+                const now = new Date();
+                let currentRaceIndex = 0;
+                let nextRaceIndex = 0;
+                
+                // Find current and next race
+                raceDates.forEach((dateElement, index) => {
+                    const raceDate = new Date(dateElement.dataset.date);
+                    const circle = dateElement.querySelector('.date-circle');
+                    
+                    if (now > raceDate) {
+                        circle.className = 'date-circle completed';
+                        currentRaceIndex = index;
+                    } else if (nextRaceIndex === 0 && now <= raceDate) {
+                        circle.className = 'date-circle current';
+                        nextRaceIndex = index;
+                    } else {
+                        circle.className = 'date-circle upcoming';
+                    }
+                });
+                
+                // Calculate car position
+                if (nextRaceIndex > 0) {
+                    const prevDate = new Date(raceDates[currentRaceIndex].dataset.date);
+                    const nextDate = new Date(raceDates[nextRaceIndex].dataset.date);
+                    const totalDuration = nextDate - prevDate;
+                    const elapsed = now - prevDate;
+                    const progress = Math.min(Math.max(elapsed / totalDuration, 0), 1);
+                    
+                    const prevPosition = raceDates[currentRaceIndex].offsetLeft + raceDates[currentRaceIndex].offsetWidth / 2;
+                    const nextPosition = raceDates[nextRaceIndex].offsetLeft + raceDates[nextRaceIndex].offsetWidth / 2;
+                    const carPosition = prevPosition + (nextPosition - prevPosition) * progress;
+                    
+                    raceCar.style.left = carPosition + 'px';
+                } else {
+                    // Car at first position
+                    const firstPosition = raceDates[0].offsetLeft + raceDates[0].offsetWidth / 2;
+                    raceCar.style.left = firstPosition + 'px';
+                }
+            }
+            
+            // Update immediately and then every minute
+            updateCalendar();
+            setInterval(updateCalendar, 60000);
+            
+            // Update on window resize
+            window.addEventListener('resize', updateCalendar);
+        }
+
+        // Initialize all functions
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize calendar
+            initRaceCalendar();
+            
+            // Update race info every 5 seconds
+            setInterval(updateRaceInfo, 5000);
+            
+            // Start sponsor slide rotation
+            rotateSponsorSlide();
+            
+            // Make stream links sortable
+            makeStreamLinksSortable();
+            
+            // Add click handlers for stream links
+            document.querySelectorAll('.stream-link').forEach(link => {
+                if (link.href === '#') {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const streamerName = link.querySelector('.streamer-name').textContent;
+                        const platform = link.dataset.platform;
+                        
+                        console.log(`Loading ${streamerName} stream from ${platform}`);
+                    });
+                }
+            });
+        });
+
+        // Race data with driver standings for each race
+        const raceData = {
+            1: {
+                name: "Wyścig 1 - 20.08",
+                drivers: [
+                    { position: 1, name: "Mrdzinold", points: 25, team: "Red Bull Racing" },
+                    { position: 2, name: "Tuszol", points: 18, team: "Mercedes" },
+                    { position: 3, name: "Japczan", points: 15, team: "Ferrari" },
+                    { position: 4, name: "BanduraCartel", points: 12, team: "McLaren" },
+                    { position: 5, name: "Streamer 5", points: 10, team: "Alpine" },
+                    { position: 6, name: "Streamer 6", points: 8, team: "Aston Martin" },
+                    { position: 7, name: "Streamer 7", points: 6, team: "Williams" },
+                    { position: 8, name: "Streamer 8", points: 4, team: "AlphaTauri" }
+                ]
+            },
+            2: {
+                name: "Wyścig 2 - 27.08",
+                drivers: [
+                    { position: 1, name: "Tuszol", points: 25, team: "Mercedes" },
+                    { position: 2, name: "Mrdzinold", points: 18, team: "Red Bull Racing" },
+                    { position: 3, name: "BanduraCartel", points: 15, team: "McLaren" },
+                    { position: 4, name: "Japczan", points: 12, team: "Ferrari" },
+                    { position: 5, name: "Streamer 6", points: 10, team: "Aston Martin" },
+                    { position: 6, name: "Streamer 5", points: 8, team: "Alpine" },
+                    { position: 7, name: "Streamer 8", points: 6, team: "AlphaTauri" },
+                    { position: 8, name: "Streamer 7", points: 4, team: "Williams" }
+                ]
+            },
+            3: {
+                name: "Wyścig 3 - 03.09",
+                drivers: [
+                    { position: 1, name: "TBA", points: 0, team: "TBA" },
+                    { position: 2, name: "TBA", points: 0, team: "TBA" },
+                    { position: 3, name: "TBA", points: 0, team: "TBA" },
+                    { position: 4, name: "TBA", points: 0, team: "TBA" },
+                    { position: 5, name: "TBA", points: 0, team: "TBA" },
+                    { position: 6, name: "TBA", points: 0, team: "TBA" },
+                    { position: 7, name: "TBA", points: 0, team: "TBA" },
+                    { position: 8, name: "TBA", points: 0, team: "TBA" }
+                ]
+            },
+            4: {
+                name: "Wyścig 4 - 10.09",
+                drivers: [
+                    { position: 1, name: "TBA", points: 0, team: "TBA" },
+                    { position: 2, name: "TBA", points: 0, team: "TBA" },
+                    { position: 3, name: "TBA", points: 0, team: "TBA" },
+                    { position: 4, name: "TBA", points: 0, team: "TBA" },
+                    { position: 5, name: "TBA", points: 0, team: "TBA" },
+                    { position: 6, name: "TBA", points: 0, team: "TBA" },
+                    { position: 7, name: "TBA", points: 0, team: "TBA" },
+                    { position: 8, name: "TBA", points: 0, team: "TBA" }
+                ]
+            },
+            5: {
+                name: "Wyścig 5 - 17.09",
+                drivers: [
+                    { position: 1, name: "TBA", points: 0, team: "TBA" },
+                    { position: 2, name: "TBA", points: 0, team: "TBA" },
+                    { position: 3, name: "TBA", points: 0, team: "TBA" },
+                    { position: 4, name: "TBA", points: 0, team: "TBA" },
+                    { position: 5, name: "TBA", points: 0, team: "TBA" },
+                    { position: 6, name: "TBA", points: 0, team: "TBA" },
+                    { position: 7, name: "TBA", points: 0, team: "TBA" },
+                    { position: 8, name: "TBA", points: 0, team: "TBA" }
+                ]
+            }
+        };
+
+       function showRaceInfo(raceNumber) {
+    const modal = document.getElementById('raceModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const driverStandings = document.getElementById('driverStandings');
+
+    // Nazwy tylko do nagłówka modala (opcjonalnie, możesz zmienić)
+    const raceNames = {
+      1: 'Wyścig testowy - 15.09 • 14:00',
+      2: 'Wyścig 2 - ???',
+      3: 'Wyścig 3 - ???',
+      4: 'Wyścig 4 - ???',
+      5: 'Wyścig 5 - ???'
+    };
+
+    modalTitle.textContent = raceNames[raceNumber] || 'Klasyfikacja Kierowców';
+
+    // Komunikat: wyścig się nie odbył – brak informacji
+    driverStandings.innerHTML = `
+      <div class="driver-row">
+        <div class="driver-info" style="margin-left:0">
+          <div class="driver-name">Brak informacji o pozycjach</div>
+          <div class="driver-team">Wyścig się nie odbył</div>
+        </div>
+      </div>
+    `;
+
+    modal.style.display = 'block';
+  }
+
+        function closeRaceModal() {
+            document.getElementById('raceModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('raceModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
