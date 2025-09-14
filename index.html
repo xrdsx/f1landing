@@ -1048,16 +1048,65 @@ grid-template-columns: 1fr !important;
         </div>
     </header>
 
-     <section class="driver-of-the-day" style="max-width: 2500px; margin: 30px auto;">
+ <section class="driver-of-the-day" style="max-width: 2500px; margin: 30px auto;">
   <div style="background: var(--background-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; text-align: center;">
     <h2 class="panel-title">Kierowca dnia</h2>
     <p style="margin: 15px 0; color: var(--text-secondary);">
-      Oddaj swój głos na najlepszego kierowcę wyścigu!
+      Wyniki głosowania na najlepszego kierowcę wyścigu:
     </p>
-    <button id="voteBtn"
-       style="display:inline-block; background: gray; color: #ccc; padding: 12px 25px; border-radius: 8px; font-weight: 600; font-family: 'Orbitron', monospace; border:none; cursor:not-allowed; opacity:0.6;">
-      🏁 Głosuj teraz
-    </button>
+
+    <!-- Wyniki -->
+    <div style="display:flex; flex-direction:column; gap:18px; max-width:600px; margin:0 auto; text-align:left;">
+
+      <!-- ZONY -->
+      <div style="display:flex; align-items:center; gap:15px;">
+        <img src="https://files.kick.com/images/user/7611781/profile_image/conversion/0d009281-9e24-4778-b6aa-7da06e1c3271-fullsize.webp" 
+             alt="ZONY" 
+             style="width:50px; height:50px; border-radius:50%; object-fit:cover; border:2px solid var(--accent-yellow);">
+        <div style="flex:1;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-weight:600; color:var(--text-primary);">ZONY</span>
+            <span style="font-weight:700; color:var(--accent-yellow);">51,4%</span>
+          </div>
+          <div style="background:rgba(255,255,255,0.1); border-radius:6px; overflow:hidden; height:12px; margin-top:6px;">
+            <div style="width:51.4%; height:100%; background:var(--accent-yellow);"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pevor -->
+      <div style="display:flex; align-items:center; gap:15px;">
+        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/765f143c-ede6-4833-8e16-013d9f8ffb06-profile_image-70x70.png" 
+             alt="PEVOR" 
+             style="width:50px; height:50px; border-radius:50%; object-fit:cover; border:2px solid var(--primary-red);">
+        <div style="flex:1;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-weight:600; color:var(--text-primary);">Pevor</span>
+            <span style="font-weight:700; color:var(--primary-red);">13,9%</span>
+          </div>
+          <div style="background:rgba(255,255,255,0.1); border-radius:6px; overflow:hidden; height:12px; margin-top:6px;">
+            <div style="width:13.9%; height:100%; background:var(--primary-red);"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mrdzinold -->
+      <div style="display:flex; align-items:center; gap:15px;">
+        <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/3c3cfcb9-151f-4e31-a4b7-64afd52217c0-profile_image-300x300.png" 
+             alt="Mrdzinold" 
+             style="width:50px; height:50px; border-radius:50%; object-fit:cover; border:2px solid var(--gaming-green);">
+        <div style="flex:1;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-weight:600; color:var(--text-primary);">MrDzinold</span>
+            <span style="font-weight:700; color:var(--gaming-green);">6%</span>
+          </div>
+          <div style="background:rgba(255,255,255,0.1); border-radius:6px; overflow:hidden; height:12px; margin-top:6px;">
+            <div style="width:6%; height:100%; background:var(--gaming-green);"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
