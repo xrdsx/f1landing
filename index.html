@@ -1074,10 +1074,9 @@ grid-template-columns: 1fr !important;
             <h2 class="panel-title">Informacje o Wyścigu</h2>
             
             <div class="race-info">
-                  <div class="info-item">
+                <div class="info-item">
                     <div class="info-label">Tor</div>
-                    <div class="info-value">Austria</div>
-                
+                    <div class="info-value">???</div>
                 </div>
                 
                 
@@ -1340,6 +1339,18 @@ grid-template-columns: 1fr !important;
     </div>
     <div id="linksTarget" style="max-width: 2500px; margin: 20px auto;"></div>
 
+   <section class="driver-of-the-day" style="max-width: 2500px; margin: 30px auto;">
+  <div style="background: var(--background-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; text-align: center;">
+    <h2 class="panel-title">Kierowca dnia</h2>
+    <p style="margin: 15px 0; color: var(--text-secondary);">
+      Oddaj swój głos na najlepszego kierowcę wyścigu!
+    </p>
+    <button id="voteBtn"
+       style="display:inline-block; background: gray; color: #ccc; padding: 12px 25px; border-radius: 8px; font-weight: 600; font-family: 'Orbitron', monospace; border:none; cursor:not-allowed; opacity:0.6;">
+      🏁 Głosuj teraz
+    </button>
+  </div>
+</section>
 
     <!-- Race Calendar Section -->
     <div class="race-calendar">
@@ -1640,6 +1651,9 @@ grid-template-columns: 1fr !important;
             window.addEventListener('resize', updateCalendar);
         }
 
+        const parts = [
+    ""
+  ];
   const voteUrl = parts.join("");
 
   // Jeśli chcesz włączyć przycisk np. w konkretnym momencie:
@@ -1882,8 +1896,6 @@ document.getElementById('cinemaToggleBtn').addEventListener('click', () => {
     </script>
 </body>
 </html>
-
-
 
 
 
