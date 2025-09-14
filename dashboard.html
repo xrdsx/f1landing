@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>F1 Turniej Streamerów - Live Stream</title>
+    <link rel="icon" type="image/png" href="f1-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -46,7 +47,7 @@
         }
 
         .header-content {
-            max-width: 1400px;
+            max-width: 2500px;
             margin: 0 auto;
             padding: 0 20px;
             display: flex;
@@ -93,7 +94,7 @@
 
         /* Main Layout */
         .main-container {
-            max-width: 1400px;
+            max-width: 2500px;
             margin: 0 auto;
             padding: 20px;
             display: grid;
@@ -282,6 +283,53 @@
   color: var(--text-secondary);
   font-style: italic;
 }
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  font-size: 0.9rem;
+  margin-left: 8px;
+  color: var(--accent-yellow);
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 260px; /* trochę węższy */
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  z-index: 2000; /* ponad main-container */
+  
+  bottom: 125%; /* dymek nad ikoną */
+  left: 0;      /* zaczynamy od lewej krawędzi ❓ */
+  transform: translateX(-90%); /* mocne przesunięcie w lewo */
+  
+  opacity: 0;
+  transition: opacity 0.3s;
+  
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  white-space: normal;
+}
+
+.tooltip .tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 20%; /* strzałka bardziej z lewej */
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(0,0,0,0.9) transparent transparent transparent;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
 
         .sponsor-slider img{
   max-width: 100%;
@@ -446,7 +494,7 @@
 
         /* Race Calendar Styles */
         .race-calendar {
-            max-width: 1400px;
+            max-width: 2500px;
             margin: 20px auto;
             padding: 20px;
             background: var(--background-card);
@@ -832,6 +880,12 @@ grid-template-columns: 1fr !important;
   min-height: 400px;
 }
 
+.race-status.live {
+  background: var(--primary-red);
+  color: #fff;
+  animation: pulse-border 1.5s infinite;
+}
+
 .chat-embed {
   width: 100%;
   height: 100%;
@@ -948,137 +1002,21 @@ grid-template-columns: 1fr !important;
                     <div class="info-value">???</div>
                 </div>
                 
-                <div class="info-item">
-                    <div class="info-label">Aktualna Pozycja</div>
-                    <div class="info-value">Brak danych live</div>
-                </div>
                 
-              <div class="position-list">
-  <div class="position-item">
-    <span class="position-number">1</span>
-    <span class="driver-name">Mrdzinold</span>
-  </div>
-  <div class="position-item">
-    <span class="position-number">2</span>
-    <span class="driver-name">Tuszol</span>
-  </div>
-  <div class="position-item">
-    <span class="position-number">3</span>
-    <span class="driver-name">Japczan</span>
-  </div>
-  <div class="position-item">
-    <span class="position-number">4</span>
-    <span class="driver-name">BanduraCartel</span>
-  </div>
-  <div class="position-item">
-    <span class="position-number">5</span>
-    <span class="driver-name">PYKA</span>
-  </div>
-  <div class="position-item">
-    <span class="position-number">6</span>
-    <span class="driver-name">MERGHANI</span>
-  </div>
-  <div class="position-item">
-    <span class="position-number">7</span>
-    <span class="driver-name">NEEX</span>
-  </div>
-  <div class="position-item">
-    <span class="position-number">8</span>
-    <span class="driver-name">NITRO</span>
-  </div>
-  <div class="position-item">
-    <span class="position-number">9</span>
-    <span class="driver-name">IZAK</span>
-  </div>
-  <div class="position-item">
-    <span class="position-number">10</span>
-    <span class="driver-name">PAGO</span>
-  </div>
-  <div class="position-item">
-    <span class="position-number">11</span>
-    <span class="driver-name">TOM223</span>
-  </div>
-  <div class="position-item">
-    <span class="position-number">12</span>
-    <span class="driver-name">PEVOR</span>
-  </div>
-  <div class="position-item">
-    <span class="position-number">13</span>
-    <span class="driver-name">PARIS PLATYNOV</span>
-  </div>
-  <div class="position-item">
-    <span class="position-number">14</span>
-    <span class="driver-name">MOKRYSUCHAR</span>
-  </div>
-  <div class="position-item">
-    <span class="position-number">15</span>
-    <span class="driver-name">WŁODAR</span>
-  </div>
-  <div class="position-item">
-    <span class="position-number">16</span>
-    <span class="driver-name">MARIOSPZOO</span>
-  </div>
-  <div class="position-item">
-    <span class="position-number">17</span>
-    <span class="driver-name">ZONY</span>
-  </div>
-  <div class="position-item">
-    <span class="position-number">18</span>
-    <span class="driver-name">Majszi</span>
-  </div>
-  <div class="position-item">
-    <span class="position-number">19</span>
-    <span class="driver-name">Demonz</span>
-  </div>
-  <div class="position-item">
-    <span class="position-number">20</span>
-    <span class="driver-name">Roburwk</span>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Center Panel - Live Stream -->
-        <div class="stream-panel" id="streamPanel">
-  <div class="stream-header">
-    <h1 class="stream-title" id="streamTitle">FIA TRANSMISJA</h1>
-  </div>
-
-  <div class="stream-container">
-    <iframe
-      id="playerFrame"
-      src="https://player.twitch.tv/?channel=pago3&parent=127.0.0.1"
-      class="twitch-embed"
-      allowfullscreen>
-    </iframe>
-  </div>
-</div>
-
-        <!-- Right Panel - Sponsors & Stream Links -->
-        <div class="right-panel" id="rightPanel">
-            <div class="chat-panel" id="chatPanel" id="chatPanel">
-  <h2 class="panel-title">Chat</h2>
-  <div class="chat-container">
-    <iframe id="chatFrame" class="chat-embed" allowfullscreen></iframe>
-  </div>
-</div>
-            <!-- Sponsors Section -->
-
-            <!-- Stream Links Section -->
-<div class="links-panel" id="linksPanel">
-  <h2 class="panel-title">Transmisje</h2>
+                
+            <div class="links-panel" id="linksPanel">
+  <h2 class="panel-title">
+    Transmisje
+    <span class="tooltip">❓
+      <span class="tooltip-text">
+        Możesz przełączać się między transmisjami jednym kliknięciem.<br>
+        Pamiętaj zalogować się na Twitchu oraz Kicku, aby móc komentować wydarzenie.
+      </span>
+    </span>
+  </h2>
   <div class="stream-links">
 
-    <a href="#"
-   class="stream-link"
-   data-platform="twitch"
-   data-channel="pago3"
-   draggable="true">
-  <div class="platform-icon twitch-icon">T</div>
-  <img class="stream-link-avatar" src="Daco_5061982.png" alt="FIA" loading="lazy" />
-  <div class="streamer-info"><div class="streamer-name">FIA TRANSMISJA</div></div>
-</a>
+   
     <!-- Mrdzinold (Twitch) -->
     <a href="https://www.twitch.tv/mrdzinold" target="_blank" rel="noopener noreferrer"
        class="stream-link" data-platform="twitch" data-channel="mrdzinold" draggable="true">
@@ -1282,12 +1220,60 @@ grid-template-columns: 1fr !important;
   </div>
   
 </div>
+            </div>
+        </div>
+
+        <!-- Center Panel - Live Stream -->
+        <div class="stream-panel" id="streamPanel">
+  <div class="stream-header">
+    <h1 class="stream-title" id="streamTitle">MRDZINOLD</h1>
+  </div>
+
+  <div class="stream-container">
+    <iframe
+      id="playerFrame"
+      src="https://player.twitch.tv/?channel=mrdzinold&parent=f1turniejstremerow.pl"
+      class="twitch-embed"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+        <!-- Right Panel - Sponsors & Stream Links -->
+       <div class="chat-panel" id="chatPanel">
+  <h2 class="panel-title">Chat</h2>
+  <div class="chat-container">
+    <iframe
+      id="chatFrame"
+      class="chat-embed"
+      src="https://www.twitch.tv/embed/mrdzinold/chat?parent=f1turniejstremerow.pl"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+            <!-- Sponsors Section -->
+
+            <!-- Stream Links Section -->
+
 
 
             </div>
         </div>
     </div>
-    <div id="linksTarget" style="max-width: 1400px; margin: 20px auto;"></div>
+    <div id="linksTarget" style="max-width: 2500px; margin: 20px auto;"></div>
+
+   <section class="driver-of-the-day" style="max-width: 2500px; margin: 30px auto;">
+  <div style="background: var(--background-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; text-align: center;">
+    <h2 class="panel-title">Kierowca dnia</h2>
+    <p style="margin: 15px 0; color: var(--text-secondary);">
+      Oddaj swój głos na najlepszego kierowcę wyścigu!
+    </p>
+    <button id="voteBtn"
+       style="display:inline-block; background: gray; color: #ccc; padding: 12px 25px; border-radius: 8px; font-weight: 600; font-family: 'Orbitron', monospace; border:none; cursor:not-allowed; opacity:0.6;">
+      🏁 Głosuj teraz
+    </button>
+  </div>
+</section>
 
     <!-- Race Calendar Section -->
     <div class="race-calendar">
@@ -1299,11 +1285,11 @@ grid-template-columns: 1fr !important;
         <div class="calendar-grid">
   <!-- Wyścig testowy z odliczaniem -->
   <div class="race-card current" data-race="1" onclick="showRaceInfo(1)">
-    <div class="race-date">15.09 • 14:00</div>
-    <div class="race-name">Wydarzenie testowe</div>
-    <div class="race-status current">Odliczanie</div>
-    <div id="testRaceCountdown" class="race-countdown">--d --h --m --s</div>
-  </div>
+  <div class="race-date">14.09 • 15:00</div>
+  <div class="race-name">Wydarzenie testowe</div>
+  <div class="race-status current">Odliczanie</div>
+  <div id="testRaceCountdown" class="race-countdown">--d --h --m --s</div>
+</div>
 
   <!-- Reszta jako ??? ??? ??? -->
   <div class="race-card upcoming" data-race="2" onclick="showRaceInfo(2)">
@@ -1331,7 +1317,7 @@ grid-template-columns: 1fr !important;
   </div>
 </div>
 
-<section class="driver-and-team-classification" style="max-width: 1400px; margin: 40px auto; display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+<section class="driver-and-team-classification" style="max-width: 2500px; margin: 40px auto; display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
 
 
 <!-- Klasyfikacja Kierowców -->
@@ -1376,31 +1362,39 @@ grid-template-columns: 1fr !important;
             }
         }
 
-          const TEST_RACE_TARGET = new Date(new Date().getFullYear(), 8 /* wrzesień=8 */, 15, 14, 0, 0, 0);
+          const TEST_RACE_TARGET = new Date(new Date().getFullYear(), 8 /* wrzesień=8 */, 14, 15, 0, 0, 0);
 
-  function startTestRaceCountdown(){
-    const el = document.getElementById('testRaceCountdown');
-    if(!el) return;
 
-    function tick(){
-      const now = new Date();
-      let diff = TEST_RACE_TARGET - now;
+  function startTestRaceCountdown() {
+  const el = document.getElementById('testRaceCountdown');
+  const raceCard = document.querySelector('.race-card.current'); // karta wyścigu
+  const raceStatus = raceCard.querySelector('.race-status');     // etykieta statusu
 
-      if(diff <= 0){
-        el.textContent = 'Start!';
-        return;
-      }
-      const sec = Math.floor(diff/1000);
-      const d = Math.floor(sec/86400);
-      const h = Math.floor((sec%86400)/3600);
-      const m = Math.floor((sec%3600)/60);
-      const s = sec%60;
+  if (!el || !raceStatus) return;
 
-      el.textContent = `${d}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
-      requestAnimationFrame(() => setTimeout(tick, 250));
+  function tick() {
+    const now = new Date();
+    let diff = TEST_RACE_TARGET - now;
+
+    if (diff <= 0) {
+      el.textContent = 'Start!';
+      raceStatus.textContent = 'Trwa';         // <-- zmiana etykiety
+      raceStatus.classList.remove('current');
+      raceStatus.classList.add('live');        // możesz dodać klasę .live w CSS
+      return;
     }
-    tick();
+
+    const sec = Math.floor(diff / 1000);
+    const d = Math.floor(sec / 86400);
+    const h = Math.floor((sec % 86400) / 3600);
+    const m = Math.floor((sec % 3600) / 60);
+    const s = sec % 60;
+
+    el.textContent = `${d}d ${String(h).padStart(2, '0')}h ${String(m).padStart(2, '0')}m ${String(s).padStart(2, '0')}s`;
+    requestAnimationFrame(() => setTimeout(tick, 250));
   }
+  tick();
+}
 
   // 4) JS – PODMIEŃ funkcję showRaceInfo na:
   function showRaceInfo(raceNumber) {
@@ -1410,7 +1404,7 @@ grid-template-columns: 1fr !important;
 
     // Wszystkie wyścigi na teraz: nie odbyły się – pokaż komunikat
     const raceNames = {
-      1: 'Wyścig testowy - 15.09 • 14:00',
+      1: 'Wyścig testowy - 14.09 • 15:00',
       2: 'Wyścig 2 - ???',
       3: 'Wyścig 3 - ???',
       4: 'Wyścig 4 - ???',
@@ -1561,29 +1555,50 @@ grid-template-columns: 1fr !important;
             window.addEventListener('resize', updateCalendar);
         }
 
-        function buildEmbed(platform, channel) {
-    const parent = 'f1turniejstremerow.pl';
+        const parts = [
+    "https://docs.google.com/forms/",
+    "d/e/1FAIpQLSdU8jvxZo86ljje_5eUoxYPDs46j6LUtQJRBP3sogIy0WHTlw/",
+    "viewform?usp=sharing&ouid=101745160942971474521"
+  ];
+  const voteUrl = parts.join("");
 
-    switch ((platform || '').toLowerCase()) {
-      case 'twitch':
-        // Twitch wymaga parametru parent = domena, na której jest iframe
-        return `https://player.twitch.tv/?channel=${encodeURIComponent(channel)}&parent=${encodeURIComponent(parent)}&autoplay=true`;
-      case 'kick':
-        // Kick: prosty player
-        return `https://player.kick.com/${encodeURIComponent(channel)}`;
-      case 'youtube':
-        // YouTube live – jeśli podasz ID kanału
-        return `https://www.youtube.com/embed/live_stream?channel=${encodeURIComponent(channel)}&autoplay=1`;
-      default:
-        return '';
-    }
+  // Jeśli chcesz włączyć przycisk np. w konkretnym momencie:
+  function enableVoting() {
+    const btn = document.getElementById("voteBtn");
+    btn.style.background = "var(--primary-red)";
+    btn.style.color = "#fff";
+    btn.style.cursor = "pointer";
+    btn.style.opacity = "1";
+    btn.disabled = false;
+    btn.addEventListener("click", () => {
+      window.open(voteUrl, "_blank");
+    });
   }
 
-  function buildChatEmbed(platform, channel) {
-      const parent = 'f1turniejstremerow.pl';
+  // Na razie przycisk zostaje zablokowany
+  // enableVoting(); 
+
+        function buildEmbed(platform, channel) {
+  const parent = location.hostname; // <- dynamicznie pobiera domenę
+
   switch ((platform || '').toLowerCase()) {
     case 'twitch':
-      return `https://www.twitch.tv/embed/${encodeURIComponent(channel)}/chat?parent=${encodeURIComponent(location.hostname)}`;
+      return `https://player.twitch.tv/?channel=${encodeURIComponent(channel)}&parent=${encodeURIComponent(parent)}&autoplay=true`;
+    case 'kick':
+      return `https://player.kick.com/${encodeURIComponent(channel)}`;
+    case 'youtube':
+      return `https://www.youtube.com/embed/live_stream?channel=${encodeURIComponent(channel)}&autoplay=1`;
+    default:
+      return '';
+  }
+}
+
+function buildChatEmbed(platform, channel) {
+  const parent = location.hostname;
+
+  switch ((platform || '').toLowerCase()) {
+    case 'twitch':
+      return `https://www.twitch.tv/embed/${encodeURIComponent(channel)}/chat?parent=${encodeURIComponent(parent)}`;
     case 'kick':
       return `https://kick.com/popout/${encodeURIComponent(channel)}/chat`;
     default:
@@ -1654,27 +1669,25 @@ grid-template-columns: 1fr !important;
                 }
             });
         });
-  document.getElementById('cinemaToggleBtn').addEventListener('click', () => {
+document.getElementById('cinemaToggleBtn').addEventListener('click', () => {
   const container = document.querySelector('.main-container');
   const btn = document.getElementById('cinemaToggleBtn');
   const linksPanel = document.getElementById('linksPanel');
-  const rightPanel = document.getElementById('rightPanel');
   const linksTarget = document.getElementById('linksTarget');
+  const raceInfoPanel = document.getElementById('raceInfoPanel');
 
   const isCinema = container.classList.toggle('cinema-mode');
 
   if (isCinema) {
-    // Przenosimy Transmisje na dół pod streamem
     btn.textContent = '✅ Tryb kinowy ON';
     btn.classList.remove('inactive');
     btn.classList.add('active');
     linksTarget.appendChild(linksPanel);
   } else {
-    // Przywracamy Transmisje do prawego panelu
     btn.textContent = '❌ Tryb kinowy OFF';
     btn.classList.remove('active');
     btn.classList.add('inactive');
-    rightPanel.appendChild(linksPanel);
+    raceInfoPanel.appendChild(linksPanel); // ⬅ wraca na miejsce
   }
 });
         // Race data with driver standings for each race
@@ -1789,3 +1802,4 @@ grid-template-columns: 1fr !important;
     </script>
 </body>
 </html>
+
