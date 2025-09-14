@@ -101,7 +101,17 @@
             grid-template-columns: 300px 1fr 300px;
             gap: 20px;
             min-height: calc(100vh - 100px);
+            align-items: stretch;
         }
+
+                .race-info-panel,
+.stream-panel,
+.right-panel,
+.chat-panel {
+    height: 100%;        /* panel zajmuje całą wysokość kolumny */
+    display: flex;
+    flex-direction: column;
+}
 
         /* Left Panel - Race Info */
         .race-info-panel {
@@ -1802,4 +1812,5 @@ document.getElementById('cinemaToggleBtn').addEventListener('click', () => {
     </script>
 </body>
 </html>
+
 
