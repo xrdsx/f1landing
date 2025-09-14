@@ -496,6 +496,20 @@
     backdrop-filter: blur(5px);
 }
 
+.race-countdown {
+  margin-top: 12px;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-yellow);
+  letter-spacing: 1px;
+}
+.race-countdown span {
+  display: inline-block;
+  min-width: 28px;
+  text-align: center;
+}
+
 .stream-popup-content {
     background: var(--background-dark);
     border: 1px solid var(--primary-red);
@@ -551,6 +565,159 @@
     color: white;
 }
 
+/* ===== Race Calendar ===== */
+.race-calendar {
+  padding: clamp(60px, 12vw, 120px) 0;
+  background: var(--background-dark);
+}
+
+.race-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(20px, 5vw, 30px);
+}
+
+.race-card {
+  background: var(--background-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  backdrop-filter: blur(16px);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.race-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--primary-red);
+}
+
+.race-date {
+  font-family: 'Orbitron', monospace;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-yellow);
+  margin-bottom: 8px;
+}
+
+.race-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.race-location {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* ===== Classifications ===== */
+.classifications {
+  padding: clamp(60px, 12vw, 120px) 0;
+  background: var(--background-dark);
+}
+
+.classification-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(24px, 5vw, 40px);
+}
+
+.classification-card {
+  background: var(--background-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 20px;
+  backdrop-filter: blur(16px);
+}
+
+.classification-card h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--primary-red);
+  text-align: center;
+}
+/* ===== Race Modal ===== */
+.race-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
+  z-index: 4000;
+  justify-content: center;
+  align-items: center;
+}
+
+.race-modal-content {
+  background: var(--background-dark);
+  border: 1px solid var(--primary-red);
+  border-radius: 16px;
+  padding: 25px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(225, 6, 0, 0.6);
+  animation: popupFade 0.3s ease forwards;
+}
+
+.race-modal-content h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-red);
+  margin-bottom: 10px;
+}
+
+.race-modal-content p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin: 6px 0;
+}
+
+.race-modal-content .race-location {
+  color: var(--accent-yellow);
+  font-weight: 600;
+}
+
+.close-race-modal {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 2rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.close-race-modal:hover { color: white; }
+
+
+.classification-card ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.classification-card li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+.classification-card li:last-child {
+  border-bottom: none;
+}
+.classification-card li span {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+
 /* ===== Highlights Section ===== */
 .highlights { 
     padding: clamp(60px,12vw,120px) 0; 
@@ -587,6 +754,8 @@
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(145,70,255,.7);
 }
+
+
 
 @keyframes popupFade {
     from { transform: scale(0.9); opacity: 0; }
@@ -663,11 +832,13 @@
             <a href="#" class="logo">F1 TURNIEJ STREAMERÓW</a>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Przełącz menu">☰</button>
            <ul class="nav-links" id="navLinks">
-    <li><a href="#zajawka">Przedsmak rywalizacji</a></li>
-    <li><a href="#tory">Tory</a></li>
-    <li><a href="#uczestnicy">Uczestnicy</a></li>
-    <li><a href="#sponsorzy">Sponsorzy</a></li>
-    <li><a href="#" id="dashLink">Dashboard</a></li>
+  <li><a href="#zajawka">Przedsmak rywalizacji</a></li>
+  <li><a href="#kalendarz">Kalendarz</a></li>
+  <li><a href="#klasyfikacje">Klasyfikacje</a></li>
+  <li><a href="#tory">Tory</a></li>
+  <li><a href="#uczestnicy">Uczestnicy</a></li>
+  <li><a href="#sponsorzy">Sponsorzy</a></li>
+  <li><a href="#" id="dashLink">Dashboard</a></li>
 </ul>
         </div>
     </nav>
@@ -753,6 +924,95 @@
     </div>
   </div>
 </section>
+
+<!-- ===== RACE CALENDAR ===== -->
+<section class="race-calendar" id="kalendarz">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2 class="section-title">Kalendarz Wyścigów</h2>
+      <p class="section-subtitle">Terminy i lokalizacje najważniejszych rund sezonu.</p>
+    </div>
+
+    <div class="race-calendar-grid fade-in">
+    <div class="race-card">
+  <div class="race-date">14 WRZEŚNIA 2025 • 15:00</div>
+  <div class="race-name">???</div>
+  <div class="race-location">???</div>
+  <div class="race-countdown" data-date="2025-09-14T15:00:00">
+    <span class="cd-days">000</span>d
+    <span class="cd-hours">00</span>h
+    <span class="cd-minutes">00</span>m
+    <span class="cd-seconds">00</span>s
+  </div>
+</div>
+
+
+  <!-- Wyścig 2 -->
+  <div class="race-card">
+    <div class="race-date">???</div>
+    <div class="race-name">???</div>
+    <div class="race-location">???</div>
+    <div class="race-countdown"><span>???</span></div>
+  </div>
+
+  <!-- Wyścig 3 -->
+  <div class="race-card">
+    <div class="race-date">???</div>
+    <div class="race-name">???</div>
+    <div class="race-location">???</div>
+    <div class="race-countdown"><span>???</span></div>
+  </div>
+
+  <!-- Wyścig 4 -->
+  <div class="race-card">
+    <div class="race-date">???</div>
+    <div class="race-name">???</div>
+    <div class="race-location">???</div>
+    <div class="race-countdown"><span>???</span></div>
+  </div>
+
+  <!-- Wyścig 5 -->
+  <div class="race-card">
+    <div class="race-date">???</div>
+    <div class="race-name">???</div>
+    <div class="race-location">???</div>
+    <div class="race-countdown"><span>???</span></div>
+  </div>
+</div>
+  </div>
+</section>
+
+<!-- ===== CLASSIFICATIONS ===== -->
+<section class="classifications" id="klasyfikacje">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2 class="section-title">Klasyfikacje</h2>
+      <p class="section-subtitle">Ranking kierowców i drużyn na bieżąco aktualizowany.</p>
+    </div>
+
+    <div class="classification-grid fade-in">
+      <!-- Driver Classification -->
+      <div class="classification-grid fade-in">
+  <!-- Driver Classification -->
+  <div class="classification-card">
+    <h3>Klasyfikacja Kierowców</h3>
+    <p style="text-align:center; color:var(--text-secondary); font-style:italic;">
+      Brak danych
+    </p>
+  </div>
+
+  <!-- Team Classification -->
+  <div class="classification-card">
+    <h3>Klasyfikacja Drużyn</h3>
+    <p style="text-align:center; color:var(--text-secondary); font-style:italic;">
+      Brak danych
+    </p>
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+
 
 <!-- ===== NEW: TRACKS / TORY ===== -->
     <section class="tracks" id="tory">
@@ -1116,6 +1376,16 @@
         </div>
     </footer>
 
+     <div class="race-modal" id="raceModal">
+  <div class="race-modal-content">
+    <span class="close-race-modal" id="closeRaceModal">&times;</span>
+    <h3 id="modalRaceName">???</h3>
+    <p class="race-location" id="modalRaceLocation">???</p>
+    <p id="modalRaceDate">???</p>
+    
+  </div>
+</div>
+
     <script>
        /* ===== Countdown ===== */
 function updateCountdown() {
@@ -1219,6 +1489,30 @@ updateCountdown();
     return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
   }
 
+  function updateRaceCountdowns() {
+  document.querySelectorAll(".race-countdown[data-date]").forEach(cd => {
+    const target = new Date(cd.dataset.date).getTime();
+    const now = Date.now();
+    const diff = target - now;
+
+    if (diff > 0) {
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      cd.querySelector(".cd-days").textContent = String(days).padStart(3, "0");
+      cd.querySelector(".cd-hours").textContent = String(hours).padStart(2, "0");
+      cd.querySelector(".cd-minutes").textContent = String(minutes).padStart(2, "0");
+      cd.querySelector(".cd-seconds").textContent = String(seconds).padStart(2, "0");
+    } else {
+      cd.innerHTML = "<span>00d 00h 00m 00s</span>";
+    }
+  });
+}
+setInterval(updateRaceCountdowns, 1000);
+updateRaceCountdowns();
+
   // jeśli już zalogowany w tej sesji — klik przenosi od razu
   document.getElementById('dashLink').addEventListener('click', async (e) => {
     e.preventDefault();
@@ -1270,6 +1564,35 @@ streamPopup.addEventListener("click", (e) => {
     if (e.target === streamPopup) {
         streamPopup.style.display = "none";
     }
+});
+const raceModal = document.getElementById("raceModal");
+const closeRaceModal = document.getElementById("closeRaceModal");
+const modalRaceName = document.getElementById("modalRaceName");
+const modalRaceLocation = document.getElementById("modalRaceLocation");
+const modalRaceDate = document.getElementById("modalRaceDate");
+
+document.querySelectorAll(".race-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const name = card.querySelector(".race-name")?.textContent || "???";
+    const loc = card.querySelector(".race-location")?.textContent || "???";
+    const date = card.querySelector(".race-date")?.textContent || "???";
+
+    modalRaceName.textContent = name;
+    modalRaceLocation.textContent = loc;
+    modalRaceDate.textContent = date;
+
+    raceModal.style.display = "flex";
+  });
+});
+
+closeRaceModal.addEventListener("click", () => {
+  raceModal.style.display = "none";
+});
+
+raceModal.addEventListener("click", (e) => {
+  if (e.target === raceModal) {
+    raceModal.style.display = "none";
+  }
 });
     </script>
 </body>
