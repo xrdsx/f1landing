@@ -1650,10 +1650,13 @@ grid-template-columns: 1fr !important;
             // Update on window resize
             window.addEventListener('resize', updateCalendar);
         }
+const parts = [
+  "https://docs.google.com/forms/",
+  "d/e/1FAIpQLScGb1lN0ryanItqXkIMETQ5m2RwO0QWWdkvaO_PiRbkWLvVHw/",
+  "viewform?usp=dialog"
+];
 
-        const parts = [
-    ""
-  ];
+const FINAL_FORM_URL = parts.join("");
   const voteUrl = parts.join("");
 
   // Jeśli chcesz włączyć przycisk np. w konkretnym momencie:
@@ -1670,7 +1673,7 @@ grid-template-columns: 1fr !important;
   }
 
   // Na razie przycisk zostaje zablokowany
-  // enableVoting(); 
+  enableVoting(); 
 
         function buildEmbed(platform, channel) {
   const parent = location.hostname; // <- dynamicznie pobiera domenę
