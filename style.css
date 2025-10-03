@@ -1233,54 +1233,86 @@
      text-transform: uppercase;
  }
 
-.rules {
-  padding: clamp(60px, 12vw, 120px) 0;
+.rules-modal {
+  display: none; /* domyślnie ukryte */
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(6px);
+  z-index: 5000;
+  justify-content: center;
+  align-items: center;
+}
+
+.rules-modal-content {
+  position: relative;
   background: var(--background-dark);
-}
-
-.rules-text {
-  max-width: 900px;
-  margin: 0 auto;
+  border: 1px solid var(--primary-red);
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 700px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
   text-align: left;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
+  box-shadow: 0 0 30px rgba(225,6,0,0.6);
+  animation: popupFade 0.3s ease forwards;
 }
 
-.rules-text h3 {
-  color: var(--primary-red);
+/* nagłówki */
+.rules-modal-content h2 {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.3rem;
-  margin: 25px 0 10px;
-  border-left: 4px solid var(--primary-red);
-  padding-left: 10px;
-}
-
-.rules-text ul {
-  list-style: disc;
-  padding-left: 20px;
+  color: var(--primary-red);
   margin-bottom: 20px;
+  text-align: center;
 }
 
-.rules-text ul ul {
-  list-style: circle;
-  margin-top: 6px;
+.rules-modal-content h3 {
+  margin: 20px 0 10px;
+  color: var(--accent-yellow);
+  font-size: 1.2rem;
+  border-left: 4px solid var(--primary-red);
+  padding-left: 8px;
 }
 
-.rules-text li {
-  margin: 6px 0;
+.rules-modal-content ul {
+  list-style: disc;
+  margin-left: 20px;
+  margin-bottom: 15px;
 }
 
-.rules-text strong {
-  color: var(--text-primary);
-}
-
-.rules-text .note {
-  display: block;
-  font-size: 0.9rem;
+/* przycisk zamknięcia */
+.close-rules {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 2rem;
   color: var(--text-secondary);
-  font-style: italic;
-  margin-top: 3px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-rules:hover {
+  color: #fff;
+}
+
+/* custom scrollbar */
+.rules-modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.rules-modal-content::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+}
+
+.rules-modal-content::-webkit-scrollbar-thumb {
+  background: var(--primary-red);
+  border-radius: 8px;
+}
+
+.rules-modal-content::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-red);
 }
 
 
@@ -1495,3 +1527,4 @@
      }
 
  }
+
