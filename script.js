@@ -240,3 +240,30 @@ raceModal.addEventListener("click", (e) => {
         raceModal.style.display = "none";
     }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("rulesModal");
+  const closeBtn = document.getElementById("closeRules");
+  const rulesLink = document.querySelector('a[href="#regulamin"]');
+
+  // otwieranie po kliknięciu w navbar
+  if (rulesLink) {
+    rulesLink.addEventListener("click", (e) => {
+      e.preventDefault(); // blokuje scrollowanie do sekcji
+      modal.style.display = "flex";
+    });
+  }
+
+  // zamykanie X
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // zamykanie klikając w tło
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+});
+
