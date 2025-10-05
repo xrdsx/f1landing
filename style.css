@@ -996,14 +996,58 @@
      gap: clamp(24px, 5vw, 40px);
  }
 
- .classification-card {
-     background: var(--background-card);
-     border: 1px solid var(--border-color);
-     border-radius: 16px;
-     padding: 20px;
-     backdrop-filter: blur(16px);
- }
+.classification-card {
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.classification-card .results-table {
+    width: 100%;
+    min-width: unset;
+    max-width: 800px;
+    font-size: 0.9rem;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 0 auto;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .25);
+}
+
+.classification-card .results-table thead th {
+    font-size: 1rem;
+    padding: 10px 8px;
+}
+
+.classification-card .results-table td {
+    padding: 8px 10px;
+    text-align: center;
+}
+
+.classification-card .results-table tr:hover {
+    background: rgba(225, 6, 0, 0.12);
+    transition: background 0.3s ease;
+}
+
+/* nagłówek "Klasyfikacja Drużyn" lepiej wycentrowany i z marginesem */
+.classification-card h3 {
+    margin-bottom: 18px;
+    font-size: 1.3rem;
+}
+
+/* lepsze dopasowanie na urządzeniach mobilnych */
+@media (max-width: 768px) {
+    .classification-card .results-table {
+        font-size: 0.8rem;
+        max-width: 100%;
+    }
+
+    .classification-card .results-table th,
+    .classification-card .results-table td {
+        padding: 6px;
+    }
+}
  .classification-card h3 {
      font-family: 'Space Grotesk', sans-serif;
      font-size: 1.4rem;
@@ -1233,7 +1277,7 @@
      text-transform: uppercase;
  }
 
-.rules-modal {
+ .rules-modal {
   display: none; /* domyślnie ukryte */
   position: fixed;
   inset: 0;
@@ -1314,44 +1358,6 @@
 .rules-modal-content::-webkit-scrollbar-thumb:hover {
   background: var(--secondary-red);
 }
-
-
-
- @keyframes popupFade {
-     from {
-         transform: scale(0.9);
-         opacity: 0;
-     }
-
-     to {
-         transform: scale(1);
-         opacity: 1;
-     }
- }
-
-
- @keyframes fadeInUp {
-     from {
-         opacity: 0;
-         transform: translateY(30px);
-     }
-
-     to {
-         opacity: 1;
-         transform: translateY(0);
-     }
- }
-
- .fade-in {
-     opacity: 0;
-     transform: translateY(30px);
-     transition: all .8s ease;
- }
-
- .fade-in.visible {
-     opacity: 1;
-     transform: translateY(0);
- }
 
 
  @keyframes popupFade {
@@ -1525,6 +1531,4 @@
      .hero-background {
          background-image: url('https://images.pexels.com/photos/29276547/pexels-photo-29276547.jpeg?auto=compress&cs=tinysrgb&w=3840');
      }
-
  }
-
