@@ -273,6 +273,82 @@ document.querySelectorAll(".race-card").forEach((card, idx) => {
         raceModal.style.display = "flex";
     });
 });
+
+const race2Results = [
+  ["1", "Damian PEVOR Kozioł", "Williams", "1", "1", "1:27.369", "25"],
+  ["2", "Tomasz TOM223 Richter", "Redbull Racing", "4", "1", "1:29.138", "18"],
+  ["3", "Jakub JAPCZAN Piotrowicz", "Alpine", "5", "3", "1:28.216", "15"],
+  ["4", "Dawid Taku Czajkowski (kierowca dnia)", "McLaren", "6", "1", "1:30.388", "12"],
+  ["5", "Dawid DZINOLD Rzeźnik", "Haas", "2", "1", "1:28.490", "10"],
+  ["6", "Kamil DEMONZ Amrah", "Aston Martin", "14", "1", "1:29.439", "8"],
+  ["7", "Sergiusz NITRO Górski", "Williams", "12", "1", "1:28.158", "6"],
+  ["8", "Sebastian NEEX Trela", "Racing Bulls", "7", "1", "1:30.671", "4"],
+  ["9", "Patryk LukiSteve Czopur", "Haas", "10", "1", "1:32.709", "2"],
+  ["10", "Patryk PYKA Pyka", "Racing Bulls", "9", "1", "1:30.284", "1"],
+  ["11", "Dominik MOKRYSUCHAR Stokłosa", "Ferrari", "3", "1", "1:28.158", "0"],
+  ["12", "Filip PARIS Kulon", "Mercedes", "11", "1", "1:33.690", "0"],
+  ["13", "Maciej WŁODAR Włodarski", "Alpine", "13", "1", "1:31.744", "0"],
+  ["14", "Dawid MAJSZI Majchrzak", "McLaren", "15", "0", "1:39.719", "0"],
+  ["15", "Mateusz PAGO Pągowski", "Redbull Racing", "8", "dsq", "0", "0"]
+];
+
+document.querySelectorAll(".race-card").forEach((card, idx) => {
+  card.addEventListener("click", () => {
+    const name = card.querySelector(".race-name")?.textContent || "???";
+    const loc = card.querySelector(".race-location")?.textContent || "???";
+    const date = card.querySelector(".race-date")?.textContent || "???";
+
+    modalRaceName.textContent = name;
+    modalRaceLocation.textContent = loc;
+    modalRaceDate.textContent = date;
+
+    const resultsContainer = document.getElementById("raceResults");
+    const resultsBody = document.getElementById("resultsBody");
+
+    // przypisanie wyników do odpowiedniego wyścigu
+    let raceResults = null;
+    if (idx === 0) raceResults = race1Results;
+    else if (idx === 1) raceResults = race2Results;
+
+    if (raceResults) {
+      resultsBody.innerHTML = raceResults
+        .map((r, i) => {
+          let cls = "";
+          if (i === 0) cls = "gold";
+          else if (i === 1) cls = "silver";
+          else if (i === 2) cls = "bronze";
+
+          let driverName = r[1];
+          if (driverName.includes("(kierowca dnia)")) {
+            cls += " driver-of-day";
+            driverName = driverName.replace(
+              "(kierowca dnia)",
+              `<span class="kierowca-dnia-badge">Kierowca dnia</span>`
+            );
+          }
+
+          return `
+            <tr class="${cls}">
+              <td>${r[0]}</td>
+              <td>${driverName}</td>
+              <td>${r[2]}</td>
+              <td>${r[3]}</td>
+              <td>${r[4]}</td>
+              <td>${r[5]}</td>
+              <td>${r[6]}</td>
+            </tr>
+          `;
+        })
+        .join("");
+
+      resultsContainer.style.display = "block";
+    } else {
+      resultsContainer.style.display = "none";
+    }
+
+    raceModal.style.display = "flex";
+  });
+});
 const raceModal = document.getElementById("raceModal");
 const closeRaceModal = document.getElementById("closeRaceModal");
 const modalRaceName = document.getElementById("modalRaceName");
