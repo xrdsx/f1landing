@@ -65,6 +65,31 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("rulesModal");
+  const closeBtn = document.getElementById("closeRules");
+  const rulesLink = document.querySelector('a[href="#regulamin"]');
+
+  // otwieranie po kliknięciu w navbar
+  if (rulesLink) {
+    rulesLink.addEventListener("click", (e) => {
+      e.preventDefault(); // blokuje scrollowanie do sekcji
+      modal.style.display = "flex";
+    });
+  }
+
+  // zamykanie X
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // zamykanie klikając w tło
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+});
 
 window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
@@ -120,7 +145,17 @@ nextBtn.addEventListener('click', () => showSlide(index + 1));
 
 
 showSlide(index);
-
+document.addEventListener("DOMContentLoaded", function () {
+  // Sprawdź, czy adres URL kończy się na /klasyfikacje
+  if (window.location.pathname.endsWith("/klasyfikacje")) {
+    const section = document.getElementById("klasyfikacje");
+    if (section) {
+      setTimeout(() => {
+        section.scrollIntoView({ behavior: "smooth" });
+      }, 600);
+    }
+  }
+});
 
 const floatingCar = document.getElementById("floatingCar");
 const streamPopup = document.getElementById("streamPopup");
@@ -240,30 +275,3 @@ raceModal.addEventListener("click", (e) => {
         raceModal.style.display = "none";
     }
 });
-
-document.addEventListener("DOMContentLoaded", () => {
-  const modal = document.getElementById("rulesModal");
-  const closeBtn = document.getElementById("closeRules");
-  const rulesLink = document.querySelector('a[href="#regulamin"]');
-
-  // otwieranie po kliknięciu w navbar
-  if (rulesLink) {
-    rulesLink.addEventListener("click", (e) => {
-      e.preventDefault(); // blokuje scrollowanie do sekcji
-      modal.style.display = "flex";
-    });
-  }
-
-  // zamykanie X
-  closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
-
-  // zamykanie klikając w tło
-  window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-    }
-  });
-});
-
