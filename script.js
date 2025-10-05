@@ -91,6 +91,33 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+window.addEventListener("load", () => {
+  const modal = document.getElementById("rulesModal");
+  const closeBtn = document.getElementById("closeRules");
+
+  // Jeśli adres URL zawiera hash #regulamin, otwórz modal
+  if (window.location.hash === "#regulamin") {
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden"; // blokuje scroll w tle
+  }
+
+  // Po zamknięciu – usuń hash z adresu (żeby nie otworzyło ponownie po odświeżeniu)
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      history.replaceState(null, null, " ");
+      document.body.style.overflow = "";
+    });
+  }
+
+  // Kliknięcie poza modalem również usuwa hash
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      history.replaceState(null, null, " ");
+      document.body.style.overflow = "";
+    }
+  });
+});
+
 window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
         navLinks.classList.remove('active');
