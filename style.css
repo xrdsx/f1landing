@@ -469,6 +469,28 @@
      border-radius: 16px;
  }
 
+ .race-warning {
+  background: rgba(255, 215, 0, 0.12);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  color: #FFD700;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-top: 10px;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+  animation: pulseWarning 2.2s ease-in-out infinite;
+}
+
+/* Subtelna animacja migania koloru ostrzeżenia */
+@keyframes pulseWarning {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.65; }
+}
+
 
  .video-slider .prev,
  .video-slider .next {
@@ -545,28 +567,53 @@
      scrollbar-color: var(--primary-red) rgba(255, 255, 255, 0.1);
  }
 
- .results-table {
-     width: 100%;
-     min-width: 700px;
-     border-collapse: collapse;
-     font-size: 0.9rem;
-     border-radius: 12px;
-     overflow: hidden;
-     box-shadow: 0 0 20px rgba(0, 0, 0, .3);
-     margin: 0 auto;
- }
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
 
  .results-table thead {
      background: var(--primary-red);
      color: #fff;
  }
 
- .results-table th,
- .results-table td {
-     padding: 10px 12px;
-     text-align: center;
-     border-bottom: 1px solid var(--border-color);
- }
+ .results-table th {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--accent-yellow);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.results-table tbody tr:nth-child(1) td {
+  background: linear-gradient(90deg, #ffd70022 0%, #ffd70033 100%);
+  color: #ffd700;
+  font-weight: 700;
+
+}
+.results-table tbody tr:nth-child(2) td {
+  background: linear-gradient(90deg, #c0c0c022 0%, #c0c0c033 100%);
+  color: #c0c0c0;
+  font-weight: 600;
+
+}
+.results-table tbody tr:nth-child(3) td {
+  background: linear-gradient(90deg, #cd7f3222 0%, #cd7f3233 100%);
+  color: #cd7f32;
+  font-weight: 600;
+
+}
+
+.results-table th,
+.results-table td {
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 12px;
+  text-align: center;
+}
 
  .results-table tr:nth-child(even) {
      background: rgba(255, 255, 255, 0.03);
