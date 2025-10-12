@@ -1,6 +1,6 @@
 function updateCountdown() {
     // 🚨 NOWA DATA: 12 października 2025, godz. 15:00
-    const targetDate = new Date('2025-10-12T15:00:00').getTime();
+    const targetDate = new Date('2025-10-12T18:00:00').getTime();
     const now = Date.now();
     const diff = targetDate - now;
 
