@@ -37,7 +37,7 @@
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-expanded="false" aria-controls="navLinks"
                 aria-label="Przełącz menu">☰</button>
            <ul class="nav-links" id="navLinks">
-    <li><a href="#zajawka">Przedsmak rywalizacji</a></li>
+    
     <li><a href="#regulamin">Regulamin</a></li>
     <li><a href="#kalendarz">Kalendarz</a></li>
     <li><a href="#klasyfikacje">Klasyfikacje</a></li>
@@ -57,7 +57,7 @@
             <div class="hero-badge">Grand Prix Streamerów</div>
             <h1 class="hero-title">
                 <span class="highlight">CZAS START</span><br />
-                KOLEJNY WYŚCIG • 12.10
+                TO JUŻ DZIŚ START • 12.10
             </h1>
             <p class="hero-subtitle">
                 Dołącz do emocjonującej rywalizacji streamerów w F1!<br />
@@ -66,13 +66,24 @@
 
             <!-- >>> POWERED BY MRDZINOLD X + logo (białe) -->
             <div class="hero-powered-by" aria-label="Partner technologiczny">
-                POWERED BY MRDZINOLD X
-                <img src="Daco_5061982.png" alt="Logo partnera" />
+                POWERED BY MRDZINOLD 
+                
             </div>
 
-            <a href="https://www.twitch.tv/mrdzinold" target="_blank" class="twitch-button">
-                🔴 Oglądaj na Twitchu
-            </a>
+          <div class="hero-buttons">
+  <a href="https://www.twitch.tv/mrdzinold" target="_blank" class="stream-button twitch">
+    🟣 Oglądaj POV MrDzinold
+  </a>
+
+  <a href="https://kick.com/mrdzinold" target="_blank" class="stream-button kick">
+    🟢 Oglądaj POV Casterka
+  </a>
+
+  <a href="https://f1turniejstremerow.pl/dashboard.html" target="_blank" class="stream-button all-streams">
+  🎥 Oglądaj wszystkie transmisje
+  <span class="tooltip-icon" data-tooltip="Strona do oglądania wszystkich transmisji i przełączania się między nimi jednym kliknięciem. Zaloguj się na Kick lub Twitch, aby komentować.">❓</span>
+</a>
+</div>
 
 
 
@@ -110,63 +121,8 @@
         </div>
     </section>
 
-    <!-- ===== HIGHLIGHTS / ZAJAWKA ===== -->
-    <section class="highlights" id="zajawka">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Przedsmak rywalizacji</h2>
-                <p class="section-subtitle">Najlepsze momenty ze streamów Mrdzinolda – poczuj klimat przed startem!</p>
-            </div>
+    
 
-            <!-- Slider -->
-            <div class="video-slider fade-in">
-                <div class="slides">
-                    <video src="1.mp4" controls></video>
-                    <video src="2.mp4" controls></video>
-                    <video src="3.mp4" controls></video>
-                    <video src="4.mp4" controls></video>
-                </div>
-
-                <!-- Nawigacja -->
-                <button class="prev">&#10094;</button>
-                <button class="next">&#10095;</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== RULES / REGULAMIN ===== -->
-<div class="rules-modal" id="rulesModal">
-  <div class="rules-modal-content">
-    <span class="close-rules" id="closeRules">&times;</span>
-    <h2>Regulamin Dnia Wyścigowego</h2>
-
-    <h3>Start wydarzenia</h3>
-    <p><strong>15:00</strong></p>
-
-    <h3>Sesje</h3>
-    <ul>
-      <li><strong>Trening</strong> – 30 minut</li>
-      <li><strong>Kwalifikacje</strong>:
-        <ul>
-          <li>Q1 – 18 min → najlepsza 15 awansuje</li>
-          <li>Q2 – 15 min → najlepsza 10 awansuje</li>
-          <li>Q3 – 12 min → walka o pole position</li>
-        </ul>
-      </li>
-      <li><strong>Wyścig</strong> – 35% długości Grand Prix</li>
-    </ul>
-
-    <h3>Zasady ogólne</h3>
-    <ul>
-      <li>Fair play – brak celowych kolizji i blokowania</li>
-      <li>Restart tylko przy masowej kraksie na 1. okrążeniu</li>
-      <li>Punktacja wg oficjalnych zasad F1</li>
-    </ul>
-
-    <h3>Nagrody</h3>
-    <p class="soon-text">Wkrótce...</p>
-  </div>
-</div>
 
     <!-- ===== RACE CALENDAR ===== -->
     <section class="race-calendar" id="kalendarz">
@@ -213,41 +169,61 @@
         </div>
 
         <div class="race-calendar-grid fade-in">
-            <div class="race-card">
-                <div class="race-date">12 PAŹDZIERNIKA 2025 • 15:00</div>
-                <div class="race-name">Oficjalne Grand Prix #1</div>
-                <div class="race-location">Tor ???</div>
+           <div class="race-card">
+    <div class="race-date">12 PAŹDZIERNIKA 2025 • 18:00</div>
+    <div class="race-name">Oficjalne Grand Prix AUSTRIA #1</div>
+    <div class="race-location">Austria • Red Bull Ring • Spielberg</div>
 
-                <div class="race-countdown" data-date="2025-10-12T15:00:00">
-                    <span class="cd-label">⏳ ODLICZANIE</span><br>
-                    <span class="cd-days">00</span>d
-                    <span class="cd-hours">00</span>h
-                    <span class="cd-minutes">00</span>m
-                    <span class="cd-seconds">00</span>s
-                </div>
-            </div>
+    <div class="race-countdown" data-date="2025-10-12T18:00:00">
+        <span class="cd-label">⏳ ODLICZANIE</span><br>
+        <span class="cd-days">00</span>d
+        <span class="cd-hours">00</span>h
+        <span class="cd-minutes">00</span>m
+        <span class="cd-seconds">00</span>s
+    </div>
+</div>
+
+           <div class="race-card">
+  <div class="race-date">19 PAŹDZIERNIKA 2025 • 15:00</div>
+  <div class="race-name">Oficjalne Grand Prix ABU DHABI #2</div>
+  <div class="race-location">Zjednoczone Emiraty Arabskie • Yas Marina Circuit • Abu Dhabi</div>
+
+  <div class="race-countdown" data-date="2025-10-19T15:00:00">
+    <span class="cd-label">⏳ ODLICZANIE</span><br>
+    <span class="cd-days">00</span>d
+    <span class="cd-hours">00</span>h
+    <span class="cd-minutes">00</span>m
+    <span class="cd-seconds">00</span>s
+  </div>
+</div>
 
             <div class="race-card">
-                <div class="race-date">???</div>
-                <div class="race-name">Oficjalne Grand Prix #2</div>
-                <div class="race-location">???</div>
-                <div class="race-countdown"><span>???</span></div>
-            </div>
+  <div class="race-date">2 LISTOPADA 2025 • 18:00</div>
+  <div class="race-name">Oficjalne Grand Prix BELGIA #3</div>
+  <div class="race-location">Belgia • Spa-Francorchamps</div>
+
+  <div class="race-countdown" data-date="2025-11-02T18:00:00">
+    <span class="cd-label">⏳ ODLICZANIE</span><br>
+    <span class="cd-days">00</span>d
+    <span class="cd-hours">00</span>h
+    <span class="cd-minutes">00</span>m
+    <span class="cd-seconds">00</span>s
+  </div>
+</div>
 
             <div class="race-card">
-                <div class="race-date">???</div>
-                <div class="race-name">Oficjalne Grand Prix #3</div>
-                <div class="race-location">???</div>
-                <div class="race-countdown"><span>???</span></div>
-            </div>
+  <div class="race-date">9 LISTOPADA 2025 • 18:00</div>
+  <div class="race-name">Oficjalne Grand Prix WŁOCHY #4</div>
+  <div class="race-location">Włochy • Autodromo Nazionale di Monza</div>
 
-            <div class="race-card">
-                <div class="race-date">???</div>
-                <div class="race-name">Oficjalne Grand Prix #4</div>
-                <div class="race-location">???</div>
-                <div class="race-countdown"><span>???</span></div>
-            </div>
-        </div>
+  <div class="race-countdown" data-date="2025-11-09T18:00:00">
+    <span class="cd-label">⏳ ODLICZANIE</span><br>
+    <span class="cd-days">00</span>d
+    <span class="cd-hours">00</span>h
+    <span class="cd-minutes">00</span>m
+    <span class="cd-seconds">00</span>s
+  </div>
+</div>
     </div>
 </section>
 
@@ -303,77 +279,77 @@
                     <!-- Team Classification -->
                    <div class="classification-card">
     <h3>Klasyfikacja Drużyn</h3>
-    <table class="results-table">
-        <thead>
-            <tr>
-                <th>Pozycja</th>
-                <th>Zespół</th>
-                <th>Kierowcy</th>
-                <th>Punkty</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>KickSauber</td>
-                <td>TUSZOL • MRGH</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>RedBull Racing</td>
-                <td>PAGO • TOM223</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Alpine</td>
-                <td>WŁODAR • JAPCZAN</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Ferrari</td>
-                <td>ZONY • MOKRYSUCHAR</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>McLaren</td>
-                <td>MAJSZI • TAKU</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Aston Martin</td>
-                <td>DEMONZZ • IZAK</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>Visa Cash App Racing</td>
-                <td>NEEX • PYKA</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>Haas</td>
-                <td>LUKI • DZINOLD</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>Williams</td>
-                <td>PEVOR • NITRO</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>Mercedes Benz</td>
-                <td>MARIO • PARIS</td>
-                <td>0</td>
-            </tr>
-        </tbody>
+      <table class="results-table">
+    <thead>
+      <tr>
+        <th>Pozycja</th>
+        <th>Zespół</th>
+        <th>Kierowcy</th>
+        <th>Punkty</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Kick Sauber</td>
+        <td>ZONY • MOKRYSUCHAR</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Ferrari</td>
+        <td>TUSZOL • MRGH</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Red Bull Racing</td>
+        <td>PAGO • TOM223</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Alpine</td>
+        <td>WŁODAR • JAPCZAN</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>McLaren</td>
+        <td>MAJSZI • TAKU</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Aston Martin</td>
+        <td>DEMONZZ • IZAK</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Visa Cash App Racing</td>
+        <td>NEEX • PYKA</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Haas</td>
+        <td>LUKI • DZINOLD</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Williams</td>
+        <td>PEVOR • NITRO</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Mercedes Benz</td>
+        <td>MARIO • PARIS</td>
+        <td>0</td>
+      </tr>
+    </tbody>
     </table>
 </div>
                 </div>
@@ -514,16 +490,15 @@
 
                 <!-- BanduraCartel -->
                 <div class="participant-card fade-in kick">
-                    <div class="participant-avatar">
-                        <a href="http://kick.com/banduracartel" target="_blank" rel="noopener">
-                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/1472e57c-6d87-4ec9-8ce0-dc23f00bc891-profile_image-300x300.png"
-                                alt="BanduraCartel">
-                        </a>
-                    </div>
-                    <a href="https://www.twitch.tv/banduracartel" target="_blank" rel="noopener"
-                        class="participant-name">BanduraCartel</a>
-                    <div class="participant-platform">Kick</div>
-                </div>
+        <div class="participant-avatar">
+          <a href="https://kick.com/lukisteve" target="_blank" rel="noopener">
+            <img src="https://files.kick.com/images/user/25990407/profile_image/conversion/b5e408ae-7a0a-4743-bc9d-8f058afd3b1c-fullsize.webp"
+                 alt="LukiSteve">
+          </a>
+        </div>
+        <a href="https://kick.com/lukisteve" target="_blank" rel="noopener" class="participant-name">LukiSteve</a>
+        <div class="participant-platform">Kick</div>
+      </div>
 
                 <!-- Patryk PYKA -->
                 <div class="participant-card fade-in kick">
@@ -715,44 +690,104 @@
                 </div>
 
                 <!-- Roburwk -->
-                <div class="participant-card fade-in instagram">
-                    <div class="participant-avatar">
-                        <a href="https://www.instagram.com/robercik_dynamit/" target="_blank" rel="noopener">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRva7MQ0t2EPF9wQ-NBqyXxtRG4JChhPrWgYg&s"
-                                alt="Roburwk">
-                        </a>
-                    </div>
-                    <a href="https://www.instagram.com/robercik_dynamit/" target="_blank" rel="noopener"
-                        class="participant-name">Roburwk</a>
-                    <div class="participant-platform">Instagram</div>
-                </div>
-            </div>
+                <div class="participant-card fade-in kick">
+        <div class="participant-avatar">
+          <a href="https://kick.com/takuu" target="_blank" rel="noopener">
+            <img src="https://files.kick.com/images/user/196056/profile_image/conversion/5ed75600-4d1e-40ed-afb8-b2731a02ba10-fullsize.webp"
+                 alt="Takuu">
+          </a>
         </div>
+        <a href="https://kick.com/takuu" target="_blank" rel="noopener" class="participant-name">Takuu</a>
+        <div class="participant-platform">Kick</div>
+      </div>
+    </div>
+  </div>
 
     </section>
+
+        <!-- ===== RULES / REGULAMIN ===== -->
+<section class="rules" id="regulamin">
+  <div class="container fade-in">
+    <h2 class="section-title">Regulamin Dnia Wyścigowego</h2>
+
+    <h3>Start wydarzenia</h3>
+    <p><strong>18:00</strong></p>
+
+    <h3>Sesje</h3>
+    <ul>
+      <li><strong>Trening</strong> – 30 minut</li>
+      <li><strong>Kwalifikacje</strong>:
+        <ul>
+          <li>Q1 – 18 min → najlepsza 15 awansuje</li>
+          <li>Q2 – 15 min → najlepsza 10 awansuje</li>
+          <li>Q3 – 12 min → walka o pole position</li>
+        </ul>
+      </li>
+      <li><strong>Wyścig</strong> – 50% długości Grand Prix</li>
+    </ul>
+
+    <h3>Zasady ogólne</h3>
+    <ul>
+      <li>Fair play – brak celowych kolizji i blokowania</li>
+      <li>Restart tylko przy masowej kraksie na 1. okrążeniu</li>
+      <li>Punktacja wg oficjalnych zasad F1</li>
+    </ul>
+
+    <h3>Nagrody</h3>
+    <div class="rewards-section">
+      <h4>🏎️ Klasyfikacja indywidualna</h4>
+      <p>– nagrodzonych tu będzie pierwszych 3 kierowców, których wyłonimy po ostatnim GP, które odbędzie się <strong>9 listopada</strong>.</p>
+      <ul class="rewards-list">
+        <li>🥇 <strong>1 miejsce:</strong> 10 000 PLN</li>
+        <li>🥈 <strong>2 miejsce:</strong> 5 000 PLN</li>
+        <li>🥉 <strong>3 miejsce:</strong> 2 500 PLN</li>
+      </ul>
+
+      <h4>👥 Klasyfikacja zespołowa (konstruktorów)</h4>
+      <p>– nagrody <strong>PER TEAM</strong> (wyniki po ostatnim GP)</p>
+      <ul class="rewards-list">
+        <li>🥇 <strong>1 miejsce:</strong> 3 000 PLN</li>
+        <li>🥈 <strong>2 miejsce:</strong> 2 000 PLN</li>
+        <li>🥉 <strong>3 miejsce:</strong> 1 000 PLN</li>
+      </ul>
+
+      <h4>💰 Dodatkowe nagrody dla zawodników, którzy zajmą miejsca 1–10 w każdym Grand Prix</h4>
+      <ul class="rewards-list">
+        <li>🥇 <strong>1 miejsce:</strong> 1 500 PLN</li>
+        <li>🥈 <strong>2 miejsce:</strong> 750 PLN</li>
+        <li>🥉 <strong>3 miejsce:</strong> 500 PLN</li>
+        <li>4 miejsce: 300 PLN</li>
+        <li>5 miejsce: 300 PLN</li>
+        <li>6 miejsce: 200 PLN</li>
+        <li>7 miejsce: 200 PLN</li>
+        <li>8 miejsce: 200 PLN</li>
+        <li>9 miejsce: 100 PLN</li>
+        <li>10 miejsce: 100 PLN</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
     <!-- ===== SPONSORS ===== -->
-    <section class="sponsors" id="sponsorzy">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2 class="section-title">Sponsorzy</h2>
-            </div>
+   <section class="sponsors" id="sponsorzy">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2 class="section-title">Sponsorzy</h2>
+    </div>
 
-            <div class="sponsors-grid fade-in" style="text-align: center;">
-                <!-- Logo sponsora -->
-                <div class="sponsor-card" style="display: inline-block; margin: 20px;">
-                    <img src="Daco_5061982.png" alt="Logo sponsora"
-                        style="max-width: 220px; height: auto; filter: drop-shadow(0 0 8px rgba(255,255,255,0.2));">
-                </div>
-            </div>
-
-            <!-- Napis "More soon" -->
-            <div class="soon-text fade-in" style="margin-top: 20px; font-size: 1.3rem; font-weight: 600;">
-                More soon...
-            </div>
-        </div>
-    </section>
-
+    <div class="sponsors-grid fade-in">
+      <div class="sponsor-card">
+        <img src="Daco_5061982.png" alt="Sponsor Logitech">
+      </div>
+      <div class="sponsor-card">
+        <img src="dzik-removebg-preview.png" alt="Sponsor DZIK">
+      </div>
+      <div class="sponsor-card">
+        <img src="fastrack-removebg-preview.png" alt="Sponsor FASTRACK">
+      </div>
+    </div>
+  </div>
+</section>
 
 
     <!-- ===== FOOTER ===== -->
@@ -760,16 +795,16 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">F1 TURNIEJ STREAMERÓW</div>
-                <p class="footer-description">Największy turniej streamerów Formula 1 w Polsce. Walka o pieniądze, sławę
-                    i tytuł mistrza.</p>
-            </div>
+<p class="footer-description">
+  Największy turniej streamerów Formula 1 w Polsce. Walka o pieniądze, sławę i tytuł mistrza.
+</p>
+<p class="footer-credit">Created by <span>widz</span> dla <span>widzów</span>.</p>
 
             <div class="footer-bottom">
                 <p>&copy; 2025 F1 Turniej Streamerów. Wszystkie prawa zastrzeżone.</p>
                 <!-- >>> FOOTER: białe POWERED BY MRDZINOLD X + logo -->
                 <p class="powered-by">
-                    POWERED BY MRDZINOLD X
-                    <img src="Daco_5061982.png" alt="Logo partnera" />
+                    POWERED BY MRDZINOLD 
                 </p>
             </div>
         </div>
@@ -813,4 +848,5 @@
 </body>
 
 </html>
+
 
