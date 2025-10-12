@@ -30,6 +30,7 @@
 </div>
 
 <body>
+    
     <!-- ===== NAV ===== -->
     <nav class="navbar" id="navbar" aria-label="Główna nawigacja">
         <div class="nav-container">
@@ -69,7 +70,7 @@
                 POWERED BY MRDZINOLD 
                 
             </div>
-              <a href="https://f1turniejstremerow.pl/poll.html" class="vote-button">
+              <a href="https://f1turniejstremerow.pl/poll.html" class="vote-button disabled">
                 🗳️ GŁOSUJ NA KIEROWCĘ DNIA
             </a>
 
@@ -171,18 +172,14 @@
         </div>
 
         <div class="race-calendar-grid fade-in">
-           <div class="race-card">
+           <div class="race-card finished">
     <div class="race-date">12 PAŹDZIERNIKA 2025 • 18:00</div>
     <div class="race-name">Oficjalne Grand Prix AUSTRIA #1</div>
     <div class="race-location">Austria • Red Bull Ring • Spielberg</div>
+<div class="race-status">✅ KONIEC</div>
 
-    <div class="race-countdown" data-date="2025-10-12T18:00:00">
-        <span class="cd-label">⏳ ODLICZANIE</span><br>
-        <span class="cd-days">00</span>d
-        <span class="cd-hours">00</span>h
-        <span class="cd-minutes">00</span>m
-        <span class="cd-seconds">00</span>s
-    </div>
+    <div class="race-hint">Kliknij, aby wyświetlić statystyki 📊</div>
+  
 </div>
 
            <div class="race-card">
@@ -243,116 +240,68 @@
                     <!-- Driver Classification -->
                    <div class="classification-card">
     <h3>Klasyfikacja Kierowców</h3>
-    <table class="results-table">
-        <thead>
-            <tr>
-                <th>Pozycja</th>
-                <th>Kierowca</th>
-                <th>Zespół</th>
-                <th>Punkty</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>1</td><td>DEMONZZ</td><td>Aston Martin</td><td>0</td></tr>
-            <tr><td>2</td><td>DZINOLD</td><td>Haas</td><td>0</td></tr>
-            <tr><td>3</td><td>IZAK</td><td>Aston Martin</td><td>0</td></tr>
-            <tr><td>4</td><td>JAPCZAN</td><td>Alpine</td><td>0</td></tr>
-            <tr><td>5</td><td>LUKI</td><td>Haas</td><td>0</td></tr>
-            <tr><td>6</td><td>MAJSZI</td><td>McLaren</td><td>0</td></tr>
-            <tr><td>7</td><td>MARIO</td><td>Mercedes Benz</td><td>0</td></tr>
-            <tr><td>8</td><td>MOKRYSUCHAR</td><td>KickSauber</td><td>0</td></tr>
-            <tr><td>9</td><td>NITRO</td><td>Williams</td><td>0</td></tr>
-            <tr><td>10</td><td>PAGO</td><td>RedBull Racing</td><td>0</td></tr>
-            <tr><td>11</td><td>PARIS</td><td>Mercedes Benz</td><td>0</td></tr>
-            <tr><td>12</td><td>PEVOR</td><td>Williams</td><td>0</td></tr>
-            <tr><td>13</td><td>PYKA</td><td>Visa Cash App Racing</td><td>0</td></tr>
-            <tr><td>14</td><td>Taku</td><td>McLaren</td><td>0</td></tr>
-            <tr><td>15</td><td>TOM223</td><td>RedBull Racing</td><td>0</td></tr>
-            <tr><td>16</td><td>TUSZOL</td><td>Ferrari</td><td>0</td></tr>
-            <tr><td>17</td><td>WŁODAR</td><td>Alpine</td><td>0</td></tr>
-            <tr><td>18</td><td>ZONY</td><td>KickSauber</td><td>0</td></tr>
-            <tr><td>19</td><td>MRGH</td><td>Ferrari</td><td>0</td></tr>
-            <tr><td>20</td><td>NEEX</td><td>Visa Cash App Racing</td><td>0</td></tr>
-        </tbody>
-    </table>
+<table class="results-table">
+  <thead>
+    <tr>
+      <th>Pozycja</th>
+      <th>Kierowca</th>
+      <th>Narodowość</th>
+      <th>Drużyna</th>
+      <th>Punkty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>Damian PEVOR Kozioł (50)</td><td>Polska</td><td>Williams</td><td>25</td></tr>
+    <tr><td>2</td><td>Maciej ZONY Zoniuk (94)</td><td>Polska</td><td>Kick Sauber</td><td>18</td></tr>
+    <tr><td>3</td><td>Sergiusz NITRO Górski (95)</td><td>Polska</td><td>Williams</td><td>15</td></tr>
+    <tr><td>4</td><td>Dominik MOKRYSUCHAR Stokłosa (89)</td><td>Polska</td><td>Kick Sauber</td><td>12</td></tr>
+    <tr><td>5</td><td>Dawid DZINOLD Rzeźnik (28)</td><td>Polska</td><td>Haas</td><td>10</td></tr>
+    <tr><td>6</td><td>Jakub JAPCZAN Piotrowicz (88)</td><td>Polska</td><td>Alpine</td><td>8</td></tr>
+    <tr><td>7</td><td>Jakub MERGHANI Elsadig Rokicki (99)</td><td>Polska</td><td>Ferrari</td><td>6</td></tr>
+    <tr><td>8</td><td>Tomasz TOM223 Richter (32)</td><td>Niemcy</td><td>Red Bull Racing</td><td>4</td></tr>
+    <tr><td>9</td><td>Dawid Taku Czajkowski (77)</td><td>Polska</td><td>McLaren</td><td>2</td></tr>
+    <tr><td>10</td><td>Sebastian NEEX Trela (96)</td><td>Polska</td><td>Racing Bulls</td><td>1</td></tr>
+    <tr><td>11</td><td>Dawid MAJSZI Majchrzak (29)</td><td>Polska</td><td>McLaren</td><td>0</td></tr>
+    <tr><td>12</td><td>Filip PARIS Kulon (2)</td><td>Polska</td><td>Mercedes</td><td>0</td></tr>
+    <tr><td>13</td><td>Kamil DEMONZ Amrah (11)</td><td>Polska</td><td>Aston Martin</td><td>0</td></tr>
+    <tr><td>14</td><td>Łukasz TUSZOL Tuszyński (21)</td><td>Polska</td><td>Ferrari</td><td>0</td></tr>
+    <tr><td>15</td><td>Maciej WŁODAR Włodarski (13)</td><td>Polska</td><td>Alpine</td><td>0</td></tr>
+    <tr><td>16</td><td>Mateusz PAGO Pągowski (3)</td><td>Polska</td><td>Red Bull Racing</td><td>0</td></tr>
+    <tr><td>17</td><td>Patryk LukiSteve Czopur (98)</td><td>Polska</td><td>Haas</td><td>0</td></tr>
+    <tr><td>18</td><td>Patryk PYKA Pyka (97)</td><td>Polska</td><td>Racing Bulls</td><td>0</td></tr>
+    <tr><td>19</td><td>Piotr IZAK Skowyrski</td><td>Polska</td><td>Aston Martin</td><td>0</td></tr>
+    <tr><td>20</td><td>Rafał MARIOSPZOO Banasiak (9)</td><td>Polska</td><td>Mercedes</td><td>0</td></tr>
+  </tbody>
+</table>
 </div>
 
 
                     <!-- Team Classification -->
-                   <div class="classification-card">
-    <h3>Klasyfikacja Drużyn</h3>
-      <table class="results-table">
+  <div class="classification-card">
+  <h3>Klasyfikacja Drużyn</h3>
+  <table class="results-table">
     <thead>
       <tr>
         <th>Pozycja</th>
-        <th>Zespół</th>
-        <th>Kierowcy</th>
+        <th>Drużyna</th>
+        <th>Kierowca 1</th>
+        <th>Kierowca 2</th>
         <th>Punkty</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Kick Sauber</td>
-        <td>ZONY • MOKRYSUCHAR</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Ferrari</td>
-        <td>TUSZOL • MRGH</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Red Bull Racing</td>
-        <td>PAGO • TOM223</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>Alpine</td>
-        <td>WŁODAR • JAPCZAN</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>McLaren</td>
-        <td>MAJSZI • TAKU</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>Aston Martin</td>
-        <td>DEMONZZ • IZAK</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td>Visa Cash App Racing</td>
-        <td>NEEX • PYKA</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>Haas</td>
-        <td>LUKI • DZINOLD</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>9</td>
-        <td>Williams</td>
-        <td>PEVOR • NITRO</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>10</td>
-        <td>Mercedes Benz</td>
-        <td>MARIO • PARIS</td>
-        <td>0</td>
-      </tr>
+      <tr><td>1</td><td>Williams</td><td>PEVOR</td><td>NITRO</td><td>40</td></tr>
+      <tr><td>2</td><td>Kick Sauber</td><td>ZONY</td><td>MOKRYSUCHAR</td><td>30</td></tr>
+      <tr><td>3</td><td>Haas</td><td>DZINOLD</td><td>LUKISTEVE</td><td>10</td></tr>
+      <tr><td>4</td><td>Alpine</td><td>WŁODAR</td><td>JAPCZAN</td><td>8</td></tr>
+      <tr><td>5</td><td>Ferrari</td><td>TUSZOL</td><td>MERGHANI</td><td>6</td></tr>
+      <tr><td>6</td><td>Red Bull Racing</td><td>PAGO</td><td>TOM223</td><td>4</td></tr>
+      <tr><td>7</td><td>McLaren</td><td>MAJSZI</td><td>TAKU</td><td>2</td></tr>
+      <tr><td>8</td><td>Racing Bulls</td><td>NEEX</td><td>PYKA</td><td>1</td></tr>
+      <tr><td>9</td><td>Aston Martin</td><td>DEMONZ</td><td>IZAK</td><td>0</td></tr>
+      <tr><td>10</td><td>Mercedes</td><td>MARIO</td><td>PARIS</td><td>0</td></tr>
     </tbody>
-    </table>
+  </table>
 </div>
                 </div>
             </div>
@@ -849,8 +798,9 @@
 
 </body>
 
-</html>
 
+
+</html>
 
 
 
