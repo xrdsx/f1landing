@@ -411,6 +411,35 @@
      border-color: var(--primary-red);
  }
 
+.alert-banner {
+  background: rgba(225, 6, 0, 0.15);
+  border: 2px solid #e10600;
+  color: #ff4444;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  padding: 15px 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(225, 6, 0, 0.4);
+  animation: pulseAlert 1.8s infinite ease-in-out;
+  font-size: 1.1rem;
+}
+
+@keyframes pulseAlert {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(225, 6, 0, 0.5);
+    color: #ff4c4c;
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 0, 0, 1);
+    color: #ff8080;
+    transform: scale(1.02);
+  }
+}
 
  .track-country-label {
      background: var(--background-dark);
@@ -1897,3 +1926,4 @@
          background-image: url('https://images.pexels.com/photos/29276547/pexels-photo-29276547.jpeg?auto=compress&cs=tinysrgb&w=3840');
      }
  }
+
