@@ -126,18 +126,9 @@ window.addEventListener('resize', () => {
     }
 });
 
-const slider = document.querySelector('.video-slider .slides');
-const videos = document.querySelectorAll('.video-slider video');
-const prevBtn = document.querySelector('.video-slider .prev');
-const nextBtn = document.querySelector('.video-slider .next');
-let index = 0;
 
-function showSlide(i) {
-    index = (i + videos.length) % videos.length;
-    slider.style.transform = `translateX(${-index * 100}%)`;
-    // zatrzymujemy inne filmy
-    videos.forEach((v, idx) => { if (idx !== index) v.pause(); });
-}
+
+
 
 
 
@@ -167,22 +158,9 @@ updateRaceCountdowns();
 
 
 
-prevBtn.addEventListener('click', () => showSlide(index - 1));
-nextBtn.addEventListener('click', () => showSlide(index + 1));
 
 
-showSlide(index);
-document.addEventListener("DOMContentLoaded", function () {
-  // Sprawdź, czy adres URL kończy się na /klasyfikacje
-  if (window.location.pathname.endsWith("/klasyfikacje")) {
-    const section = document.getElementById("klasyfikacje");
-    if (section) {
-      setTimeout(() => {
-        section.scrollIntoView({ behavior: "smooth" });
-      }, 600);
-    }
-  }
-});
+
 
 const floatingCar = document.getElementById("floatingCar");
 const streamPopup = document.getElementById("streamPopup");
@@ -201,6 +179,7 @@ streamPopup.addEventListener("click", (e) => {
         streamPopup.style.display = "none";
     }
 });
+
 
 const race1Results = [
     ["1", "Damian PEVOR Kozioł", "RedBull Racing", "1", "1", "1:07.781", "25"],
