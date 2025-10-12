@@ -171,7 +171,14 @@
       border-radius: 6px;
       border-left: 3px solid var(--gaming-green);
     }
+#chatPanel {
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
 
+#chatPanel[style*="display: none"] {
+  opacity: 0;
+  visibility: hidden;
+}
     .position-number {
       font-family: 'Orbitron', monospace;
       font-weight: 700;
@@ -645,7 +652,7 @@
 
     .live-table-container {
       width: 100%;
-      height: 380px;
+      height: 450px;
       /* powiększona wysokość sekcji */
       overflow: hidden;
       border-radius: 8px;
@@ -658,7 +665,7 @@
       border: none;
 
       /* Mocniejsze przybliżenie lewego górnego rogu */
-      transform: scale(0.6) translate(-50px, -40px);
+      transform: scale(0.70) translate(-30px, -20px);
       transform-origin: top left;
     }
 
@@ -1503,34 +1510,40 @@
     case 'twitch':
       return `https://www.twitch.tv/embed/${encodeURIComponent(channel)}/chat?parent=${encodeURIComponent(location.hostname)}`;
     case 'kick':
+
       return `https://kick.com/popout/${encodeURIComponent(channel)}/chat`;
-   
+    case 'youtube':
+      return `https://www.youtube.com/live_chat?v=${encodeURIComponent(channel)}&embed_domain=${encodeURIComponent(location.hostname)}`;
     default:
       return '';
   }
 }
 
-
-
-  document.addEventListener("DOMContentLoaded", () => {
-  // --- DOMYŚLNA TRANSMISJA (FIA)
-  const defaultPlatform = "kick";
+document.addEventListener("DOMContentLoaded", () => {
+  // --- DOMYŚLNA TRANSMISJA (TWITCH / MRDZINOLD)
+  const defaultPlatform = "twitch";
   const defaultChannel = "mrdzinold";
-  const defaultName = "FIA TRANSMISJA";
+  const defaultName = "MRDZINOLD – GŁÓWNA TRANSMISJA";
 
   const titleEl = document.getElementById("streamTitle");
   const frameEl = document.getElementById("playerFrame");
   const chatEl = document.getElementById("chatFrame");
+  const chatPanel = document.getElementById("chatPanel");
+  const streamPanel = document.getElementById("streamPanel");
 
   if (titleEl) titleEl.textContent = defaultName;
 
   const src = buildEmbed(defaultPlatform, defaultChannel);
   const chatSrc = buildChatEmbed(defaultPlatform, defaultChannel);
 
-  // Player ładujemy od razu
+  // 🎥 Załaduj player
   if (frameEl && src) frameEl.src = src;
 
-  // ✅ Chat ładujemy z lekkim opóźnieniem (Kick wymaga czasu na inicjalizację)
+  // 💬 Twitch pozwala na iframe, więc chat widoczny od razu
+  chatPanel.style.display = "flex";
+  streamPanel.style.gridColumn = "auto";
+
+  // Załaduj chat z lekkim opóźnieniem (płynniejsze przejście)
   setTimeout(() => {
     if (chatEl && chatSrc) {
       chatEl.src = chatSrc;
@@ -1538,7 +1551,67 @@
       chatEl.setAttribute("sandbox", "allow-scripts allow-same-origin allow-popups allow-forms");
       chatEl.style.display = "block";
     }
-  }, 1500);
+  }, 1000);
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const chatPanel = document.getElementById('chatPanel');
+  const chatContainer = document.querySelector('.chat-container');
+
+  document.querySelectorAll('.stream-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const platform = link.dataset.platform?.toLowerCase() || '';
+      const channel = link.dataset.channel || '';
+      const name = link.querySelector('.streamer-name')?.textContent?.trim() || 'Transmisja';
+
+      const titleEl = document.getElementById('streamTitle');
+      const frameEl = document.getElementById('playerFrame');
+      const chatEl = document.getElementById('chatFrame');
+
+      // 🔄 Aktualizacja playera
+      const streamSrc = buildEmbed(platform, channel);
+      const chatSrc = buildChatEmbed(platform, channel);
+      if (titleEl) titleEl.textContent = name;
+      if (frameEl && streamSrc) frameEl.src = streamSrc;
+
+      // 💬 Obsługa czatu
+      if (platform === 'kick') {
+        // Pokazujemy panel, ale z komunikatem
+        chatPanel.style.display = 'flex';
+        chatContainer.innerHTML = `
+          <div style="
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            height:100%;
+            text-align:center;
+            color:var(--text-secondary);
+            padding:20px;
+            font-family:'Inter',sans-serif;
+          ">
+            <div style="font-size:1.2rem; color:var(--accent-yellow); margin-bottom:10px;">
+              💬 Aktualnie Kick nie pozwala dodać czatu
+            </div>
+            <div style="font-size:0.95rem;">
+              🔧 Na następny wyścig będzie ogarnięte!
+            </div>
+          </div>
+        `;
+      } else {
+        // Przywracamy normalny czat
+        chatPanel.style.display = 'flex';
+        chatContainer.innerHTML = `
+          <iframe id="chatFrame" class="chat-embed" allowfullscreen></iframe>
+        `;
+        const newChatEl = chatContainer.querySelector('#chatFrame');
+        if (newChatEl && chatSrc) newChatEl.src = chatSrc;
+      }
+    });
+  });
 });
 
       // Nasłuch kliknięć w liście transmisji i przełączanie playera + tytułu
