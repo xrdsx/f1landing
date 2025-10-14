@@ -1,6 +1,6 @@
 function updateCountdown() {
     // 🚨 NOWA DATA: 12 października 2025, godz. 15:00
-    const targetDate = new Date('2025-10-12T18:00:00').getTime();
+    const targetDate = new Date('2025-10-19T15:00:00').getTime();
     const now = Date.now();
     const diff = targetDate - now;
 
@@ -182,76 +182,24 @@ streamPopup.addEventListener("click", (e) => {
 
 
 const race1Results = [
-    ["1", "Damian PEVOR Kozioł", "RedBull Racing", "1", "1", "1:07.781", "25"],
-    ["2", "Dominik MOKRYSUCHAR Stokłosa", "KICK Sauber", "3", "1", "1:08.390", "18"],
-    ["3", "Maciej ZONY Zoniuk (kierowca dnia)", "KICK Sauber", "14", "1", "1:08.540", "15"],
-    ["4", "Kamil DEMONZ Amrah", "Haas", "6", "1", "1:08.902", "12"],
-    ["5", "Jakub JAPCZAN Piotrowicz", "Racing Bulls", "4", "2", "1:08.846", "10"],
-    ["6", "Jakub MERGHANI Elsadig Rokicki", "Ferrari", "5", "1", "1:09.812", "8"],
-    ["7", "Dawid DZINOLD Rzeźnik", "Mercedes", "2", "1", "1:08.953", "6"],
-    ["8", "Tomasz TOM223 Richter", "Racing Bulls", "12", "1", "1:08.857", "4"],
-    ["9", "Sergiusz NITRO Górski", "Aston Martin", "7", "1", "1:09.842", "2"],
-    ["10", "Patryk PYKA Pyka", "McLaren", "10", "1", "1:10.782", "1"],
-    ["11", "Sebastian NEEX Trela", "Alpine", "11", "1", "1:11.660", "0"],
-    ["12", "Mateusz PAGO Pągowski", "McLaren", "9", "1", "1:11.271", "0"],
-    ["13", "Łukasz TUSZOL Tuszyński", "Haas", "8", "1", "1:10.739", "0"],
-    ["14", "Maciej WŁODAR Włodarski", "RedBull Racing", "15", "1", "1:10.618", "0"],
-    ["15", "Filip PARIS Kulon", "Aston Martin", "17", "1", "1:15.193", "0"],
-    ["16", "Dawid MAJSZI Majchrzak", "Mercedes", "13", "1", "1:15.409", "0"],
-    ["17", "Rafał MARIOSPZOO Banasiak", "Ferrari", "16", "1", "1:14.892", "0"]
+  ["1", "Damian PEVOR Kozioł", "RedBull Racing", "1", "1", "1:07.781", "25"],
+  ["2", "Dominik MOKRYSUCHAR Stokłosa", "KICK Sauber", "3", "1", "1:08.390", "18"],
+  ["3", "Maciej ZONY Zoniuk (kierowca dnia)", "KICK Sauber", "14", "1", "1:08.540", "15"],
+  ["4", "Kamil DEMONZ Amrah", "Haas", "6", "1", "1:08.902", "12"],
+  ["5", "Jakub JAPCZAN Piotrowicz", "Racing Bulls", "4", "2", "1:08.846", "10"],
+  ["6", "Jakub MERGHANI Elsadig Rokicki", "Ferrari", "5", "1", "1:09.812", "8"],
+  ["7", "Dawid DZINOLD Rzeźnik", "Mercedes", "2", "1", "1:08.953", "6"],
+  ["8", "Tomasz TOM223 Richter", "Racing Bulls", "12", "1", "1:08.857", "4"],
+  ["9", "Sergiusz NITRO Górski", "Aston Martin", "7", "1", "1:09.842", "2"],
+  ["10", "Patryk PYKA Pyka", "McLaren", "10", "1", "1:10.782", "1"],
+  ["11", "Sebastian NEEX Trela", "Alpine", "11", "1", "1:11.660", "0"],
+  ["12", "Mateusz PAGO Pągowski", "McLaren", "9", "1", "1:11.271", "0"],
+  ["13", "Łukasz TUSZOL Tuszyński", "Haas", "8", "1", "1:10.739", "0"],
+  ["14", "Maciej WŁODAR Włodarski", "RedBull Racing", "15", "1", "1:10.618", "0"],
+  ["15", "Filip PARIS Kulon", "Aston Martin", "17", "1", "1:15.193", "0"],
+  ["16", "Dawid MAJSZI Majchrzak", "Mercedes", "13", "1", "1:15.409", "0"],
+  ["17", "Rafał MARIOSPZOO Banasiak", "Ferrari", "16", "1", "1:14.892", "0"]
 ];
-
-document.querySelectorAll(".race-card").forEach((card, idx) => {
-    card.addEventListener("click", () => {
-        const name = card.querySelector(".race-name")?.textContent || "???";
-        const loc = card.querySelector(".race-location")?.textContent || "???";
-        const date = card.querySelector(".race-date")?.textContent || "???";
-
-        modalRaceName.textContent = name;
-        modalRaceLocation.textContent = loc;
-        modalRaceDate.textContent = date;
-
-        const resultsContainer = document.getElementById("raceResults");
-        const resultsBody = document.getElementById("resultsBody");
-
-        if (idx === 0) { // tylko 1. wyścig ma dane
-            resultsBody.innerHTML = race1Results
-                .map((r, i) => {
-                    let cls = "";
-                    if (i === 0) cls = "gold";
-                    else if (i === 1) cls = "silver";
-                    else if (i === 2) cls = "bronze";
-
-                    // Kierowca dnia – sprawdzamy w nazwisku
-                    let driverName = r[1];
-                    if (driverName.includes("(kierowca dnia)")) {
-                        cls += " driver-of-day";
-                        driverName = driverName.replace(
-                            "(kierowca dnia)",
-                            `<span class="kierowca-dnia-badge">Kierowca dnia</span>`
-                        );
-                    }
-
-                    // wstawiamy z poprawionym driverName
-                    return `<tr class="${cls}">
-      <td>${r[0]}</td>
-      <td>${driverName}</td>
-      <td>${r[2]}</td>
-      <td>${r[3]}</td>
-      <td>${r[4]}</td>
-      <td>${r[5]}</td>
-      <td>${r[6]}</td>
-    </tr>`;
-                })
-                .join("");
-            resultsContainer.style.display = "block";
-        } else {
-            resultsContainer.style.display = "none";
-        }
-
-        raceModal.style.display = "flex";
-    });
-});
 
 const race2Results = [
   ["1", "Damian PEVOR Kozioł", "Williams", "1", "1", "1:27.369", "25"],
@@ -270,86 +218,27 @@ const race2Results = [
   ["14", "Dawid MAJSZI Majchrzak", "McLaren", "15", "0", "1:39.719", "0"],
   ["15", "Mateusz PAGO Pągowski", "Redbull Racing", "8", "dsq", "0", "0"]
 ];
-
-document.querySelectorAll(".race-card").forEach((card, idx) => {
-  card.addEventListener("click", () => {
-    const name = card.querySelector(".race-name")?.textContent || "???";
-    const loc = card.querySelector(".race-location")?.textContent || "???";
-    const date = card.querySelector(".race-date")?.textContent || "???";
-
-    modalRaceName.textContent = name;
-    modalRaceLocation.textContent = loc;
-    modalRaceDate.textContent = date;
-
-    const resultsContainer = document.getElementById("raceResults");
-    const resultsBody = document.getElementById("resultsBody");
-
-    // przypisanie wyników do odpowiedniego wyścigu
-    let raceResults = null;
-    if (idx === 0) raceResults = race1Results;
-    else if (idx === 1) raceResults = race2Results;
-
-    if (raceResults) {
-      resultsBody.innerHTML = raceResults
-        .map((r, i) => {
-          let cls = "";
-          if (i === 0) cls = "gold";
-          else if (i === 1) cls = "silver";
-          else if (i === 2) cls = "bronze";
-
-          let driverName = r[1];
-          if (driverName.includes("(kierowca dnia)")) {
-            cls += " driver-of-day";
-            driverName = driverName.replace(
-              "(kierowca dnia)",
-              `<span class="kierowca-dnia-badge">Kierowca dnia</span>`
-            );
-          }
-
-          return `
-            <tr class="${cls}">
-              <td>${r[0]}</td>
-              <td>${driverName}</td>
-              <td>${r[2]}</td>
-              <td>${r[3]}</td>
-              <td>${r[4]}</td>
-              <td>${r[5]}</td>
-              <td>${r[6]}</td>
-            </tr>
-          `;
-        })
-        .join("");
-
-      resultsContainer.style.display = "block";
-    } else {
-      resultsContainer.style.display = "none";
-    }
-
-    raceModal.style.display = "flex";
-  });
-});
 const race3Results = [
-  ["1", "PEVOR", "WILLIAMS", "1", "2", "1:08.029", "25"],
-  ["2", "ZONY", "KICK SAUBER", "2", "2", "1:08.442", "18"],
-  ["3", "NITRO (kierowca dnia)", "WILLIAMS", "5", "2", "1:08.030", "15"],
-  ["4", "MokrySuchar", "KICK SAUBER", "9", "2", "1:08.267", "12"],
-  ["5", "DZINOLD", "HAAS", "4", "2", "1:08.303", "10"],
-  ["6", "JAPCZAN", "ALPINE", "7", "2", "1:08.538", "8"],
-  ["7", "MERGHANI", "FERRARI", "6", "2", "1:08.847", "6"],
-  ["8", "TOM", "REDBULL RACING", "8", "2", "1:08.120", "4"],
-  ["9", "TAKU", "MCLAREN", "11", "2", "1:08.846", "2"],
-  ["10", "NEEX", "RACING BULLS", "12", "2", "1:08.636", "1"],
-  ["11", "TUSZOL", "FERRARI", "13", "3", "1:09.430", "0"],
-  ["12", "PAGO", "REDBULL RACING", "14", "3", "1:08.669", "0"],
-  ["13", "WLODAR", "ALPINE", "15", "4", "1:10.167", "0"],
-  ["14", "PARIS", "MERCEDES", "17", "2", "1:12.141", "0"],
-  ["15", "MARIO", "MERCEDES", "18", "3", "1:12.079", "0"],
-  ["16", "MAJSZI", "MCLAREN", "16", "4", "1:12.780", "0"],
-  ["17", "DEMONZ", "ASTON MARTIN", "3", "2", "1:08.358", "0"],
-  ["18", "PYKA", "RACING BULLS", "10", "1", "1:10.055", "0"]
+  ["1", "Damian PEVOR Kozioł", "Williams", "1", "2", "1:08.029", "25"],
+  ["2", "Maciej ZONY Zoniuk", "KICK SAUBER", "2", "2", "1:08.442", "18"],
+  ["3", "Dominik MOKRYSUCHAR Stokłosa", "KICK SAUBER", "9", "2", "1:08.267", "15"],
+  ["4", "Dawid DZINOLD Rzeźnik", "HAAS", "4", "2", "1:08.303", "12"],
+  ["5", "Jakub JAPCZAN Piotrowicz", "ALPINE", "7", "2", "1:08.538", "10"],
+  ["6", "Jakub MERGHANI Elsadig Rokicki", "FERRARI", "6", "2", "1:08.847 ", "8"],
+  ["7", "Tomasz TOM223 Richter", "REDBULL RACING", "8", "2", "1:08.120", "6"],
+  ["8", "Sergiusz NITRO Górski (kierowca dnia)", "WILLIAMS", "5", "2", "1:08.030", "4"],
+  ["9", "Dawid Taku Czajkowski", "MCLAREN", "11", "2", "1:08.846", "2"],
+  ["10", "Sebastian NEEX Trela", "RACING BULLS", "12", "2", "1:08.636", "1"],
+  ["11", "Łukasz TUSZOL Tuszyński", "FERRARI", "13", "3", "1:09.430", "0"],
+  ["12", "Mateusz PAGO Pągowski", "REDBULL RACING", "14", "3", "1:08.669", "0"],
+  ["13", "Maciej WŁODAR Włodarski", "ALPINE", "15", "4", "1:10.167", "0"],
+  ["14", "Filip PARIS Kulon", "MERCEDES", "17", "2", "1:12.141", "0"],
+  ["15", "Rafał MARIO Banasiak", "MERCEDES", "18", "3", "1:12.079", "0"],
+  ["16", "Dawid MAJSZI Majchrzak", "MCLAREN", "16", "4", "1:12.780", "0"],
+  ["17", "Kamil DEMONZ Amrah", "ASTON MARTIN", "3", "2", "1:08.358", "0"],
+  ["18", "Patryk PYKA Pyka", "RACING BULLS", "10", "1", "1:10.055", "0"]
 ];
 
-// === AKTUALIZACJA OBSŁUGI MODALA ===
 document.querySelectorAll(".race-card").forEach((card, idx) => {
   card.addEventListener("click", () => {
     const name = card.querySelector(".race-name")?.textContent || "???";
@@ -363,14 +252,33 @@ document.querySelectorAll(".race-card").forEach((card, idx) => {
     const resultsContainer = document.getElementById("raceResults");
     const resultsBody = document.getElementById("resultsBody");
     const raceInfoNote = document.querySelector(".race-info-note");
+    const resultsTableHead = resultsContainer.querySelector("thead tr");
 
-    // 🔢 przypisanie wyników do odpowiedniego wyścigu
     let raceResults = null;
     if (idx === 0) raceResults = race1Results;
     else if (idx === 1) raceResults = race2Results;
     else if (idx === 2) raceResults = race3Results;
 
     if (raceResults) {
+      // 🧹 Wyczyść poprzednie dane
+      resultsBody.innerHTML = "";
+
+      // 🔄 Ustal, czy to wyścig nr 3 (czyli z kolumną "Kary")
+      const isRace3 = idx === 2;
+
+      // ✏️ Aktualizuj nagłówki tabeli
+      resultsTableHead.innerHTML = `
+        <th>Pozycja</th>
+        <th>Kierowca</th>
+        <th>Zespół</th>
+        <th>P.Start</th>
+        <th>PitStop</th>
+        <th>Best Lap</th>
+        ${isRace3 ? "<th>Kary</th>" : ""}
+        <th>Punkty</th>
+      `;
+
+      // 🏁 Generowanie wierszy
       resultsBody.innerHTML = raceResults
         .map((r, i) => {
           let cls = "";
@@ -387,32 +295,44 @@ document.querySelectorAll(".race-card").forEach((card, idx) => {
             );
           }
 
-          return `
-            <tr class="${cls}">
-              <td>${r[0]}</td>
-              <td>${driverName}</td>
-              <td>${r[2]}</td>
-              <td>${r[3]}</td>
-              <td>${r[4]}</td>
-              <td>${r[5]}</td>
-              <td>${r[6]}</td>
-            </tr>
-          `;
+          // 🟡 Dodatkowa kolumna "Kary" tylko w trzecim wyścigu
+          let penalty = "";
+
+if (isRace3) {
+  const upperName = driverName.toUpperCase();
+  if (upperName.includes("NITRO")) {
+    penalty = "+20s";
+  } else if (upperName.includes("MERGHANI")) {
+    penalty = "+3s";
+  } else if (upperName.includes("PARIS")) {
+    penalty = "+5s";
+  } else {
+    penalty = "-";
+  }
+}
+
+return `
+  <tr class="${cls}">
+    <td>${r[0]}</td>
+    <td>${driverName}</td>
+    <td>${r[2]}</td>
+    <td>${r[3]}</td>
+    <td>${r[4]}</td>
+    <td>${r[5]}</td>
+    ${isRace3 ? `<td>${penalty}</td>` : ""}
+    <td>${r[6]}</td>
+  </tr>
+`;
         })
         .join("");
 
-      // ✅ Zmieniamy komunikat dla GP AUSTRIA #1
-      if (idx === 2) {
-        raceInfoNote.innerHTML = `
-          <div class="penalty-warning">
-            🚨 Pozycje mogą się zmienić po uwzględnieniu kar!
-          </div>
-        `;
-      } else {
-        raceInfoNote.innerHTML = `
-          ⚠️ Ta punktacja nie zalicza się do klasyfikacji.
-        `;
-      }
+      // ⚠️ Adnotacja tylko dla const1 i const2
+      if (card.dataset.type === "test") {
+  raceInfoNote.style.display = "block";
+  raceInfoNote.textContent = "⚠️ Ta punktacja nie zalicza się do klasyfikacji.";
+} else {
+  raceInfoNote.style.display = "none";
+}
 
       resultsContainer.style.display = "block";
     } else {
@@ -423,64 +343,12 @@ document.querySelectorAll(".race-card").forEach((card, idx) => {
   });
 });
 
-
-// === STYL ALERTU ===
-const style = document.createElement("style");
-style.textContent = `
-  .race-info-note .penalty-warning {
-    background: linear-gradient(90deg, rgba(255, 0, 0, 0.25) 0%, rgba(120, 0, 0, 0.6) 100%);
-    border: 2px solid #ff0000;
-    color: #ffffff !important;
-    font-weight: 800;
-    text-align: center;
-    padding: 14px 18px;
-    border-radius: 10px;
-    margin-top: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
-    animation: pulseAlert 1.5s infinite ease-in-out;
-  }
-
-  @keyframes pulseAlert {
-    0%, 100% {
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-      transform: scale(1);
-    }
-    50% {
-      box-shadow: 0 0 40px rgba(255, 0, 0, 1);
-      transform: scale(1.03);
-    }
-  }
-`;
-document.head.appendChild(style);
-
-const raceModal = document.getElementById("raceModal");
-const closeRaceModal = document.getElementById("closeRaceModal");
-const modalRaceName = document.getElementById("modalRaceName");
-const modalRaceLocation = document.getElementById("modalRaceLocation");
-const modalRaceDate = document.getElementById("modalRaceDate");
-
-document.querySelectorAll(".race-card").forEach(card => {
-    card.addEventListener("click", () => {
-        const name = card.querySelector(".race-name")?.textContent || "???";
-        const loc = card.querySelector(".race-location")?.textContent || "???";
-        const date = card.querySelector(".race-date")?.textContent || "???";
-
-        modalRaceName.textContent = name;
-        modalRaceLocation.textContent = loc;
-        modalRaceDate.textContent = date;
-
-        raceModal.style.display = "flex";
-    });
-});
-
+// 🏁 Zamykanie modala
 closeRaceModal.addEventListener("click", () => {
-    raceModal.style.display = "none";
+  raceModal.style.display = "none";
 });
-
 raceModal.addEventListener("click", (e) => {
-    if (e.target === raceModal) {
-        raceModal.style.display = "none";
-    }
+  if (e.target === raceModal) {
+    raceModal.style.display = "none";
+  }
 });
