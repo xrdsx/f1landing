@@ -1,16 +1,161 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0;url=https://f1turniejstremerow.pl/winner.html" />
-  <title>Przekierowanie …</title>
-  <script>
-    // fallback w JS, jeśli refresh nie zadziała
-    window.location.href = "https://f1turniejstremerow.pl/winner.html";
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>F1 Turniej Streamerów – Głosowanie</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="icon" type="image/png" href="f1-icon.png">
+
+  <style>
+    /* === GLOBAL === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-red: #e10600;
+      --accent-yellow: #ffd700;
+      --text-primary: #ffffff;
+      --text-secondary: #b8b8b8;
+      --background-dark: #0a0a0a;
+      --background-card: rgba(255, 255, 255, 0.05);
+    }
+
+    body {
+      background: linear-gradient(rgba(10, 10, 10, 0.92), rgba(10, 10, 10, 0.92)),
+        url('https://images.pexels.com/photos/29276547/pexels-photo-29276547.jpeg?auto=compress&cs=tinysrgb&w=3840') center/cover no-repeat fixed;
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    header {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--primary-red);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.5rem;
+      color: var(--accent-yellow);
+      margin-top: 40px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    }
+
+    .poll-container {
+      margin: 40px auto;
+      width: 100%;
+      max-width: 700px;
+      background: var(--background-card);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(20px);
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    iframe {
+      border-radius: 12px;
+      border: none;
+      width: 100%;
+      height: 1200px;
+      display: block;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 20px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .powered-by {
+      color: var(--text-secondary);
+      font-family: 'Orbitron', monospace;
+      margin-top: 10px;
+    }
+
+    .powered-by img {
+      height: 28px;
+      margin-left: 8px;
+      vertical-align: middle;
+      opacity: 0.8;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      iframe {
+        height: 1000px;
+      }
+
+      h1 {
+        font-size: 1.2rem;
+      }
+
+      .logo {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <p>Jeśli nie nastąpiło automatyczne przekierowanie, kliknij poniższy link:</p>
-  <p><a href="https://f1turniejstremerow.pl/winner.html">Przejdź do strony zwycięzcy</a></p>
+  <header>
+    <div class="logo">F1 TURNIEJ STREAMERÓW</div>
+  </header>
+
+  <h1>🗳️ Głosowanie na kierowce dnia</h1>
+
+  <div class="strawpoll-embed" id="strawpoll_GeZARQNE1yV" style="height: 1440px; max-width: 640px; width: 100%; margin: 0 auto; display: flex; flex-direction: column;"><iframe title="StrawPoll Embed" id="strawpoll_iframe_GeZARQNE1yV" src="https://strawpoll.com/embed/GeZARQNE1yV" style="position: static; visibility: visible; display: block; width: 100%; flex-grow: 1;" frameborder="0" allowfullscreen allowtransparency>Loading...</iframe><script async src="https://cdn.strawpoll.com/dist/widgets.js" charset="utf-8"></script></div>
+  <footer>
+    <p>&copy; 2025 F1 Turniej Streamerów. Wszystkie prawa zastrzeżone.</p>
+    <p class="powered-by">
+      POWERED BY MRDZINOLD
+    </p>
+  </footer>
 </body>
+
 </html>
