@@ -485,6 +485,47 @@
   animation: pulseWarning 2.2s ease-in-out infinite;
 }
 
+.gp-results-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin-top: 20px;
+}
+
+.gp-card {
+  background: linear-gradient(145deg, #1a1a1a, #101010);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-left: 6px solid var(--primary-red, #e10600);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(225, 6, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(225, 6, 0, 0.25);
+}
+.gp-card h3 {
+  font-size: 1.3rem;
+  color: var(--accent-yellow, #ffd700);
+  margin-bottom: 10px;
+}
+.gp-card table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #fff;
+  font-size: 0.95rem;
+}
+.gp-card td, .gp-card th {
+  padding: 6px 4px;
+}
+.total-earnings {
+  margin-top: 50px;
+}
+.total-earnings table td, .total-earnings table th {
+  text-align: center;
+}
+
 /* Subtelna animacja migania koloru ostrzeżenia */
 @keyframes pulseWarning {
   0%, 100% { opacity: 1; }
