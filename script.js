@@ -207,25 +207,25 @@ const raceAustria = [
 // === GRAND PRIX #2 – ABU DHABI ===
 const raceAbuDhabi = [
   ["1", "Damian PEVOR Kozioł", "Williams", "1", "2", "1:27.376", "43:32.728", "", "25"],
-  ["2", "Sergiusz NITRO Górski (kierowca dnia)", "Williams", "5", "2", "1:28.098", "+26.675", "", "18"],
-  ["3", "Jakub JAPCZAN Piotrowicz", "Alpine", "2", "1", "1:28.400", "+30.414", "", "15"],
-  ["4", "Dawid DZINOLD Rzeźnik", "Haas", "8", "2", "1:27.726", "+34.711", "", "12"],
+  ["2", "Jakub JAPCZAN Piotrowicz", "Alpine", "2", "1", "1:28.400", "+30.414", "", "18"],
+  ["3", "Sergiusz NITRO Górski", "Williams", "5", "2", "1:27.726", "+32.675", "+6s", "15"],
+  ["4", "Dawid DZINOLD Rzeźnik", "Haas", "8", "2", "1:28.098", "+38.675", "", "12"],
   ["5", "Dawid TAKU Czajkowski", "McLaren", "9", "1", "1:28.483", "+39.024", "", "10"],
-  ["6", "Jakub MERGHANI Elsadig Rokicki", "Ferrari", "6", "2", "1:27.874", "+43.548", "", "8"],
-  ["7", "Tomasz TOM223 Richter", "Red Bull Racing", "4", "2", "1:27.955", "+1:09.713", "", "6"],
-  ["8", "Maciej ZONY Zoniuk", "Kick Sauber", "3", "2", "1:27.796", "+1:15.959", "", "4"],
+  ["6", "Jakub MERGHANI Elsadig Rokicki", "Ferrari", "6", "2", "1:27.874", "+46.548", "+3s", "8"],
+  ["7", "Tomasz TOM223 Richter", "Red Bull Racing", "4", "2", "1:27.796", "+1:14.713", "+5s", "6"],
+  ["8", "Maciej ZONY Zoniuk", "Kick Sauber", "3", "2", "1:27.955", "+1:15.959", "", "4"],
   ["9", "Mateusz PAGO Pągowski", "Red Bull Racing", "10", "1", "1:29.499", "+1:21.115", "", "2"],
   ["10", "Sebastian NEEX Trela", "Racing Bulls", "7", "2", "1:28.805", "+1 okr.", "", "1"],
   ["11", "Maciej WŁODAR Włodarski", "Alpine", "15", "2", "1:30.342", "+1 okr.", "", "0"],
   ["12", "Patryk LUKISTEVE Czopur", "Haas", "13", "2", "1:30.427", "+1 okr.", "", "0"],
   ["13", "Patryk PYKA Pyka", "Racing Bulls", "11", "3", "1:30.018", "+1 okr.", "", "0"],
   ["14", "Filip PARIS Kulon", "Mercedes", "14", "2", "1:32.734", "+2 okr.", "", "0"],
-  ["15", "Rafał MARIOSPZOO Banasiak", "Mercedes", "17", "2", "1:34.850", "+2 okr.", "", "0"],
+  ["15", "Rafał MARIO Banasiak", "Mercedes", "17", "2", "1:34.850", "+2 okr.", "+8s", "0"],
   ["-", "Dawid MAJSZI Majchrzak", "McLaren", "16", "1", "1:36.031", "DNF", "", "0"],
   ["-", "Łukasz TUSZOL Tuszyński", "Ferrari", "12", "1", "1:30.796", "DSQ", "", "0"],
   ["-", "Dominik MOKRYSUCHAR Stokłosa", "Kick Sauber", "-", "-", "-", "DNS", "", "0"],
-  ["-", "Kamil DEMONZ Amrah", "Aston Martin", "-", "-", "-", "DNS", "", "0"],
-  ["-", "Piotr IZAK Skowyrski", "Aston Martin", "-", "-", "-", "DNS", "", "0"]
+  ["-", "Kamil DEMONZ Amrah", "Aston Martin Aramco", "-", "-", "-", "DNS", "", "0"],
+  ["-", "Piotr IZAK Skowyrski", "Aston Martin Aramco", "-", "-", "-", "DNS", "", "0"]
 ];
 // === OBSŁUGA KLIKNIĘCIA W KARTĘ WYŚCIGU ===
 document.querySelectorAll(".race-card").forEach((card, idx) => {
