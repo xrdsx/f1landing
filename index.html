@@ -12,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./style.css" />
     <script src="script.js" defer></script>
 </head>
 <div class="floating-car" id="floatingCar" title="Wpadnij na transmisję!">
@@ -164,18 +164,14 @@
     <div class="race-hint">Kliknij, aby wyświetlić statystyki 📊</div>
 </div>
 
-            <div class="race-card">
+            <div class="race-card finished">
   <div class="race-date">2 LISTOPADA 2025 • 18:00</div>
   <div class="race-name">Oficjalne Grand Prix BELGIA #3</div>
   <div class="race-location">Belgia • Spa-Francorchamps</div>
 
-  <div class="race-countdown" data-date="2025-11-02T18:00:00">
-    <span class="cd-label">⏳ ODLICZANIE</span><br>
-    <span class="cd-days">00</span>d
-    <span class="cd-hours">00</span>h
-    <span class="cd-minutes">00</span>m
-    <span class="cd-seconds">00</span>s
-  </div>
+  <div class="race-status">✅ KONIEC</div>
+
+    <div class="race-hint">Kliknij, aby wyświetlić statystyki 📊</div>
 </div>
 
             <div class="race-card">
@@ -213,36 +209,36 @@
     <h3>Klasyfikacja Kierowców</h3>
 <table class="results-table">
   <thead>
-  <tr>
-    <th>Pozycja</th>
-    <th>Kierowca</th>
-    <th>Drużyna</th>
-    <th>Narodowość</th>
-    <th>Punkty</th>
-  </tr>
-</thead>
-<tbody>
-  <tr><td>1</td><td>Damian PEVOR Kozioł</td><td>Williams</td><td>Polska</td><td>50</td></tr>
-  <tr><td>2</td><td>Jakub JAPCZAN Piotrowicz</td><td>Alpine</td><td>Polska</td><td>28</td></tr>
-  <tr><td>3</td><td>Dawid DZINOLD Rzeźnik</td><td>Haas</td><td>Polska</td><td>24</td></tr>
-  <tr><td>4</td><td>Maciej ZONY Zoniuk</td><td>Kick Sauber</td><td>Polska</td><td>22</td></tr>
-  <tr><td>5</td><td>Sergiusz NITRO Górski</td><td>Williams</td><td>Polska</td><td>19</td></tr>
-  <tr><td>6</td><td>Jakub MERGHANI Elsadig Rokicki</td><td>Ferrari</td><td>Polska</td><td>16</td></tr>
-  <tr><td>7</td><td>Dominik MOKRYSUCHAR Stokłosa</td><td>Kick Sauber</td><td>Polska</td><td>15</td></tr>
-  <tr><td>8</td><td>Dawid TAKU Czajkowski</td><td>McLaren</td><td>Polska</td><td>12</td></tr>
-  <tr><td>9</td><td>Tomasz TOM223 Richter</td><td>Red Bull Racing</td><td>Niemcy</td><td>12</td></tr>
-  <tr><td>10</td><td>Mateusz PAGO Pągowski</td><td>Red Bull Racing</td><td>Polska</td><td>2</td></tr>
-  <tr><td>11</td><td>Sebastian NEEX Trela</td><td>Racing Bulls</td><td>Polska</td><td>2</td></tr>
-  <tr><td>12</td><td>Łukasz TUSZOL Tuszyński</td><td>Ferrari</td><td>Polska</td><td>0</td></tr>
-  <tr><td>13</td><td>Maciej WŁODAR Włodarski</td><td>Alpine</td><td>Polska</td><td>0</td></tr>
-  <tr><td>14</td><td>Patryk LUKISTEVE Czopur</td><td>Haas</td><td>Polska</td><td>0</td></tr>
-  <tr><td>15</td><td>Patryk PYKA Pyka</td><td>Racing Bulls</td><td>Polska</td><td>0</td></tr>
-  <tr><td>16</td><td>Filip PARIS Kulon</td><td>Mercedes</td><td>Polska</td><td>0</td></tr>
-  <tr><td>17</td><td>Rafał MARIO Banasiak</td><td>Mercedes</td><td>Polska</td><td>0</td></tr>
-  <tr><td>-</td><td>Dawid MAJSZI Majchrzak</td><td>McLaren</td><td>Polska</td><td>0</td></tr>
-  <tr><td>-</td><td>Kamil DEMONZ Amrah</td><td>Aston Martin Aramco</td><td>Polska</td><td>0</td></tr>
-  <tr><td>-</td><td>Piotr IZAK Skowyrski</td><td>Aston Martin Aramco</td><td>Polska</td><td>0</td></tr>
-</tbody>
+    <tr>
+      <th>Pozycja</th>
+      <th>Kierowca</th>
+      <th>Drużyna</th>
+      <th>Narodowość</th>
+      <th>Punkty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>Damian PEVOR Kozioł</td><td>Williams</td><td>Polska</td><td>75</td></tr>
+    <tr><td>2</td><td>Jakub JAPCZAN Piotrowicz</td><td>Alpine</td><td>Polska</td><td>43</td></tr>
+    <tr><td>3</td><td>Dawid DZINOLD Rzeźnik</td><td>Haas</td><td>Polska</td><td>42</td></tr>
+    <tr><td>4</td><td>Sergiusz NITRO Górski</td><td>Williams</td><td>Polska</td><td>31</td></tr>
+    <tr><td>5</td><td>Maciej ZONY Zoniuk</td><td>Kick Sauber</td><td>Polska</td><td>28</td></tr>
+    <tr><td>6</td><td>Jakub MERGHANI Elsadig Rokicki</td><td>Ferrari</td><td>Polska</td><td>24</td></tr>
+    <tr><td>7</td><td>Dominik MOKRYSUCHAR Stokłosa</td><td>Kick Sauber</td><td>Polska</td><td>17</td></tr>
+    <tr><td>8</td><td>Tomasz TOM223 Richter</td><td>Red Bull Racing</td><td>Niemcy</td><td>16</td></tr>
+    <tr><td>9</td><td>Dawid TAKU Czajkowski</td><td>McLaren</td><td>Polska</td><td>12</td></tr>
+    <tr><td>10</td><td>Sebastian NEEX Trela</td><td>Racing Bulls</td><td>Polska</td><td>12</td></tr>
+    <tr><td>11</td><td>Mateusz PAGO Pągowski</td><td>Red Bull Racing</td><td>Polska</td><td>3</td></tr>
+    <tr><td>12</td><td>Maciej WŁODAR Włodarski</td><td>Alpine</td><td>Polska</td><td>0</td></tr>
+    <tr><td>13</td><td>Łukasz TUSZOL Tuszyński</td><td>Ferrari</td><td>Polska</td><td>0</td></tr>
+    <tr><td>14</td><td>Patryk LUKISTEVE Czopur</td><td>Haas</td><td>Polska</td><td>0</td></tr>
+    <tr><td>15</td><td>Patryk PYKA Pyka</td><td>Racing Bulls</td><td>Polska</td><td>0</td></tr>
+    <tr><td>16</td><td>Filip PARIS Kulon</td><td>Mercedes</td><td>Polska</td><td>0</td></tr>
+    <tr><td>17</td><td>Rafał MARIO Banasiak</td><td>Mercedes</td><td>Polska</td><td>0</td></tr>
+    <tr><td>18</td><td>Dawid MAJSZI Majchrzak</td><td>McLaren</td><td>Polska</td><td>0</td></tr>
+    <tr><td>-</td><td>Kamil DEMONZ Amrah</td><td>Aston Martin Aramco</td><td>Polska</td><td>0</td></tr>
+    <tr><td>-</td><td>Piotr IZAK Skowyrski</td><td>Aston Martin Aramco</td><td>Polska</td><td>0</td></tr>
+  </tbody>
 </table>
 
 </div>
@@ -253,27 +249,28 @@
   <h3>Klasyfikacja Drużyn</h3>
  <table class="results-table">
   <thead>
-  <tr>
-    <th>Pozycja</th>
-    <th>Drużyna</th>
-    <th>Kierowca 1</th>
-    <th>Kierowca 2</th>
-    <th>Punkty</th>
-  </tr>
-</thead>
-<tbody>
-  <tr><td>1</td><td>Williams Mercedes</td><td>PEVOR</td><td>NITRO</td><td>69</td></tr>
-  <tr><td>2</td><td>Kick Sauber Ferrari</td><td>ZONY</td><td>MOKRYSUCHAR</td><td>37</td></tr>
-  <tr><td>3</td><td>Alpine Renault</td><td>WŁODAR</td><td>JAPCZAN</td><td>28</td></tr>
-  <tr><td>4</td><td>Haas Ferrari</td><td>DZINOLD</td><td>LUKISTEVE</td><td>24</td></tr>
-  <tr><td>5</td><td>Ferrari</td><td>TUSZOL</td><td>MERGHANI</td><td>16</td></tr>
-  <tr><td>6</td><td>McLaren Mercedes</td><td>MAJSZI</td><td>TAKU</td><td>12</td></tr>
-  <tr><td>7</td><td>Red Bull Racing Honda RBPT</td><td>PAGO</td><td>TOM223</td><td>14</td></tr>
-  <tr><td>8</td><td>Racing Bulls Honda RBPT</td><td>NEEX</td><td>PYKA</td><td>2</td></tr>
-  <tr><td>9</td><td>Mercedes</td><td>MARIO</td><td>PARIS</td><td>0</td></tr>
-  <tr><td>-</td><td>Aston Martin Aramco Mercedes</td><td>DEMONZ</td><td>IZAK</td><td>0</td></tr>
-</tbody>
+    <tr>
+      <th>Pozycja</th>
+      <th>Drużyna</th>
+      <th>Kierowca 1</th>
+      <th>Kierowca 2</th>
+      <th>Punkty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>Williams Mercedes</td><td>PEVOR</td><td>NITRO</td><td>106</td></tr>
+    <tr><td>2</td><td>Kick Sauber Ferrari</td><td>ZONY</td><td>MOKRYSUCHAR</td><td>45</td></tr>
+    <tr><td>3</td><td>Alpine Renault</td><td>WŁODAR</td><td>JAPCZAN</td><td>43</td></tr>
+    <tr><td>4</td><td>Haas Ferrari</td><td>DZINOLD</td><td>LUKISTEVE</td><td>42</td></tr>
+    <tr><td>5</td><td>Ferrari</td><td>TUSZOL</td><td>MERGHANI</td><td>24</td></tr>
+    <tr><td>6</td><td>Red Bull Racing Honda RBPT</td><td>PAGO</td><td>TOM223</td><td>19</td></tr>
+    <tr><td>7</td><td>McLaren Mercedes</td><td>MAJSZI</td><td>TAKU</td><td>12</td></tr>
+    <tr><td>8</td><td>Racing Bulls Honda RBPT</td><td>NEEX</td><td>PYKA</td><td>12</td></tr>
+    <tr><td>9</td><td>Mercedes</td><td>MARIO</td><td>PARIS</td><td>0</td></tr>
+    <tr><td>-</td><td>Aston Martin Aramco Mercedes</td><td>DEMONZ</td><td>IZAK</td><td>0</td></tr>
+  </tbody>
 </table>
+
 
 </div>
                 </div>
@@ -281,43 +278,42 @@
         </div>
     </section>
 
-    <section class="earnings" id="zarobki">
+<section class="earnings" id="zarobki">
   <div class="container fade-in">
     <div class="section-header">
       <h2 class="section-title">Aktualne Zarobki Kierowców 💰</h2>
       <p class="section-subtitle">
-        Pełne podsumowanie zarobków po dwóch Grand Prix, uwzględniające nagrody indywidualne, zespołowe oraz miejsca w klasyfikacji generalnej.
+        Pełne podsumowanie zarobków po trzech Grand Prix, uwzględniające nagrody indywidualne, zespołowe oraz miejsca w klasyfikacji generalnej.
       </p>
     </div>
 
     <table class="results-table">
-  <thead>
-    <tr>
-      <th>Pozycja</th>
-      <th>Kierowca</th>
-      <th>Indywidualne (2 GP)</th>
-      <th>Bonus Zespołowy</th>
-      <th>Klasyfikacja Generalna</th>
-      <th>Łącznie</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>1</td><td>Damian PEVOR Kozioł</td><td>3 000 PLN</td><td>1 500 PLN</td><td>10 000 PLN</td><td><strong>14 500 PLN</strong></td></tr>
-    <tr><td>2</td><td>Jakub JAPCZAN Piotrowicz</td><td>1 050 PLN</td><td>500 PLN</td><td>5 000 PLN</td><td><strong>6 550 PLN</strong></td></tr>
-    <tr><td>3</td><td>Dawid DZINOLD Rzeźnik</td><td>600 PLN</td><td>–</td><td>2 500 PLN</td><td><strong>3 100 PLN</strong></td></tr>
-    <tr><td>4</td><td>Sergiusz NITRO Górski</td><td>700 PLN</td><td>1 500 PLN</td><td>–</td><td><strong>2 200 PLN</strong></td></tr>
-    <tr><td>5</td><td>Maciej ZONY Zoniuk</td><td>950 PLN</td><td>1 000 PLN</td><td>–</td><td><strong>1 950 PLN</strong></td></tr>
-    <tr><td>6</td><td>Dominik MOKRYSUCHAR Stokłosa</td><td>500 PLN</td><td>1 000 PLN</td><td>–</td><td><strong>1 500 PLN</strong></td></tr>
-    <tr><td>7</td><td>Maciej WŁODAR Włodarski</td><td>0 PLN</td><td>500 PLN</td><td>–</td><td><strong>500 PLN</strong></td></tr>
-    <tr><td>8</td><td>Dawid TAKU Czajkowski</td><td>400 PLN</td><td>–</td><td>–</td><td><strong>400 PLN</strong></td></tr>
-    <tr><td>9</td><td>Jakub MERGHANI Elsadig Rokicki</td><td>400 PLN</td><td>–</td><td>–</td><td><strong>400 PLN</strong></td></tr>
-    <tr><td>10</td><td>Tomasz TOM223 Richter</td><td>400 PLN</td><td>–</td><td>–</td><td><strong>400 PLN</strong></td></tr>
-    <tr><td>11</td><td>Sebastian NEEX Trela</td><td>200 PLN</td><td>–</td><td>–</td><td><strong>200 PLN</strong></td></tr>
-    <tr><td>12</td><td>Mateusz PAGO Pągowski</td><td>100 PLN</td><td>–</td><td>–</td><td><strong>100 PLN</strong></td></tr>
-    <tr><td>13</td><td>Pozostali kierowcy</td><td>0 PLN</td><td>–</td><td>–</td><td><strong>0 PLN</strong></td></tr>
-  </tbody>
-</table>
-
+      <thead>
+        <tr>
+          <th>Pozycja</th>
+          <th>Kierowca</th>
+          <th>Indywidualne (3 GP)</th>
+          <th>Bonus Zespołowy</th>
+          <th>Klasyfikacja Generalna</th>
+          <th>Łącznie</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Damian PEVOR Kozioł</td><td>4 500 PLN</td><td>1 500 PLN</td><td>10 000 PLN</td><td><strong>16 000 PLN</strong></td></tr>
+        <tr><td>2</td><td>Jakub JAPCZAN Piotrowicz</td><td>1 800 PLN</td><td>500 PLN</td><td>5 000 PLN</td><td><strong>7 300 PLN</strong></td></tr>
+        <tr><td>3</td><td>Dawid DZINOLD Rzeźnik</td><td>1 100 PLN</td><td>–</td><td>2 500 PLN</td><td><strong>3 600 PLN</strong></td></tr>
+        <tr><td>4</td><td>Sergiusz NITRO Górski</td><td>1 000 PLN</td><td>1 500 PLN</td><td>–</td><td><strong>2 500 PLN</strong></td></tr>
+        <tr><td>5</td><td>Maciej ZONY Zoniuk</td><td>1 150 PLN</td><td>1 000 PLN</td><td>–</td><td><strong>2 250 PLN</strong></td></tr>
+        <tr><td>6</td><td>Dominik MOKRYSUCHAR Stokłosa</td><td>600 PLN</td><td>1 000 PLN</td><td>–</td><td><strong>1 600 PLN</strong></td></tr>
+        <tr><td>7</td><td>Jakub MERGHANI Elsadig Rokicki</td><td>600 PLN</td><td>–</td><td>–</td><td><strong>600 PLN</strong></td></tr>
+        <tr><td>8</td><td>Tomasz TOM223 Richter</td><td>600 PLN</td><td>–</td><td>–</td><td><strong>600 PLN</strong></td></tr>
+        <tr><td>9</td><td>Sebastian NEEX Trela</td><td>500 PLN</td><td>–</td><td>–</td><td><strong>500 PLN</strong></td></tr>
+        <tr><td>10</td><td>Maciej WŁODAR Włodarski</td><td>0 PLN</td><td>500 PLN</td><td>–</td><td><strong>500 PLN</strong></td></tr>
+        <tr><td>11</td><td>Dawid TAKU Czajkowski</td><td>400 PLN</td><td>–</td><td>–</td><td><strong>400 PLN</strong></td></tr>
+        <tr><td>12</td><td>Mateusz PAGO Pągowski</td><td>200 PLN</td><td>–</td><td>–</td><td><strong>200 PLN</strong></td></tr>
+        <tr><td>13</td><td>Pozostali kierowcy</td><td>0 PLN</td><td>–</td><td>–</td><td><strong>0 PLN</strong></td></tr>
+      </tbody>
+    </table>
     <p class="earnings-note" style="margin-top:15px;">
       🏆 Uwzględniono premie za aktualne pozycje w klasyfikacji generalnej (10 000 / 5 000 / 2 500 PLN) oraz nagrody konstruktorów (3 000 / 2 000 / 1 000 PLN).<br>
       💎 Kolejna aktualizacja po Grand Prix Belgii (02.11.2025).
@@ -430,6 +426,110 @@
       <td class="penalty-time">+5s</td>
       <td>Wjechanie w tył bolidu Lukiego.</td>
     </tr>
+
+     <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Damian PEVOR Kozioł</td>
+    <td>Williams</td>
+    <td class="penalty-time">+5s</td>
+    <td>Pevor zyskuje przewagę wyjeżdżając poza tor zaraz po wyprzedzaniu Merghaniego.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Mateusz PAGO Pągowski</td>
+    <td>Red Bull Racing</td>
+    <td class="penalty-time">+10s</td>
+    <td>Pago zjeżdża w prawo, co powoduje szczepienie trzech pojazdów.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Mateusz PAGO Pągowski</td>
+    <td>Red Bull Racing</td>
+    <td class="penalty-time">+3s</td>
+    <td>Wypchnięcie Włodara poza tor.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Mateusz PAGO Pągowski</td>
+    <td>Red Bull Racing</td>
+    <td class="penalty-time">+3s</td>
+    <td>Pago nie zostawia miejsca po zewnętrznej Tuszolowi.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Mateusz PAGO Pągowski</td>
+    <td>Red Bull Racing</td>
+    <td class="penalty-time">+3s</td>
+    <td>Kierowca Red Bulla zajeżdża drogę Sucharowi.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Dominik MOKRYSUCHAR Stokłosa</td>
+    <td>Kick Sauber</td>
+    <td class="penalty-time">+10s</td>
+    <td>Zygzakowanie na torze i zbyt późne zmiany toru jazdy na Neex.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Dominik MOKRYSUCHAR Stokłosa</td>
+    <td>Kick Sauber</td>
+    <td class="penalty-time">+5s</td>
+    <td>Zbyt agresywne zmiany toru jazdy w celu obrony pozycji na Pago.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Maciej WŁODAR Włodarski</td>
+    <td>Alpine</td>
+    <td class="penalty-time">+5s</td>
+    <td>Niebezpieczny powrót na tor i wypchnięcie Tuszola.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Dawid TAKU Czajkowski</td>
+    <td>McLaren</td>
+    <td class="penalty-time">+3s</td>
+    <td>Taku nie zostawia miejsca Tuszolowi na wierzchołku zakrętu.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Dawid TAKU Czajkowski</td>
+    <td>McLaren</td>
+    <td class="penalty-time">+3s</td>
+    <td>Taku zajeżdża drogę w strefie hamowania i doprowadza do kolizji.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Dawid TAKU Czajkowski</td>
+    <td>McLaren</td>
+    <td class="penalty-time">+3s</td>
+    <td>Niebezpieczny atak na wewnętrzną Pago.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Łukasz TUSZOL Tuszyński</td>
+    <td>Ferrari</td>
+    <td class="penalty-time">+20s</td>
+    <td>W wyniku błędu gry Tuszol nie odbywa prawidłowo kary przez aleję serwisową.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Łukasz TUSZOL Tuszyński</td>
+    <td>Ferrari</td>
+    <td class="penalty-time">+3s</td>
+    <td>Późny i niebezpieczny atak na wewnętrzną Pago.</td>
+  </tr>
 </tbody>
     </table>
 
@@ -510,10 +610,17 @@
   </div>
 </article>
 
+
+
 <article class="track-card fade-in">
-  <div class="track-header">
+ <div class="track-header">
     <div class="track-country-label">Belgia</div>
-    <div class="watch-race-btn disabled">BRAK</div>
+    <a href="https://kick.com/mrdzinold/videos/bfc88079-a954-4c6a-aac8-35e6484824a9" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="watch-race-btn">
+      OBEJRZYJ WYŚCIG
+    </a>
   </div>
   <div class="track-main-section">
     <img src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Belgium_Circuit.webp"
@@ -960,6 +1067,7 @@
 
 
 </html>
+
 
 
 
