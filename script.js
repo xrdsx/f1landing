@@ -1,6 +1,6 @@
 function updateCountdown() {
     // 🚨 NOWA DATA: 12 października 2025, godz. 15:00
-    const targetDate = new Date('2025-11-02T18:00:00').getTime();
+    const targetDate = new Date('2025-11-09T18:00:00').getTime();
     const now = Date.now();
     const diff = targetDate - now;
 
@@ -227,6 +227,29 @@ const raceAbuDhabi = [
   ["-", "Kamil DEMONZ Amrah", "Aston Martin Aramco", "-", "-", "-", "DNS", "", "0"],
   ["-", "Piotr IZAK Skowyrski", "Aston Martin Aramco", "-", "-", "-", "DNS", "", "0"]
 ];
+const raceBelgium = [
+  ["1", "Damian PEVOR Kozioł", "Williams", "1", "1", "1:47.828", "43:35.506", "+5s", "25"],
+  ["2", "Dawid DZINOLD Rzeźnik", "Haas", "3", "1", "1:47.658", "+7.282", "", "18"],
+  ["3", "Jakub JAPCZAN Piotrowicz", "Alpine", "5", "1", "1:49.126", "+9.876", "", "15"],
+  ["4", "Sergiusz NITRO Górski", "Williams", "0", "1", "1:47.254", "+11.252", "", "12"],
+  ["5", "Sebastian NEEX Trela", "Racing Bulls", "2", "2", "1:47.274", "+17.483", "", "10"],
+  ["6", "Jakub MERGHANI Elsadig Rokicki", "Ferrari", "4", "2", "1:48.925", "+32.649", "", "8"],
+  ["7", "Maciej ZONY Zoniuk", "Kick Sauber", "7", "2", "1:48.361", "+37.431", "", "6"],
+  ["8", "Tomasz TOM223 Richter", "Red Bull Racing", "6", "2", "1:47.244", "+39.753", "", "4"],
+  ["9", "Dominik MOKRYSUCHAR Stokłosa", "Kick Sauber", "8", "3", "1:48.881", "+1:17.522", "+15s", "2"],
+  ["10", "Mateusz PAGO Pągowski", "Red Bull Racing", "10", "1", "1:51.938", "+1:44.025", "+19s", "1"],
+  ["11", "Maciej WŁODAR Włodarski", "Alpine", "11", "2", "1:49.448", "+1 lap", "+5s", "0"],
+  ["12", "Dawid TAKU Czajkowski", "McLaren", "9", "4", "1:48.248", "+1 lap", "+9s", "0"],
+  ["13", "Łukasz TUSZOL Tuszyński", "Ferrari", "12", "2", "1:51.123", "+1 lap", "+23s", "0"],
+  ["14", "Rafał MARIO Banasiak", "Mercedes", "13", "2", "1:56.287", "+1 lap", "", "0"],
+  ["15", "Dawid MAJSZI Majchrzak", "McLaren", "14", "1", "2:00.775", "+1 lap", "+3s", "0"],
+  ["-", "Patryk LUKISTEVE Czopur", "Haas", "15", "0", "2:04.235", "DNF", "", "0"],
+  ["-", "Patryk PYKA Pyka", "Racing Bulls", "0", "-", "-", "DNS", "", "0"],
+  ["-", "Filip PARIS Kulon", "Mercedes", "0", "-", "-", "DNS", "", "0"],
+  ["-", "Kamil DEMONZ Amrah", "Aston Martin Aramco", "0", "-", "-", "DNS", "", "0"],
+  ["-", "Piotr IZAK Skowyrski", "Aston Martin Aramco", "0", "-", "-", "DNS", "", "0"]
+];
+
 // === OBSŁUGA KLIKNIĘCIA W KARTĘ WYŚCIGU ===
 document.querySelectorAll(".race-card").forEach((card, idx) => {
   card.addEventListener("click", () => {
@@ -246,6 +269,7 @@ document.querySelectorAll(".race-card").forEach((card, idx) => {
     let raceResults = null;
     if (idx === 0) raceResults = raceAustria;
     else if (idx === 1) raceResults = raceAbuDhabi;
+    else if (idx === 2) raceResults = raceBelgium; // ← BELGIA
 
     if (raceResults) {
       resultsBody.innerHTML = "";
@@ -269,7 +293,7 @@ document.querySelectorAll(".race-card").forEach((card, idx) => {
           // 🥇 podium kolor
           let cls = i === 0 ? "gold" : i === 1 ? "silver" : i === 2 ? "bronze" : "";
 
-          // 🏆 Kierowca dnia
+          // 🏆 Kierowca dnia – JEDYNY taki zapisujesz w danych (Nitro w Austrii)
           let driver = rawDriver;
           let driverOfDay = false;
           if (driver.toLowerCase().includes("(kierowca dnia)")) {
@@ -303,8 +327,6 @@ document.querySelectorAll(".race-card").forEach((card, idx) => {
   });
 });
 
-
-
 // 🏁 Zamykanie modala
 closeRaceModal.addEventListener("click", () => {
   raceModal.style.display = "none";
@@ -312,3 +334,4 @@ closeRaceModal.addEventListener("click", () => {
 raceModal.addEventListener("click", (e) => {
   if (e.target === raceModal) raceModal.style.display = "none";
 });
+
