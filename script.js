@@ -1,6 +1,6 @@
 function updateCountdown() {
     // 🚨 NOWA DATA: 12 października 2025, godz. 15:00
-    const targetDate = new Date('2025-11-09T18:00:00').getTime();
+    const targetDate = new Date('2025-11-09T15:00:00').getTime();
     const now = Date.now();
     const diff = targetDate - now;
 
@@ -334,4 +334,5 @@ closeRaceModal.addEventListener("click", () => {
 raceModal.addEventListener("click", (e) => {
   if (e.target === raceModal) raceModal.style.display = "none";
 });
+
 
