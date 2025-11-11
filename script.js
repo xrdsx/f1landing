@@ -1,31 +1,4 @@
-function updateCountdown() {
-    // 🚨 NOWA DATA: 12 października 2025, godz. 15:00
-    const targetDate = new Date('2025-11-09T15:00:00').getTime();
-    const now = Date.now();
-    const diff = targetDate - now;
 
-    const el = (id) => document.getElementById(id);
-
-    if (diff > 0) {
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-        el('days').textContent = String(days).padStart(3, '0');
-        el('hours').textContent = String(hours).padStart(2, '0');
-        el('minutes').textContent = String(minutes).padStart(2, '0');
-        el('seconds').textContent = String(seconds).padStart(2, '0');
-    } else {
-        el('days').textContent = '000';
-        el('hours').textContent = '00';
-        el('minutes').textContent = '00';
-        el('seconds').textContent = '00';
-    }
-}
-
-setInterval(updateCountdown, 1000);
-updateCountdown();
 
 
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -249,6 +222,28 @@ const raceBelgium = [
   ["-", "Kamil DEMONZ Amrah", "Aston Martin Aramco", "0", "-", "-", "DNS", "", "0"],
   ["-", "Piotr IZAK Skowyrski", "Aston Martin Aramco", "0", "-", "-", "DNS", "", "0"]
 ];
+const raceMonza = [
+  ["1", "Damian PEVOR Kozioł", "Williams", "1", "2", "1:21.844", "39:46.837", "", "25"],
+  ["2", "Maciej ZONY Zoniuk", "Kick Sauber", "17", "1", "1:23.021", "+8.056", "", "18"],
+  ["3", "Dawid DZINOLD Rzeźnik", "Haas", "2", "2", "1:23.457", "+9.877", "", "15"],
+  ["4", "Jakub JAPCZAN Piotrowicz", "Alpine", "5", "2", "1:23.537", "+18.700", "", "12"],
+  ["5", "Dominik MOKRYSUCHAR Stokłosa", "Kick Sauber", "8", "2", "1:23.078", "+21.372", "", "10"],
+  ["6", "Sebastian NEEX Trela", "Racing Bulls", "4", "2", "1:23.082", "+22.776", "+5s", "8"],
+  ["7", "Sergiusz NITRO Górski (kierowca dnia)", "Williams", "6", "4", "1:22.059", "+22.782", "", "6"],
+  ["8", "Tomasz TOM223 Richter", "Red Bull Racing", "9", "2", "1:22.264", "+37.518", "+10s", "4"],
+  ["9", "Maciej WŁODAR Włodarski", "Alpine", "10", "3", "1:23.817", "+1:02.297", "", "2"],
+  ["10", "Patryk LUKISTEVE Czopur", "Haas", "13", "2", "1:23.968", "+1 okr.", "", "1"],
+  ["11", "Piotr IZAK Skowyrski", "Aston Martin Aramco", "14", "2", "1:25.131", "+1 okr.", "+30s", "0"],
+  ["12", "Filip PARIS Kulon", "Mercedes", "15", "2", "1:27.870", "+2 okr.", "+30s", "0"],
+  ["13", "Dawid MAJSZI Majchrzak", "McLaren", "16", "4", "1:27.181", "+2 okr.", "", "0"],
+  ["-", "Dawid TAKU Czajkowski", "McLaren", "7", "3", "1:23.856", "DNF", "", "0"],
+  ["-", "Patryk PYKA Pyka", "Racing Bulls", "11", "2", "1:25.944", "DNF", "", "0"],
+  ["-", "Jakub MERGHANI Elsadig Rokicki", "Ferrari", "3", "0", "-:--.---", "DNF", "", "0"],
+  ["-", "Mateusz PAGO Pągowski", "Red Bull Racing", "12", "0", "-:--.---", "DSQ", "", "0"],
+  ["-", "Łukasz TUSZOL Tuszyński", "Ferrari", "-", "-", "-", "DNS", "", "0"],
+  ["-", "Rafał MARIO Banasiak", "Mercedes", "-", "-", "-", "DNS", "", "0"],
+  ["-", "Kamil DEMONZ Amrah", "Aston Martin Aramco", "-", "-", "-", "DNS", "", "0"]
+];
 
 // === OBSŁUGA KLIKNIĘCIA W KARTĘ WYŚCIGU ===
 document.querySelectorAll(".race-card").forEach((card, idx) => {
@@ -270,6 +265,7 @@ document.querySelectorAll(".race-card").forEach((card, idx) => {
     if (idx === 0) raceResults = raceAustria;
     else if (idx === 1) raceResults = raceAbuDhabi;
     else if (idx === 2) raceResults = raceBelgium; // ← BELGIA
+    else if (idx === 3) raceResults = raceMonza;
 
     if (raceResults) {
       resultsBody.innerHTML = "";
@@ -334,5 +330,4 @@ closeRaceModal.addEventListener("click", () => {
 raceModal.addEventListener("click", (e) => {
   if (e.target === raceModal) raceModal.style.display = "none";
 });
-
 
