@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>F1 Turniej Streamerów - Walka o Pieniądze i Sławę</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests;">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/png" href="f1-icon.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="script.js" defer></script>
+</head>
+<div class="floating-car" id="floatingCar" title="Wpadnij na transmisję!">
+    🚗
+</div>
+
+<!-- ===== POPUP ===== -->
+<div class="stream-popup" id="streamPopup">
+    <div class="stream-popup-content">
+        <span class="close-popup" id="closePopup">&times;</span>
+        <h3>🚨 Wpadnij na transmisję Mrdzinolda! 🚨</h3>
+        <p>Oglądaj na żywo jego zmagania w F1 Turnieju Streamerów.</p>
+        <a href="https://www.twitch.tv/mrdzinold" target="_blank" class="watch-button">Oglądaj na Twitchu</a>
+    </div>
+</div>
+
+<body>
+    
+    <!-- ===== NAV ===== -->
+    <nav class="navbar" id="navbar" aria-label="Główna nawigacja">
+        <div class="nav-container">
+            <a href="#" class="logo">F1 TURNIEJ STREAMERÓW</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-expanded="false" aria-controls="navLinks"
+                aria-label="Przełącz menu">☰</button>
+           <ul class="nav-links" id="navLinks">
+   
+    
+    <li><a href="#kalendarz">Kalendarz</a></li>
+    <li><a href="#klasyfikacje">Klasyfikacje</a></li>
+    <li><a href="#tory">Transmisje wyścigów</a></li>
+    <li><a href="#uczestnicy">Uczestnicy</a></li>
+    <li><a href="#sponsorzy">Sponsorzy</a></li>
+</ul>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" role="banner">
+  <div class="hero-background" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <div class="hero-content">
+
+
+    <h1 class="hero-title">
+      Dziękujemy za oglądanie<br />
+      <span class="highlight">Do zobaczenia w 2026!</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      To był niesamowity sezon pełen emocji, rywalizacji i niezapomnianych chwil.<br />
+      Dziękujemy wszystkim widzom, kierowcom i partnerom za wsparcie przez cały turniej!
+    </p>
+
+    <div class="hero-powered-by" aria-label="Partner technologiczny">
+      POWERED BY MRDZINOLD
+    </div>
+  </div>
+</section>
+
+
+    <!-- ===== RACE CALENDAR ===== -->
+    <section class="race-calendar" id="kalendarz">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Kalendarz Wyścigów</h2>
+                <p class="section-subtitle">Wyniki poszczególnych wyścigów.</p>
+            </div>
+ 
+
+
+
+                    
+
+        <div class="race-calendar-grid fade-in">
+           <div class="race-card finished">
+    <div class="race-date">12 PAŹDZIERNIKA 2025 • 18:00</div>
+    <div class="race-name">Oficjalne Grand Prix AUSTRIA #1</div>
+    <div class="race-location">Austria • Red Bull Ring • Spielberg</div>
+<div class="race-status">✅ KONIEC</div>
+
+    <div class="race-hint">Kliknij, aby wyświetlić statystyki 📊</div>
+  
+</div>
+
+           <div class="race-card finished">
+  <div class="race-date">19 PAŹDZIERNIKA 2025 • 15:00</div>
+  <div class="race-name">Oficjalne Grand Prix ABU ZABI #2</div>
+  <div class="race-location">Zjednoczone Emiraty Arabskie • Yas Marina Circuit • Abu Zabi</div>
+
+ <div class="race-status">✅ KONIEC</div>
+
+    <div class="race-hint">Kliknij, aby wyświetlić statystyki 📊</div>
+</div>
+
+            <div class="race-card finished">
+  <div class="race-date">2 LISTOPADA 2025 • 18:00</div>
+  <div class="race-name">Oficjalne Grand Prix BELGIA #3</div>
+  <div class="race-location">Belgia • Spa-Francorchamps</div>
+
+  <div class="race-status">✅ KONIEC</div>
+
+    <div class="race-hint">Kliknij, aby wyświetlić statystyki 📊</div>
+</div>
+
+            <div class="race-card finished">
+  <div class="race-date">9 LISTOPADA 2025 • 15:00</div>
+  <div class="race-name">Oficjalne Grand Prix WŁOCHY #4</div>
+  <div class="race-location">Włochy • Autodromo Nazionale di Monza</div>
+
+ <div class="race-status">✅ KONIEC</div>
+
+    <div class="race-hint">Kliknij, aby wyświetlić statystyki 📊</div>
+</div>
+    </div>
+</section>
+
+    <!-- ===== CLASSIFICATIONS ===== -->
+    <section class="classifications" id="klasyfikacje">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Klasyfikacje</h2>
+                <p class="section-subtitle">Ranking kierowców i drużyn na bieżąco aktualizowany.</p>
+            </div>
+            <div class="success-banner">
+  WYNIKI AKTULANE - OSTATNIA AKTUALIZACJA 10.11 17:00
+</div>
+
+            <div class="classification-grid fade-in">
+                <!-- Driver Classification -->
+                <div class="classification-grid fade-in">
+                    <!-- Driver Classification -->
+                   <div class="classification-card">
+    <h3>Klasyfikacja Kierowców</h3>
+<table class="results-table">
+  <thead>
+    <tr>
+      <th>Pozycja</th>
+      <th>Kierowca</th>
+      <th>Drużyna</th>
+      <th>Narodowość</th>
+      <th>Punkty</th>
+    </tr>
+  </thead>
+ <tbody>
+        <tr><td>1</td><td>Damian PEVOR Kozioł</td><td>Williams</td><td>Polska</td><td>100</td></tr>
+        <tr><td>2</td><td>Dawid DZINOLD Rzeźnik</td><td>Haas</td><td>Polska</td><td>57</td></tr>
+        <tr><td>3</td><td>Jakub JAPCZAN Piotrowicz</td><td>Alpine</td><td>Polska</td><td>55</td></tr>
+        <tr><td>4</td><td>Maciej ZONY Zoniuk</td><td>Kick Sauber</td><td>Polska</td><td>46</td></tr>
+        <tr><td>5</td><td>Sergiusz NITRO Górski</td><td>Williams</td><td>Polska</td><td>37</td></tr>
+        <tr><td>6</td><td>Dominik MOKRYSUCHAR Stokłosa</td><td>Kick Sauber</td><td>Polska</td><td>27</td></tr>
+        <tr><td>7</td><td>Sebastian NEEX Trela</td><td>Racing Bulls</td><td>Polska</td><td>20</td></tr>
+        <tr><td>8</td><td>Jakub MERGHANI Elsadig Rokicki</td><td>Ferrari</td><td>Polska</td><td>24</td></tr>
+        <tr><td>9</td><td>Tomasz TOM223 Richter</td><td>Red Bull Racing</td><td>Niemcy</td><td>20</td></tr>
+        <tr><td>10</td><td>Dawid TAKU Czajkowski</td><td>McLaren</td><td>Polska</td><td>12</td></tr>
+        <tr><td>11</td><td>Mateusz PAGO Pągowski</td><td>Red Bull Racing</td><td>Polska</td><td>3</td></tr>
+        <tr><td>12</td><td>Maciej WŁODAR Włodarski</td><td>Alpine</td><td>Polska</td><td>2</td></tr>
+        <tr><td>13</td><td>Patryk LUKISTEVE Czopur</td><td>Haas</td><td>Polska</td><td>1</td></tr>
+        <tr><td>14</td><td>Łukasz TUSZOL Tuszyński</td><td>Ferrari</td><td>Polska</td><td>0</td></tr>
+        <tr><td>15</td><td>Piotr IZAK Skowyrski</td><td>Aston Martin Aramco</td><td>Polska</td><td>0</td></tr>
+        <tr><td>16</td><td>Filip PARIS Kulon</td><td>Mercedes</td><td>Polska</td><td>0</td></tr>
+        <tr><td>17</td><td>Dawid MAJSZI Majchrzak</td><td>McLaren</td><td>Polska</td><td>0</td></tr>
+        <tr><td>18</td><td>Patryk PYKA Pyka</td><td>Racing Bulls</td><td>Polska</td><td>0</td></tr>
+        <tr><td>19</td><td>Rafał MARIO Banasiak</td><td>Mercedes</td><td>Polska</td><td>0</td></tr>
+        <tr><td>-</td><td>Kamil DEMONZ Amrah</td><td>Aston Martin Aramco</td><td>Polska</td><td>0</td></tr>
+      </tbody>
+</table>
+
+</div>
+
+
+                    <!-- Team Classification -->
+  <div class="classification-card">
+  <h3>Klasyfikacja Drużyn</h3>
+ <table class="results-table">
+  <thead>
+    <tr>
+      <th>Pozycja</th>
+      <th>Drużyna</th>
+      <th>Kierowca 1</th>
+      <th>Kierowca 2</th>
+      <th>Punkty</th>
+    </tr>
+  </thead>
+   <tbody>
+        <tr><td>1</td><td>Williams Mercedes</td><td>PEVOR</td><td>NITRO</td><td>137</td></tr>
+        <tr><td>2</td><td>Kick Sauber Ferrari</td><td>ZONY</td><td>MOKRYSUCHAR</td><td>73</td></tr>
+        <tr><td>3</td><td>Haas Ferrari</td><td>DZINOLD</td><td>LUKISTEVE</td><td>58</td></tr>
+        <tr><td>4</td><td>Alpine Renault</td><td>WŁODAR</td><td>JAPCZAN</td><td>57</td></tr>
+        <tr><td>5</td><td>Racing Bulls Honda RBPT</td><td>NEEX</td><td>PYKA</td><td>20</td></tr>
+        <tr><td>6</td><td>Ferrari</td><td>TUSZOL</td><td>MERGHANI</td><td>24</td></tr>
+        <tr><td>7</td><td>Red Bull Racing Honda RBPT</td><td>PAGO</td><td>TOM223</td><td>23</td></tr>
+        <tr><td>8</td><td>McLaren Mercedes</td><td>MAJSZI</td><td>TAKU</td><td>12</td></tr>
+        <tr><td>9</td><td>Aston Martin Aramco Mercedes</td><td>DEMONZ</td><td>IZAK</td><td>0</td></tr>
+        <tr><td>10</td><td>Mercedes</td><td>MARIO</td><td>PARIS</td><td>0</td></tr>
+      </tbody>
+</table>
+
+
+</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="earnings" id="zarobki">
+  <div class="container fade-in">
+    <div class="section-header">
+      <h2 class="section-title">Aktualne Zarobki Kierowców 💰</h2>
+      <p class="section-subtitle">
+        Pełne podsumowanie zarobków po czterech Grand Prix, uwzględniające nagrody indywidualne, zespołowe oraz premie za miejsca w klasyfikacji generalnej.
+      </p>
+    </div>
+
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>Pozycja</th>
+          <th>Kierowca</th>
+          <th>Indywidualne (3 GP)</th>
+          <th>Bonus Zespołowy</th>
+          <th>Klasyfikacja Generalna</th>
+          <th>Łącznie</th>
+        </tr>
+      </thead>
+      <tbody>
+  <tr><td>1</td><td>Damian PEVOR Kozioł</td><td>6 000 PLN</td><td>1 500 PLN</td><td>10 000 PLN</td><td><strong>17 500 PLN</strong></td></tr>
+  <tr><td>2</td><td>Dawid DZINOLD Rzeźnik</td><td>1 850 PLN</td><td>500 PLN</td><td>5 000 PLN</td><td><strong>7 350 PLN</strong></td></tr>
+  <tr><td>3</td><td>Jakub JAPCZAN Piotrowicz</td><td>1 850 PLN</td><td>–</td><td>2 500 PLN</td><td><strong>4 350 PLN</strong></td></tr>
+  <tr><td>4</td><td>Maciej ZONY Zoniuk</td><td>1 900 PLN</td><td>1 000 PLN</td><td>–</td><td><strong>2 900 PLN</strong></td></tr>
+  <tr><td>5</td><td>Sergiusz NITRO Górski</td><td>1 200 PLN</td><td>1 500 PLN</td><td>–</td><td><strong>2 700 PLN</strong></td></tr>
+  <tr><td>6</td><td>Dominik MOKRYSUCHAR Stokłosa</td><td>900 PLN</td><td>1 000 PLN</td><td>–</td><td><strong>1 900 PLN</strong></td></tr>
+  <tr><td>7</td><td>Tomasz TOM223 Richter</td><td>800 PLN</td><td>–</td><td>–</td><td><strong>800 PLN</strong></td></tr>
+  <tr><td>8</td><td>Sebastian NEEX Trela</td><td>700 PLN</td><td>–</td><td>–</td><td><strong>700 PLN</strong></td></tr>
+  <tr><td>9</td><td>Jakub MERGHANI Elsadig Rokicki</td><td>600 PLN</td><td>–</td><td>–</td><td><strong>600 PLN</strong></td></tr>
+  <tr><td>10</td><td>Patryk LUKISTEVE Czopur</td><td>100 PLN</td><td>500 PLN</td><td>–</td><td><strong>600 PLN</strong></td></tr>
+  <tr><td>11</td><td>Dawid TAKU Czajkowski</td><td>400 PLN</td><td>–</td><td>–</td><td><strong>400 PLN</strong></td></tr>
+  <tr><td>12</td><td>Mateusz PAGO Pągowski</td><td>200 PLN</td><td>–</td><td>–</td><td><strong>200 PLN</strong></td></tr>
+  <tr><td>13</td><td>Maciej WŁODAR Włodarski</td><td>100 PLN</td><td>–</td><td>–</td><td><strong>100 PLN</strong></td></tr>
+</tbody>
+    </table>
+    <p class="earnings-note" style="margin-top:15px;">
+      🏆 Uwzględniono premie za aktualne pozycje w klasyfikacji generalnej (10 000 / 5 000 / 2 500 PLN) oraz nagrody konstruktorów (3 000 / 2 000 / 1 000 PLN).<br>
+      💎 Kolejna aktualizacja po Grand Prix Belgii (02.11.2025).
+    </p>
+  </div>
+</section>
+
+    
+
+   <section class="penalties" id="kary">
+  <div class="container fade-in">
+    <div class="section-header">
+      <h2 class="section-title">Kary i Uwagi Sędziowskie</h2>
+      <p class="section-subtitle">
+        Lista wszystkich nałożonych kar czasowych oraz ostrzeżeń po oficjalnych Grand Prix.
+      </p>
+    </div>
+
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>Grand Prix</th>
+          <th>Kierowca</th>
+          <th>Zespół</th>
+          <th>Kara</th>
+          <th>Powód</th>
+        </tr>
+      </thead>
+     <tbody>
+  <tr data-race="Austria #1">
+    <td>GRAND PRIX AUSTRIA #1</td>
+    <td>Jakub MERGHANI Elsadig Rokicki</td>
+    <td>Ferrari</td>
+    <td class="penalty-time">+3s</td>
+    <td>Uderzenie w tył i wypychanie Nitro.</td>
+  </tr>
+
+  <tr data-race="Austria #1">
+    <td>GRAND PRIX AUSTRIA #1</td>
+    <td>Sergiusz NITRO Górski</td>
+    <td>Williams</td>
+    <td class="penalty-time">+20s</td>
+    <td>
+      5 sekund – divebomb na demonz na pierwszym okrążeniu.<br>
+      15 sekund – wypchnięcie demonz z toru powodujące uszkodzenia uniemożliwiające dalszą jazdę.
+    </td>
+  </tr>
+
+  <tr data-race="Austria #1">
+    <td>GRAND PRIX AUSTRIA #1</td>
+    <td>Filip PARIS Kulon</td>
+    <td>Mercedes</td>
+    <td class="penalty-time">+5s</td>
+    <td>Uderzenie w tył bolidu pyka97.</td>
+  </tr>
+             <tr data-race="Abu Dhabi #2">
+      <td>GRAND PRIX ABU ZABI #2</td>
+      <td>Sergiusz NITRO Górski</td>
+      <td>Williams</td>
+      <td class="penalty-time">+3s</td>
+      <td>
+        Przy wysokiej prędkości Nitro nie zostawia przestrzeni na wewnętrznej dla Japczana
+        i powoduje kolizję oraz stratę czasową.
+      </td>
+    </tr>
+
+    <tr data-race="Abu Dhabi #2">
+      <td>GRAND PRIX ABU ZABI #2</td>
+      <td>Sergiusz NITRO Górski</td>
+      <td>Williams</td>
+      <td class="penalty-time">+3s</td>
+      <td>
+        Na hamowaniu dochodzi do kontaktu, w którego wyniku Nitro trwale zyskuje pozycję.
+      </td>
+    </tr>
+
+    <tr data-race="Abu Dhabi #2">
+      <td>GRAND PRIX ABU ZABI #2</td>
+      <td>Jakub MERGHANI Elsadig Rokicki</td>
+      <td>Ferrari</td>
+      <td class="penalty-time">+3s</td>
+      <td>
+        Po przestrzeleniu hamowania Merghani wraca niebezpiecznie w środku następnego zakrętu
+        i zyskuje pozycję.
+      </td>
+    </tr>
+
+    <tr data-race="Abu Dhabi #2">
+      <td>GRAND PRIX ABU ZABI #2</td>
+      <td>Tomasz TOM223 Richter</td>
+      <td>Red Bull Racing</td>
+      <td class="penalty-time">+5s</td>
+      <td>
+        Kierowca Red Bulla traci kontrolę nad autem i niebezpiecznie wraca na tor.
+      </td>
+    </tr>
+
+    <tr data-race="Abu Dhabi #2">
+      <td>GRAND PRIX ABU ZABI #2</td>
+      <td>Rafał MARIO Banasiak</td>
+      <td>Mercedes</td>
+      <td class="penalty-time">+3s</td>
+      <td>Mało roztropna jazda w poprzek toru.</td>
+    </tr>
+
+    <tr data-race="Abu Dhabi #2">
+      <td>GRAND PRIX ABU ZABI #2</td>
+      <td>Rafał MARIO Banasiak</td>
+      <td>Mercedes</td>
+      <td class="penalty-time">+5s</td>
+      <td>Wjechanie w tył bolidu Lukiego.</td>
+    </tr>
+
+     <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Damian PEVOR Kozioł</td>
+    <td>Williams</td>
+    <td class="penalty-time">+5s</td>
+    <td>Pevor zyskuje przewagę wyjeżdżając poza tor zaraz po wyprzedzaniu Merghaniego.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Mateusz PAGO Pągowski</td>
+    <td>Red Bull Racing</td>
+    <td class="penalty-time">+10s</td>
+    <td>Pago zjeżdża w prawo, co powoduje szczepienie trzech pojazdów.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Mateusz PAGO Pągowski</td>
+    <td>Red Bull Racing</td>
+    <td class="penalty-time">+3s</td>
+    <td>Wypchnięcie Włodara poza tor.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Mateusz PAGO Pągowski</td>
+    <td>Red Bull Racing</td>
+    <td class="penalty-time">+3s</td>
+    <td>Pago nie zostawia miejsca po zewnętrznej Tuszolowi.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Mateusz PAGO Pągowski</td>
+    <td>Red Bull Racing</td>
+    <td class="penalty-time">+3s</td>
+    <td>Kierowca Red Bulla zajeżdża drogę Sucharowi.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Dominik MOKRYSUCHAR Stokłosa</td>
+    <td>Kick Sauber</td>
+    <td class="penalty-time">+10s</td>
+    <td>Zygzakowanie na torze i zbyt późne zmiany toru jazdy na Neex.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Dominik MOKRYSUCHAR Stokłosa</td>
+    <td>Kick Sauber</td>
+    <td class="penalty-time">+5s</td>
+    <td>Zbyt agresywne zmiany toru jazdy w celu obrony pozycji na Pago.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Maciej WŁODAR Włodarski</td>
+    <td>Alpine</td>
+    <td class="penalty-time">+5s</td>
+    <td>Niebezpieczny powrót na tor i wypchnięcie Tuszola.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Dawid TAKU Czajkowski</td>
+    <td>McLaren</td>
+    <td class="penalty-time">+3s</td>
+    <td>Taku nie zostawia miejsca Tuszolowi na wierzchołku zakrętu.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Dawid TAKU Czajkowski</td>
+    <td>McLaren</td>
+    <td class="penalty-time">+3s</td>
+    <td>Taku zajeżdża drogę w strefie hamowania i doprowadza do kolizji.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Dawid TAKU Czajkowski</td>
+    <td>McLaren</td>
+    <td class="penalty-time">+3s</td>
+    <td>Niebezpieczny atak na wewnętrzną Pago.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Łukasz TUSZOL Tuszyński</td>
+    <td>Ferrari</td>
+    <td class="penalty-time">+20s</td>
+    <td>W wyniku błędu gry Tuszol nie odbywa prawidłowo kary przez aleję serwisową.</td>
+  </tr>
+
+  <tr data-race="Belgia #3">
+    <td>GRAND PRIX BELGIA #3</td>
+    <td>Łukasz TUSZOL Tuszyński</td>
+    <td>Ferrari</td>
+    <td class="penalty-time">+3s</td>
+    <td>Późny i niebezpieczny atak na wewnętrzną Pago.</td>
+  </tr>
+
+    <tr data-race="Włochy #4">
+    <td>GRAND PRIX WŁOCHY #4</td>
+    <td>Piotr IZAK Skowyrski</td>
+    <td>Aston Martin Aramco</td>
+    <td class="penalty-time">+30s</td>
+    <td>
+      Kierowcy nie stosują się do procedury safety car i poleceń wydawanych przez dyrektora wyścigu,
+      co powoduje zatrzymanie większości stawki i brak możliwości ich powrotu do kolejki safety cara.
+    </td>
+  </tr>
+
+  <tr data-race="Włochy #4">
+    <td>GRAND PRIX WŁOCHY #4</td>
+    <td>Filip PARIS Kulon</td>
+    <td>Mercedes</td>
+    <td class="penalty-time">+30s</td>
+    <td>
+      Kierowcy nie stosują się do procedury safety car i poleceń wydawanych przez dyrektora wyścigu,
+      co powoduje zatrzymanie większości stawki i brak możliwości ich powrotu do kolejki safety cara.
+    </td>
+  </tr>
+
+  <tr data-race="Włochy #4">
+    <td>GRAND PRIX WŁOCHY #4</td>
+    <td>Sebastian NEEX Trela</td>
+    <td>Racing Bulls</td>
+    <td class="penalty-time">+5s</td>
+    <td>
+      Neex wyprzedza Nitro, po czym hamuje dużo przed normalnym punktem hamowania,
+      co powoduje uszkodzenia u Nitrozyniaka.
+    </td>
+  </tr>
+
+  <tr data-race="Włochy #4">
+    <td>GRAND PRIX WŁOCHY #4</td>
+    <td>Tomasz TOM223 Richter</td>
+    <td>Red Bull Racing</td>
+    <td class="penalty-time">+10s</td>
+    <td>
+      Tom223 wjeżdża w tył Merghaniego na wyjściu z zakrętu po próbie divebomba na Neexie,
+      jednocześnie zderzając się z nim, powodując dużą stratę czasową u Merganiego.
+    </td>
+  </tr>
+</tbody>
+    </table>
+
+    <p class="race-info-note" style="margin-top: 20px;">
+      ⚠️ Wszystkie kary zostały zweryfikowane przez komisję sędziowską.
+    </p>
+  </div>
+</section>
+
+
+    <!-- ===== NEW: TRACKS / TORY ===== -->
+    <section class="tracks" id="tory">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Transmisje wyścigów</h2>
+                <p class="section-subtitle">Obejrzyj wyścigi na poszczególnych torach.
+                </p>
+            </div>
+
+            <div class="tracks-grid">
+
+
+                <!-- Monza -->
+               
+
+                <!-- Austria -->
+                <article class="track-card fade-in">
+  <div class="track-header">
+    <div class="track-country-label">Austria</div>
+    <a href="https://kick.com/mrdzinold/videos/443e83f1-4869-4077-ad49-5f54eeccbc7d" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="watch-race-btn">
+      OBEJRZYJ WYŚCIG
+    </a>
+  </div>
+
+  <div class="track-main-section">
+    <img 
+      src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Austria_Circuit.webp"
+      alt="Red Bull Ring"
+      class="track-image"
+    />
+  </div>
+
+  <div class="track-info-section">
+    <div class="track-name">Red Bull Ring</div>
+    <div class="track-description">
+      Spielberg • Krótka, ale niezwykle techniczna pętla. Trzy ostre podjazdy,
+      brutalne hamowania i niespodziewane manewry wyprzedzania — adrenalina
+      gwarantowana.
+    </div>
+  </div>
+</article>
+
+                
+
+                <!-- Abu Zabi -->
+                <article class="track-card fade-in">
+  <div class="track-header">
+    <div class="track-country-label">Abu Zabi</div>
+    <a href="https://kick.com/mrdzinold/videos/eda53c80-36a7-4a45-88f4-9c03162065af" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="watch-race-btn">
+      OBEJRZYJ WYŚCIG
+    </a>
+  </div>
+  <div class="track-main-section">
+    <img src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Abu_Dhabi_Circuit.webp"
+      alt="Yas Marina Circuit" class="track-image" loading="lazy" />
+  </div>
+  <div class="track-info-section">
+    <div class="track-name">Yas Marina Circuit</div>
+    <div class="track-description">
+      Abu Zabi • Nocny spektakl świateł i prędkości. Techniczne sekcje, długie proste i malownicza marina tworzą wyjątkową atmosferę finałowych zmagań.
+    </div>
+  </div>
+</article>
+
+
+
+<article class="track-card fade-in">
+ <div class="track-header">
+    <div class="track-country-label">Belgia</div>
+    <a href="https://kick.com/mrdzinold/videos/bfc88079-a954-4c6a-aac8-35e6484824a9" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="watch-race-btn">
+      OBEJRZYJ WYŚCIG
+    </a>
+  </div>
+  <div class="track-main-section">
+    <img src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Belgium_Circuit.webp"
+      alt="Circuit de Spa-Francorchamps" class="track-image" />
+  </div>
+  <div class="track-info-section">
+    <div class="track-name">Spa-Francorchamps</div>
+    <div class="track-description">
+      Ardeny • Kultowy tor pełen legendarnych zakrętów. Eau Rouge i Raidillon to prawdziwy test odwagi, a zmienna pogoda potrafi wywrócić wyścig do góry nogami.
+    </div>
+  </div>
+</article>
+
+<article class="track-card fade-in">
+  <div class="track-header">
+    <div class="track-country-label">Włochy</div>
+    <a href="https://kick.com/mrdzinold/videos/cf990b2d-7b0e-4820-a9e2-ea4a12d9d3df" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="watch-race-btn">
+      OBEJRZYJ WYŚCIG
+    </a>
+  </div>
+  <div class="track-main-section">
+    <img src="https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Italy_Circuit.webp"
+      alt="Autodromo Nazionale di Monza" class="track-image" />
+  </div>
+  <div class="track-info-section">
+    <div class="track-name">Autodromo Nazionale di Monza</div>
+    <div class="track-description">
+      Włochy • Legendarna „Świątynia Prędkości”, gdzie królują długie proste, minimalny docisk i ekstremalne prędkości. Każdy błąd kosztuje tu cenne sekundy.
+    </div>
+  </div>
+</article>
+
+
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- ===== PARTICIPANTS ===== -->
+    <section class="participants" id="uczestnicy">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Uczestnicy</h2>
+                <p class="section-subtitle">Poznaj streamerów walczących o tytuł mistrza i wielkie nagrody pieniężne.
+                </p>
+            </div>
+
+            <div class="participants-grid">
+                <!-- Mrdzinold -->
+                <div class="participant-card fade-in twitch">
+                    <div class="participant-avatar">
+                        <a href="https://www.twitch.tv/mrdzinold" target="_blank" rel="noopener">
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/3c3cfcb9-151f-4e31-a4b7-64afd52217c0-profile_image-300x300.png"
+                                alt="Mrdzinold">
+                        </a>
+                    </div>
+                    <a href="https://www.twitch.tv/mrdzinold" target="_blank" rel="noopener"
+                        class="participant-name">Mrdzinold</a>
+                    <div class="participant-platform">Twitch</div>
+                </div>
+
+                <!-- Tuszol -->
+                <div class="participant-card fade-in kick">
+                    <div class="participant-avatar">
+                        <a href="http://kick.com/tuszol" target="_blank" rel="noopener">
+                            <img src="https://img.siepomaga.pl/cdn-cgi/image/format=auto,width=1180/uploads/attached_image/photo/583382/816a8c9b-186c-4056-83b8-448365e9bf8d.jpg"
+                                alt="Tuszol">
+                        </a>
+                    </div>
+                    <a href="http://kick.com/tuszol" target="_blank" rel="noopener" class="participant-name">Tuszol</a>
+                    <div class="participant-platform">Kick</div>
+                </div>
+
+                <!-- Japczan -->
+                <div class="participant-card fade-in kick">
+                    <div class="participant-avatar">
+                        <a href="http://kick.com/japczan" target="_blank" rel="noopener">
+                            <img src="https://yt3.googleusercontent.com/sfO9n7NN9cKlLsfWmLmgHOjJxkkBKzDBQlPdokQ0NRYVOV8hp6gzg0lJ-cAWqBGKy08e_FADxw=s900-c-k-c0x00ffffff-no-rj"
+                                alt="Japczan">
+                        </a>
+                    </div>
+                    <a href="http://kick.com/japczan" target="_blank" rel="noopener"
+                        class="participant-name">Japczan</a>
+                    <div class="participant-platform">Kick</div>
+                </div>
+
+                <!-- BanduraCartel -->
+                <div class="participant-card fade-in kick">
+        <div class="participant-avatar">
+          <a href="https://kick.com/lukisteve" target="_blank" rel="noopener">
+            <img src="https://files.kick.com/images/user/25990407/profile_image/conversion/b5e408ae-7a0a-4743-bc9d-8f058afd3b1c-fullsize.webp"
+                 alt="LukiSteve">
+          </a>
+        </div>
+        <a href="https://kick.com/lukisteve" target="_blank" rel="noopener" class="participant-name">LukiSteve</a>
+        <div class="participant-platform">Kick</div>
+      </div>
+
+                <!-- Patryk PYKA -->
+                <div class="participant-card fade-in kick">
+                    <div class="participant-avatar">
+                        <a href="https://kick.com/pyka97" target="_blank" rel="noopener">
+                            <img src="https://files.kick.com/images/user/16801650/profile_image/conversion/d5d2e240-2865-4cac-b362-e564a816a731-fullsize.webp"
+                                alt="Patryk PYKA">
+                        </a>
+                    </div>
+                    <a href="https://kick.com/pyka97" target="_blank" rel="noopener" class="participant-name">PYKA</a>
+                    <div class="participant-platform">Kick</div>
+                </div>
+
+                <!-- Jakub MERGHANI -->
+                <div class="participant-card fade-in kick">
+                    <div class="participant-avatar">
+                        <a href="https://kick.com/xmerghani" target="_blank" rel="noopener">
+                            <img src="https://files.kick.com/images/user/25772405/profile_image/conversion/396f16fe-e0c9-4cc5-b6e1-99f368d0fc4f-fullsize.webp"
+                                alt="Jakub MERGHANI">
+                        </a>
+                    </div>
+                    <a href="https://kick.com/xmerghani" target="_blank" rel="noopener"
+                        class="participant-name">MERGHANI</a>
+                    <div class="participant-platform">Kick</div>
+                </div>
+
+                <!-- Sebastian NEEX Trela -->
+                <div class="participant-card fade-in kick">
+                    <div class="participant-avatar">
+                        <a href="https://kick.com/neexcsgo" target="_blank" rel="noopener">
+                            <img src="https://files.kick.com/images/user/17714734/profile_image/conversion/07e74748-4b4b-4a7e-9fbd-63cca52eb0b5-fullsize.webp"
+                                alt="Sebastian NEEX Trela">
+                        </a>
+                    </div>
+                    <a href="https://kick.com/neexcsgo" target="_blank" rel="noopener" class="participant-name">NEEX</a>
+                    <div class="participant-platform">Kick</div>
+                </div>
+
+                <!-- Sergiusz NITRO Górski -->
+                <div class="participant-card fade-in kick">
+                    <div class="participant-avatar">
+                        <a href="https://kick.com/NITER" target="_blank" rel="noopener">
+                            <img src="https://files.kick.com/images/user/190599/profile_image/conversion/24d8bac5-74ea-49ce-b6c3-9c9abd53874c-fullsize.webp"
+                                alt="Sergiusz NITRO Górski">
+                        </a>
+                    </div>
+                    <a href="https://kick.com/NITER" target="_blank" rel="noopener" class="participant-name">NITRO</a>
+                    <div class="participant-platform">Kick</div>
+                </div>
+
+                <!-- Piotr IZAK Skowyrski -->
+                <div class="participant-card fade-in twitch">
+                    <div class="participant-avatar">
+                        <a href="https://www.twitch.tv/izakooo" target="_blank" rel="noopener">
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/fb0c5dab-f137-4860-a9df-0102056ec63d-profile_image-70x70.png"
+                                alt="Piotr IZAK Skowyrski">
+                        </a>
+                    </div>
+                    <a href="https://www.twitch.tv/izakooo" target="_blank" rel="noopener"
+                        class="participant-name">IZAK</a>
+                    <div class="participant-platform">Twitch</div>
+                </div>
+
+                <!-- Mateusz PAGO Pągowski -->
+                <div class="participant-card fade-in twitch">
+                    <div class="participant-avatar">
+                        <a href="https://www.twitch.tv/pago3" target="_blank" rel="noopener">
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/pago3-profile_image-5e9043daaa93d715-70x70.jpeg"
+                                alt="Mateusz PAGO Pągowski">
+                        </a>
+                    </div>
+                    <a href="https://www.twitch.tv/pago3" target="_blank" rel="noopener"
+                        class="participant-name">PAGO</a>
+                    <div class="participant-platform">Twitch</div>
+                </div>
+
+                <!-- Tomasz TOM223 Richter -->
+                <div class="participant-card fade-in kick">
+                    <div class="participant-avatar">
+                        <a href="https://kick.com/xtom223" target="_blank" rel="noopener">
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/3e654955-277e-4431-a530-847d8c7654ea-profile_image-70x70.png"
+                                alt="Tomasz TOM223 Richter">
+                        </a>
+                    </div>
+                    <a href="https://kick.com/xtom223" target="_blank" rel="noopener"
+                        class="participant-name">TOM223</a>
+                    <div class="participant-platform">Kick</div>
+                </div>
+
+                <!-- Damian PEVOR Kozioł -->
+                <div class="participant-card fade-in kick">
+                    <div class="participant-avatar">
+                        <a href="https://kick.com/pevor13" target="_blank" rel="noopener">
+                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/765f143c-ede6-4833-8e16-013d9f8ffb06-profile_image-70x70.png"
+                                alt="Damian PEVOR Kozioł">
+                        </a>
+                    </div>
+                    <a href="https://kick.com/pevor13" target="_blank" rel="noopener" class="participant-name">PEVOR</a>
+                    <div class="participant-platform">Kick</div>
+                </div>
+
+                <!-- Filip PARIS Kulon -->
+                <div class="participant-card fade-in kick">
+                    <div class="participant-avatar">
+                        <a href="https://kick.com/parisplatynov" target="_blank" rel="noopener">
+                            <img src="https://files.kick.com/images/user/8917064/profile_image/conversion/83dccd66-ea64-4edf-8825-58d39a7bb953-fullsize.webp"
+                                alt="Filip PARIS Kulon">
+                        </a>
+                    </div>
+                    <a href="https://kick.com/parisplatynov" target="_blank" rel="noopener"
+                        class="participant-name">PARIS PLATYNOV</a>
+                    <div class="participant-platform">Kick</div>
+                </div>
+
+                <!-- Dominik MOKRYSUCHAR Stokłosa -->
+                <div class="participant-card fade-in kick">
+                    <div class="participant-avatar">
+                        <a href="https://kick.com/mokrysuchar" target="_blank" rel="noopener">
+                            <img src="https://files.kick.com/images/user/185177/profile_image/conversion/d1a1cbab-32c0-413f-8731-1c5e51deb5a6-fullsize.webp"
+                                alt="Dominik MOKRYSUCHAR Stokłosa">
+                        </a>
+                    </div>
+                    <a href="https://kick.com/mokrysuchar" target="_blank" rel="noopener"
+                        class="participant-name">MOKRYSUCHAR</a>
+                    <div class="participant-platform">Kick</div>
+                </div>
+
+                <!-- Maciej WŁODAR -->
+                <div class="participant-card fade-in kick">
+                    <div class="participant-avatar">
+                        <a href="https://kick.com/achtenwlodar" target="_blank" rel="noopener">
+                            <img src="https://files.kick.com/images/user/29426666/profile_image/conversion/bb6db63c-e67c-4ef2-bf66-fe1ad8f32b2e-fullsize.webp"
+                                alt="Maciej WŁODAR">
+                        </a>
+                    </div>
+                    <a href="https://kick.com/achtenwlodar" target="_blank" rel="noopener"
+                        class="participant-name">WŁODAR</a>
+                    <div class="participant-platform">Kick</div>
+                </div>
+
+                <!-- MARIOSPZOO -->
+                <div class="participant-card fade-in kick">
+                    <div class="participant-avatar">
+                        <a href="https://kick.com/mariospzoo" target="_blank" rel="noopener">
+                            <img src="https://files.kick.com/images/user/39524235/profile_image/conversion/a4449a85-a77e-4f73-b3ce-2e46a294348a-fullsize.webp"
+                                alt="MARIOSPZOO">
+                        </a>
+                    </div>
+                    <a href="https://kick.com/mariospzoo" target="_blank" rel="noopener"
+                        class="participant-name">MARIOSPZOO</a>
+                    <div class="participant-platform">Kick</div>
+                </div>
+                <!-- Maciej ZONY Zoniuk -->
+                <div class="participant-card fade-in kick">
+                    <div class="participant-avatar">
+                        <a href="https://kick.com/zony" target="_blank" rel="noopener">
+                            <img src="https://files.kick.com/images/user/7611781/profile_image/conversion/0d009281-9e24-4778-b6aa-7da06e1c3271-fullsize.webp"
+                                alt="Maciej ZONY Zoniuk">
+                        </a>
+                    </div>
+                    <a href="https://kick.com/zony" target="_blank" rel="noopener" class="participant-name">ZONY</a>
+                    <div class="participant-platform">Kick</div>
+                </div>
+
+                <!-- Majszi -->
+                <div class="participant-card fade-in twitch">
+                    <div class="participant-avatar">
+                        <a href="https://www.twitch.tv/dmajszi" target="_blank" rel="noopener">
+                            <img src="https://files.kick.com/images/user/28243100/profile_image/conversion/b971919e-81de-43ea-af7f-808baebf9120-fullsize.webp"
+                                alt="Majszi">
+                        </a>
+                    </div>
+                    <a href="https://kick.com/dmajszi" target="_blank" rel="noopener"
+                        class="participant-name">Majszi</a>
+                    <div class="participant-platform">TWITCH</div>
+                </div>
+
+                <!-- Demonz -->
+                <div class="participant-card fade-in kick">
+                    <div class="participant-avatar">
+                        <a href="https://kick.com/demonzz1" target="_blank" rel="noopener">
+                            <img src="https://files.kick.com/images/user/41303148/profile_image/conversion/f621b559-4e75-4955-9e55-87b8efa7c77c-fullsize.webp"
+                                alt="Demonz">
+                        </a>
+                    </div>
+                    <a href="https://kick.com/demonzz1" target="_blank" rel="noopener"
+                        class="participant-name">Demonz</a>
+                    <div class="participant-platform">Kick</div>
+                </div>
+
+                <!-- Roburwk -->
+                <div class="participant-card fade-in kick">
+        <div class="participant-avatar">
+          <a href="https://kick.com/takuu" target="_blank" rel="noopener">
+            <img src="https://files.kick.com/images/user/196056/profile_image/conversion/5ed75600-4d1e-40ed-afb8-b2731a02ba10-fullsize.webp"
+                 alt="Takuu">
+          </a>
+        </div>
+        <a href="https://kick.com/takuu" target="_blank" rel="noopener" class="participant-name">Takuu</a>
+        <div class="participant-platform">Kick</div>
+      </div>
+    </div>
+  </div>
+
+    </section>
+
+        <!-- ===== RULES / REGULAMIN ===== -->
+
+    <!-- ===== SPONSORS ===== -->
+   <section class="sponsors" id="sponsorzy">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2 class="section-title">Sponsorzy</h2>
+    </div>
+
+    <div class="sponsors-grid fade-in">
+      <div class="sponsor-card">
+        <img src="Daco_5061982.png" alt="Sponsor Logitech">
+      </div>
+      <div class="sponsor-card">
+        <img src="dzik-removebg-preview.png" alt="Sponsor DZIK">
+      </div>
+      <div class="sponsor-card">
+        <img src="fastrack-removebg-preview.png" alt="Sponsor FASTRACK">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">F1 TURNIEJ STREAMERÓW</div>
+<p class="footer-description">
+  Największy turniej streamerów Formula 1 w Polsce. Walka o pieniądze, sławę i tytuł mistrza.
+</p>
+<p class="footer-credit">Created by <span>widz</span> dla <span>widzów</span>.</p>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 F1 Turniej Streamerów. Wszystkie prawa zastrzeżone.</p>
+                <!-- >>> FOOTER: białe POWERED BY MRDZINOLD X + logo -->
+                <p class="powered-by">
+                    POWERED BY MRDZINOLD 
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="race-modal" id="raceModal">
+        <div class="race-modal-content">
+            <span class="close-race-modal" id="closeRaceModal">&times;</span>
+            <h3 id="modalRaceName">???</h3>
+            <p class="race-location" id="modalRaceLocation">???</p>
+            <p id="modalRaceDate">???</p>
+
+        
+            <div class="race-results" id="raceResults" style="margin-top:20px; display:none;">
+                <h4>Wyniki Wyścigu</h4>
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Pozycja</th>
+                            <th>Kierowca</th>
+                            <th>Zespół</th>
+                            <th>P.Start</th>
+                            <th>PitStop</th>
+                            <th>Best Lap</th>
+                            <th>Punkty</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
